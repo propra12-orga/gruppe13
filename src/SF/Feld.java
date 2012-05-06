@@ -2,7 +2,6 @@ package SF;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -44,7 +43,7 @@ public class Feld extends JPanel {
 			map[i][0] = 0;
 			map[i][mapWidth - 1] = 0;
 		}
-		Random dice = new Random();
+		
 		for (int i = 1; i < mapHeight - 1; i++) {
 			for (int j = 1; j < mapWidth - 1; j++) {
 				if ((i % 2 == 0) && (j % 2 == 0)) {
@@ -62,13 +61,18 @@ public class Feld extends JPanel {
 
 					else {
 
-						map[i][j] = 1 + dice.nextInt(2);
+						map[i][j] = this.Random(1, 2);
 
 					}
 				}
 			}
 		}
 
+	}
+	//ganzzahliger Zufallsgenerator
+	public int Random(int l ,int h){
+		h++;
+		return (int)(Math.random()*(h-l)+l);
 	}
 
 	@Override
