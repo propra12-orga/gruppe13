@@ -13,6 +13,13 @@ public class Spielfeld extends JPanel {
 	private int tileWidth = 32;
 	private int tileHeight = 32;
 	//Beispiel-Map:
+	
+	//0 wiese/freies Feld
+	//1 unzerstoerbare Mauer
+	//2 zerstöoerbare Mauer
+	//3 Ausgang
+	
+	//wird zu 2dim umgeschrieben
 	private final int[] map =  {	  
 			1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 			1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
