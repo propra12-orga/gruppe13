@@ -1,7 +1,12 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 public class Figur {
 	/*
-	 * neues Object. Die Grundlage fuer Figuren Mutterklasse von Bomberman und
-	 * Monstern.
+	 * neues Object.
+	 * Grundlage fuer Figuren 
+	 * Mutterklasse von Bomberman und Monstern.
 	 */
 
 	private int xposition;
@@ -11,8 +16,7 @@ public class Figur {
 		this.xposition = xposition;
 		this.yposition = yposition;
 	}
-
-	@SuppressWarnings("unused")
+	
 	private int getxPosition() {
 		return xposition;
 	}
@@ -21,7 +25,6 @@ public class Figur {
 		this.xposition = xposition;
 	}
 
-	@SuppressWarnings("unused")
 	private int getyPosition() {
 		return yposition;
 	}
@@ -30,9 +33,8 @@ public class Figur {
 		this.yposition = yposition;
 	}
 
-	@SuppressWarnings("unused")
 	private boolean feldfrei(int x, int y) {
-		// if (map[x][y]==0) return true;
+		//if (map[x][y]==0) return true;
 		// else
 		return false;
 
@@ -40,7 +42,8 @@ public class Figur {
 
 	@SuppressWarnings("unused")
 	private void links() {
-		// fehlt ueberpruefung auf wegfrei.
+		boolean b=feldfrei(getxPosition(),getyPosition());
+		if(b==true)
 		setxPosition(xposition - 1);
 	}
 
@@ -65,9 +68,11 @@ public class Figur {
 
 	// TESTS
 
-	/*
-	 * @Test public void neuFigur() { Figur a = new Figur(5, 5); assertEquals(5,
-	 * a.getxPosition()); }
-	 */
-
+	
+	 @Test
+	 public void neuFigur() {
+		 Figur a = new Figur(5, 5);
+		 assertEquals(5, a.getxPosition());
+		 }
+	
 }
