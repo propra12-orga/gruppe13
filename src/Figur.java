@@ -2,6 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import SF.Feld;
+
 public class Figur {
  /*
   * neues Object.
@@ -38,37 +40,43 @@ public class Figur {
  }
 
  public boolean feldfrei(int x, int y, int[][] map) {
-  if (map[x][y]==0) return true;
-  else
-  return false;
+	 if (map[x][y]==0) return true;
+	 else
+		 return false;
+	 }
 
- }
-
- public void links(int[][] map) {
-  boolean b=this.feldfrei(getxPosition(),getyPosition(), map);
-  
+ public void links(Feld field) {
+	 int[][] map = field.getmap();
+	 int x=getxPosition()-1;
+  boolean b=this.feldfrei(x,getyPosition(), map);
   if(b==true){
-   this.setxPosition(xposition - 1);
+   this.setxPosition(x);
   }
  }
 
- public void rechts(int[][] map) {
-  boolean b= this.feldfrei(getxPosition(),getyPosition(), map);
+ public void rechts(Feld field) {
+	 int[][] map = field.getmap();
+	 int x = getxPosition()+1;
+  boolean b= this.feldfrei(x,getyPosition(), map);
   if(b==true){
-    this.setxPosition(xposition + 1);}
+    this.setxPosition(x);}
  }
 
- public void oben(int[][] map) {
-  boolean b=this.feldfrei(getxPosition(),getyPosition(), map);
+ public void oben(Feld field) {
+	 int[][] map = field.getmap();
+	 int y=getyPosition()-1;
+  boolean b=this.feldfrei(getxPosition(),y, map);
   if(b==true){
-    this.setyPosition(yposition - 1);}
+    this.setyPosition(y);}
 
  }
 
- public void unten(int[][] map) {
-  boolean b=this.feldfrei(getxPosition(),getyPosition(), map);
+ public void unten(Feld field) {
+	 int[][] map = field.getmap();
+	 int y=getyPosition()+1;
+  boolean b=this.feldfrei(getxPosition(),y, map);
   if(b==true){
-    this.setyPosition(yposition - 1);}
+    this.setyPosition(y);}
  }
 
  // TESTS

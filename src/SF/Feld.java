@@ -94,5 +94,10 @@ public class Feld extends JPanel {
 	 * 
 	 * }
 	 */
+	
+	//Gibt die map zurueck.
+	public int[][] getmap(){
+		return this.map;
+	}
 
 }
