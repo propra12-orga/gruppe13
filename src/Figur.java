@@ -3,76 +3,82 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class Figur {
-	/*
-	 * neues Object.
-	 * Grundlage fuer Figuren 
-	 * Mutterklasse von Bomberman und Monstern.
-	 */
+ /*
+  * neues Object.
+  * Grundlage fuer Figuren 
+  * Mutterklasse von Bomberman und Monstern.
+  */
 
-	private int xposition;
-	private int yposition;
+ private int xposition;
+ private int yposition;
 
-	public Figur(int xposition, int yposition) {
-		this.xposition = xposition;
-		this.yposition = yposition;
-	}
-	
-	private int getxPosition() {
-		return xposition;
-	}
+ public Figur(){
+ }
 
-	private void setxPosition(int xposition) {
-		this.xposition = xposition;
-	}
 
-	private int getyPosition() {
-		return yposition;
-	}
+ public Figur(int xpos, int ypos) {
+  this.xposition = xpos;
+  this.yposition = ypos;
+ }
+ 
+ public int getxPosition() {
+  return this.xposition;
+ }
 
-	private void setyPosition(int yposition) {
-		this.yposition = yposition;
-	}
+ public void setxPosition(int xpos) {
+  this.xposition = xpos;
+ }
 
-	private boolean feldfrei(int x, int y) {
-		//if (map[x][y]==0) return true;
-		// else
-		return false;
+ public int getyPosition() {
+  return this.yposition;
+ }
 
-	}
+ public void setyPosition(int ypos) {
+  this.yposition = ypos;
+ }
 
-	@SuppressWarnings("unused")
-	private void links() {
-		boolean b=feldfrei(getxPosition(),getyPosition());
-		if(b==true)
-		setxPosition(xposition - 1);
-	}
+ public boolean feldfrei(int x, int y, int[][] map) {
+  if (map[x][y]==0) return true;
+  else
+  return false;
 
-	@SuppressWarnings("unused")
-	private void rechts() {
-		// fehlt ueberpruefung auf wegfrei.
-		setxPosition(xposition + 1);
-	}
+ }
 
-	@SuppressWarnings("unused")
-	private void oben() {
-		// fehlt ueberpruefung auf wegfrei.
-		setyPosition(yposition + 1);
+ public void links(int[][] map) {
+  boolean b=this.feldfrei(getxPosition(),getyPosition(), map);
+  
+  if(b==true){
+   this.setxPosition(xposition - 1);
+  }
+ }
 
-	}
+ public void rechts(int[][] map) {
+  boolean b= this.feldfrei(getxPosition(),getyPosition(), map);
+  if(b==true){
+    this.setxPosition(xposition + 1);}
+ }
 
-	@SuppressWarnings("unused")
-	private void unten() {
-		// fehlt ueberpruefung auf wegfrei.
-		setyPosition(yposition - 1);
-	}
+ public void oben(int[][] map) {
+  boolean b=this.feldfrei(getxPosition(),getyPosition(), map);
+  if(b==true){
+    this.setyPosition(yposition - 1);}
 
-	// TESTS
+ }
 
-	
-	 @Test
-	 public void neuFigur() {
-		 Figur a = new Figur(5, 5);
-		 assertEquals(5, a.getxPosition());
-		 }
-	
+ public void unten(int[][] map) {
+  boolean b=this.feldfrei(getxPosition(),getyPosition(), map);
+  if(b==true){
+    this.setyPosition(yposition - 1);}
+ }
+
+ // TESTS
+
+ 
+ /* @Test 
+  public void neuFigur() {
+   Figur a = new Figur();
+   a.setxPosition(5);
+   int b = a.getxPosition();
+   assertTrue(5==b);
+   }*/
 }
