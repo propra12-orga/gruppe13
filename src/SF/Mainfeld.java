@@ -1,7 +1,9 @@
 package SF;
 
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 
@@ -33,6 +35,32 @@ public class Mainfeld {
 		frame.setLocation(left, top);
 		frame.setVisible(true);
 		// f.showArray(); test***
+		
+		//Steuerung (Das zeichnen fehlt noch)
+		
+		Figur bomberman = new Figur(1,1);
+		
+		while(true){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Wo lang?");
+	    int eingabe = sc.nextInt();
+	    if(eingabe==4){
+	    	bomberman.links(f);
+	    	}
+	    else if(eingabe==6){
+	    	bomberman.rechts(f);
+	    	}
+	    else if(eingabe==8){
+	    	bomberman.oben(f);
+	    	}
+	    else if(eingabe==2){
+	    	bomberman.unten(f);
+	    }
+	    else{}
+	    System.out.println("Bomberman ist bei (" + bomberman.getxPosition() + "/" + bomberman.getyPosition()+")");
+		}
+		
+	    	
 	}
 
 }

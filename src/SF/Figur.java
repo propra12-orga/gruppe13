@@ -1,8 +1,5 @@
-import static org.junit.Assert.*;
+package SF;
 
-import org.junit.Test;
-
-import SF.Feld;
 
 public class Figur {
  /*
