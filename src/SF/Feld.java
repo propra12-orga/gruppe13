@@ -8,15 +8,24 @@ import javax.swing.JPanel;
 
 public class Feld extends JPanel {
 
-	private final int mapWidth;
-	private final int mapHeight;
-	private final int tileWidth;
-	private final int tileHeight;
-	private final Image[] tileImage;
-	private final int[][] map;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int mapWidth;
+	private int mapHeight;
+	private int tileWidth;
+	private int tileHeight;
+	private Image[] tileImage;
+	private FieldEntry[][] map;
 
 	public Feld(int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
-		this.map = new int[mapWidth][mapHeight];
+		this.map = new FieldEntry[mapWidth][mapHeight];
+		for (int i = 0; i < mapWidth; i++) {
+			for (int j = 0; j < mapHeight; j++) {
+				map[i][j] = new FieldEntry();
+			}
+		}
 		// Spielfeldgroesse:
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
@@ -36,32 +45,32 @@ public class Feld extends JPanel {
 				"/images/exit.png")).getImage();
 		// Kartenerstellung:
 		for (int i = 0; i < mapWidth; i++) {
-			map[0][i] = 0;
-			map[mapHeight - 1][i] = 0;
+			map[0][i].setImag(0);
+			map[mapHeight - 1][i].setImag(0);
 		}
 		for (int i = 0; i < mapHeight; i++) {
-			map[i][0] = 0;
-			map[i][mapWidth - 1] = 0;
+			map[i][0].setImag(0);
+			map[i][mapWidth - 1].setImag(0);
 		}
-		
+
 		for (int i = 1; i < mapHeight - 1; i++) {
 			for (int j = 1; j < mapWidth - 1; j++) {
 				if ((i % 2 == 0) && (j % 2 == 0)) {
-					map[i][j] = 0;
+					map[i][j].setImag(0);
 				} else {
 					if (((i == 1) && (j == 1)) || ((i == 1) && (j == 2))
 							|| ((i == 2) && (j == 1))) {
-						map[i][j] = 1;
+						map[i][j].setImag(1);
 
 					} else if (((i == 1) && (j == 3)) || ((i == 3) && (j == 1))) {
-						map[i][j] = 2;
+						map[i][j].setImag(2);
 					} else if ((i == mapHeight - 2) && (j == mapWidth - 2)) {
-						map[i][j] = 3;
+						map[i][j].setImag(3);
 					}
 
 					else {
 
-						map[i][j] = this.Random(1, 2);
+						map[i][j].setImag(this.Random(1, 2));
 
 					}
 				}
@@ -69,10 +78,11 @@ public class Feld extends JPanel {
 		}
 
 	}
-	//ganzzahliger Zufallsgenerator
-	public int Random(int l ,int h){
+
+	// ganzzahliger Zufallsgenerator
+	public int Random(int l, int h) {
 		h++;
-		return (int)(Math.random()*(h-l)+l);
+		return (int) (Math.random() * (h - l) + l);
 	}
 
 	@Override
@@ -80,12 +90,13 @@ public class Feld extends JPanel {
 		super.paint(g);
 		for (int i = 0; i < mapWidth; i++) {
 			for (int j = 0; j < mapHeight; j++) {
-				g.drawImage(tileImage[map[j][i]], i * tileWidth,
-						j * tileHeight, null);
+				g.drawImage(tileImage[map[j][i].getImage()], i * tileWidth, j
+						* tileHeight, null);
 			}
 		}
 
 	}
+
 	/*
 	 * test*** public void showArray() {
 	 * 
@@ -94,9 +105,9 @@ public class Feld extends JPanel {
 	 * 
 	 * }
 	 */
-	
-	//Gibt die map zurueck.
-	public int[][] getmap(){
+
+	// Gibt die map zurueck.
+	public FieldEntry[][] getmap() {
 		return this.map;
 	}
 

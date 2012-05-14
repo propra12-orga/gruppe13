@@ -1,89 +1,86 @@
 package SF;
 
-
 public class Figur {
- /*
-  * neues Object.
-  * Grundlage fuer Figuren 
-  * Mutterklasse von Bomberman und Monstern.
-  */
+	/*
+	 * neues Object. Grundlage fuer Figuren Mutterklasse von Bomberman und
+	 * Monstern.
+	 */
 
- private int xposition;
- private int yposition;
+	private int xposition;
+	private int yposition;
 
- public Figur(){
- }
+	public Figur() {
+	}
 
+	public Figur(int xpos, int ypos) {
+		this.xposition = xpos;
+		this.yposition = ypos;
+	}
 
- public Figur(int xpos, int ypos) {
-  this.xposition = xpos;
-  this.yposition = ypos;
- }
- 
- public int getxPosition() {
-  return this.xposition;
- }
+	public int getxPosition() {
+		return this.xposition;
+	}
 
- public void setxPosition(int xpos) {
-  this.xposition = xpos;
- }
+	public void setxPosition(int xpos) {
+		this.xposition = xpos;
+	}
 
- public int getyPosition() {
-  return this.yposition;
- }
+	public int getyPosition() {
+		return this.yposition;
+	}
 
- public void setyPosition(int ypos) {
-  this.yposition = ypos;
- }
+	public void setyPosition(int ypos) {
+		this.yposition = ypos;
+	}
 
- public boolean feldfrei(int x, int y, int[][] map) {
-	 if (map[x][y]==0) return true;
-	 else
-		 return false;
-	 }
+	public boolean feldfrei(int x, int y, FieldEntry[][] map) {
+		if (map[x][y].getImage() == 0)
+			return true;
+		else
+			return false;
+	}
 
- public void links(Feld field) {
-	 int[][] map = field.getmap();
-	 int x=getxPosition()-1;
-  boolean b=this.feldfrei(x,getyPosition(), map);
-  if(b==true){
-   this.setxPosition(x);
-  }
- }
+	public void links(Feld field) {
+		FieldEntry[][] map = field.getmap();
+		int x = getxPosition() - 1;
+		boolean b = this.feldfrei(x, getyPosition(), map);
+		if (b == true) {
+			this.setxPosition(x);
+		}
+	}
 
- public void rechts(Feld field) {
-	 int[][] map = field.getmap();
-	 int x = getxPosition()+1;
-  boolean b= this.feldfrei(x,getyPosition(), map);
-  if(b==true){
-    this.setxPosition(x);}
- }
+	public void rechts(Feld field) {
+		FieldEntry[][] map = field.getmap();
+		int x = getxPosition() + 1;
+		boolean b = this.feldfrei(x, getyPosition(), map);
+		if (b == true) {
+			this.setxPosition(x);
+		}
+	}
 
- public void oben(Feld field) {
-	 int[][] map = field.getmap();
-	 int y=getyPosition()-1;
-  boolean b=this.feldfrei(getxPosition(),y, map);
-  if(b==true){
-    this.setyPosition(y);}
+	public void oben(Feld field) {
+		FieldEntry[][] map = field.getmap();
+		int y = getyPosition() - 1;
+		boolean b = this.feldfrei(getxPosition(), y, map);
+		if (b == true) {
+			this.setyPosition(y);
+		}
 
- }
+	}
 
- public void unten(Feld field) {
-	 int[][] map = field.getmap();
-	 int y=getyPosition()+1;
-  boolean b=this.feldfrei(getxPosition(),y, map);
-  if(b==true){
-    this.setyPosition(y);}
- }
+	public void unten(Feld field) {
+		FieldEntry[][] map = field.getmap();
+		int y = getyPosition() + 1;
+		boolean b = this.feldfrei(getxPosition(), y, map);
+		if (b == true) {
+			this.setyPosition(y);
+		}
+	}
 
- // TESTS
+	// TESTS
 
- 
- /* @Test 
-  public void neuFigur() {
-   Figur a = new Figur();
-   a.setxPosition(5);
-   int b = a.getxPosition();
-   assertTrue(5==b);
-   }*/
+	/*
+	 * @Test public void neuFigur() { Figur a = new Figur(); a.setxPosition(5);
+	 * int b = a.getxPosition(); assertTrue(5==b); }
+	 */
 }
