@@ -1,14 +1,13 @@
 package SF;
 
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 
-public class Mainfeld {
-
+public class StartBomberman {
+	
 	// Spielfeldgroesse:
 	public static int mapWidth = 19;
 	public static int mapHeight = 19;
