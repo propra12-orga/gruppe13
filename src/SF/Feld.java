@@ -13,14 +13,15 @@ public class Feld extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private final int mapWidth;
-	private final int mapHeight;
-	private final int tileWidth;
-	private final int tileHeight;
-	private final Image[] tileImage;
-	private final FieldEntry[][] map;
+	private int mapWidth;
+	private int mapHeight;
+	private int tileWidth;
+	private int tileHeight;
+	private Image[] tileImage;
+	private FieldEntry[][] map;
 
 	public Feld(int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
+		// Erstellung ObjectArray
 		this.map = new FieldEntry[mapWidth][mapHeight];
 		for (int i = 0; i < mapWidth; i++) {
 			for (int j = 0; j < mapHeight; j++) {
