@@ -1,6 +1,6 @@
 package Tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -9,11 +9,63 @@ import SF.Figur;
 public class TestFigur {
 
 	@Test
-	public void test() {
-		Figur a = new Figur();
-		   a.setxPosition(5);
-		   int b = a.getxPosition();
-		   assertTrue(5==b);
+	public void tgetx1() {
+		Figur a = new Figur(1, 1);
+		int b = a.getxPosition();
+		assertEquals(1, b);
+	}
+
+	@Test
+	public void tgetx2() {
+		Figur a = new Figur(0, 6);
+		int b = a.getxPosition();
+		assertEquals(0, b);
+	}
+
+	@Test
+	public void tsetx1() {
+		Figur a = new Figur(1, 1);
+		a.setxPosition(5);
+		int b = a.getxPosition();
+		assertEquals(5, b);
+	}
+
+	@Test
+	public void tsetx2() {
+		Figur a = new Figur(0, 10);
+		a.setxPosition(0);
+		int b = a.getxPosition();
+		assertEquals(0, b);
+	}
+
+	@Test
+	public void tgety1() {
+		Figur a = new Figur(1, 1);
+		int b = a.getxPosition();
+		assertEquals(1, b);
+	}
+
+	@Test
+	public void tgety2() {
+		Figur a = new Figur(0, 0);
+		int b = a.getxPosition();
+		assertEquals(0, b);
+	}
+
+	@Test
+	public void tsety1() {
+		Figur a = new Figur(1, 1);
+		a.setyPosition(5);
+		int b = a.getyPosition();
+		assertEquals(5, b);
+	}
+
+	@Test
+	public void tsety2() {
+		Figur a = new Figur(0, 10);
+		a.setyPosition(0);
+		int b = a.getyPosition();
+		assertEquals(0, b);
 	}
 
 }
