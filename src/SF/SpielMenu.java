@@ -10,6 +10,13 @@ import javax.swing.JFrame;
 
 public class SpielMenu extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public StartBomberman Start = new StartBomberman();
+
 	public SpielMenu(String t) {
 
 		setTitle(t);
@@ -25,20 +32,27 @@ public class SpielMenu extends JFrame implements ActionListener {
 		spielbeenden.addActionListener(this);
 		add(spielbeenden);
 		pack();
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		// Button "Spiel beeneden" schließt die Fenster (zur Zeit allerdings nur
-		// das Menüfenster;
+
+		// Spiel beenden
 		// Schnittstelle zum Spiel fehlt -> Besprechen
 		if (arg0.getActionCommand().equals("exit")) {
-			dispose();
+			System.exit(0);
 		}
+		// Spiel starten
 		if (arg0.getActionCommand().equals("go")) {
-			// Button "Spiel starten" startet ein neues Spiel
+			StartBomberman.frame.setVisible(true);
+			// Menue ausblenden beim Spielstart
+			setVisible(false);
 		}
 
 	}
-
+	/*
+	 * public static void main(String[] args) { SpielMenu menu = new
+	 * SpielMenu("Bomberman - Menü"); }
+	 */
 }

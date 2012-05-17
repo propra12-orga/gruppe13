@@ -2,6 +2,8 @@ package SF;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -14,10 +16,21 @@ public class StartBomberman {
 	// Kachelgroesse (Standard: 32x32 Pixel):
 	public static int tileWidth = 32;
 	public static int tileHeight = 32;
+	public static JFrame frame;
 
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Bomberman");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		final SpielMenu menu = new SpielMenu("Bomberman - Menü");
+		frame = new JFrame("Bomberman");
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+		// Beim Schliessen wird das Menue wieder angezeigt
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				frame.setVisible(false);
+				menu.setVisible(true);
+			}
+		});
+
 		Feld f = new Feld(mapWidth, mapHeight, tileWidth, tileHeight, "random");
 		frame.add(f);
 		// Fuer Linux ohne +6 und ohne +33!
@@ -32,12 +45,8 @@ public class StartBomberman {
 		int left = (screenSize.width - frameWidth) / 2;
 		int top = (screenSize.height - frameHeight) / 2;
 		frame.setLocation(left, top);
-		frame.setVisible(true);
+		frame.setVisible(false);
 		// f.showArray(); test***
-
-		// Spielmenu aufmachen
-
-		SpielMenu menu = new SpielMenu("Bomberman - Menü");
 
 		// Steuerung (Das zeichnen fehlt noch)
 
