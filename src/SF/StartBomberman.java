@@ -7,7 +7,7 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 
 public class StartBomberman {
-	
+
 	// Spielfeldgroesse:
 	public static int mapWidth = 19;
 	public static int mapHeight = 19;
@@ -18,7 +18,7 @@ public class StartBomberman {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Bomberman");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Feld f = new Feld(mapWidth, mapHeight, tileWidth, tileHeight);
+		Feld f = new Feld(mapWidth, mapHeight, tileWidth, tileHeight, "random");
 		frame.add(f);
 		// Fuer Linux ohne +6 und ohne +33!
 		int frameWidth = mapWidth * tileWidth + 6;
@@ -34,32 +34,29 @@ public class StartBomberman {
 		frame.setLocation(left, top);
 		frame.setVisible(true);
 		// f.showArray(); test***
-		
-		//Steuerung (Das zeichnen fehlt noch)
-		
-		Figur bomberman = new Figur(1,1);
-		
-		while(true){
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Wo lang?");
-	    int eingabe = sc.nextInt();
-	    if(eingabe==4){
-	    	bomberman.links(f);
-	    	}
-	    else if(eingabe==6){
-	    	bomberman.rechts(f);
-	    	}
-	    else if(eingabe==8){
-	    	bomberman.oben(f);
-	    	}
-	    else if(eingabe==2){
-	    	bomberman.unten(f);
-	    }
-	    else{}
-	    System.out.println("Bomberman ist bei (" + bomberman.getxPosition() + "/" + bomberman.getyPosition()+")");
+
+		// Steuerung (Das zeichnen fehlt noch)
+
+		Figur bomberman = new Figur(1, 1);
+
+		while (true) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Wo lang?");
+			int eingabe = sc.nextInt();
+			if (eingabe == 4) {
+				bomberman.links(f);
+			} else if (eingabe == 6) {
+				bomberman.rechts(f);
+			} else if (eingabe == 8) {
+				bomberman.oben(f);
+			} else if (eingabe == 2) {
+				bomberman.unten(f);
+			} else {
+			}
+			System.out.println("Bomberman ist bei (" + bomberman.getxPosition()
+					+ "/" + bomberman.getyPosition() + ")");
 		}
-		
-	    	
+
 	}
 
 }

@@ -17,10 +17,13 @@ public class Feld extends JPanel {
 	private int mapHeight;
 	private int tileWidth;
 	private int tileHeight;
+	private String level; // String für Levelauswahl
 	private Image[] tileImage;
 	private FieldEntry[][] map;
+	private Image figur;
 
-	public Feld(int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
+	public Feld(int mapWidth, int mapHeight, int tileWidth, int tileHeight,
+			String level) {
 		// Erstellung ObjectArray
 		this.map = new FieldEntry[mapWidth][mapHeight];
 		for (int i = 0; i < mapWidth; i++) {
@@ -28,6 +31,7 @@ public class Feld extends JPanel {
 				map[i][j] = new FieldEntry();
 			}
 		}
+		this.level = level;
 		// Spielfeldgroesse:
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
@@ -45,6 +49,8 @@ public class Feld extends JPanel {
 				"/images/soft.png")).getImage();
 		this.tileImage[3] = new ImageIcon(this.getClass().getResource(
 				"/images/exit.png")).getImage();
+		this.figur = new ImageIcon(this.getClass()
+				.getResource("/images/XD.png")).getImage();
 		// Kartenerstellung:
 		for (int i = 0; i < mapWidth; i++) {
 			map[0][i].setImag(0);
@@ -71,14 +77,17 @@ public class Feld extends JPanel {
 					}
 
 					else {
-
-						map[i][j].setImag(1 + dice.nextInt(2));
-
+						if (this.level.equals("random")) {
+							map[i][j].setImag(1 + dice.nextInt(2));
+						}
+						if (this.level.equals("test")) {
+							map[i][j].setImag(1);
+						} else {
+						}
 					}
 				}
 			}
 		}
-
 	}
 
 	@Override
@@ -90,7 +99,7 @@ public class Feld extends JPanel {
 						* tileHeight, null);
 			}
 		}
-
+		// map
 	}
 
 	/*
