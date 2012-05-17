@@ -2,6 +2,7 @@ package SF;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -12,12 +13,12 @@ public class Feld extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int mapWidth;
-	private int mapHeight;
-	private int tileWidth;
-	private int tileHeight;
-	private Image[] tileImage;
-	private FieldEntry[][] map;
+	private final int mapWidth;
+	private final int mapHeight;
+	private final int tileWidth;
+	private final int tileHeight;
+	private final Image[] tileImage;
+	private final FieldEntry[][] map;
 
 	public Feld(int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
 		this.map = new FieldEntry[mapWidth][mapHeight];
@@ -52,7 +53,7 @@ public class Feld extends JPanel {
 			map[i][0].setImag(0);
 			map[i][mapWidth - 1].setImag(0);
 		}
-
+		Random dice = new Random();
 		for (int i = 1; i < mapHeight - 1; i++) {
 			for (int j = 1; j < mapWidth - 1; j++) {
 				if ((i % 2 == 0) && (j % 2 == 0)) {
@@ -70,19 +71,13 @@ public class Feld extends JPanel {
 
 					else {
 
-						map[i][j].setImag(this.Random(1, 2));
+						map[i][j].setImag(1 + dice.nextInt(2));
 
 					}
 				}
 			}
 		}
 
-	}
-
-	// ganzzahliger Zufallsgenerator
-	public int Random(int l, int h) {
-		h++;
-		return (int) (Math.random() * (h - l) + l);
 	}
 
 	@Override
