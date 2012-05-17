@@ -35,6 +35,10 @@ public class StartBomberman {
 		frame.setVisible(true);
 		// f.showArray(); test***
 
+		// Spielmenu aufmachen
+
+		SpielMenu menu = new SpielMenu("Bomberman - Menü");
+
 		// Steuerung (Das zeichnen fehlt noch)
 
 		Figur bomberman = new Figur(1, 1);
@@ -58,5 +62,4 @@ public class StartBomberman {
 		}
 
 	}
-
 }
