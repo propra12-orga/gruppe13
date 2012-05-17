@@ -4,6 +4,7 @@ public class FieldEntry {
 
 	private int item, image;
 
+	// GET/SET Item (erstmal un insteressant)
 	public void setItem() {
 
 		this.item = this.Random(1, 4);
@@ -19,6 +20,7 @@ public class FieldEntry {
 
 	}
 
+	// GET/SET Nummer des Bildes
 	public void setImag(int image) {
 		this.image = image;
 	}
