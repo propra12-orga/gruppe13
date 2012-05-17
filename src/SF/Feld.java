@@ -99,7 +99,7 @@ public class Feld extends JPanel {
 						* tileHeight, null);
 			}
 		}
-		// map
+		g.drawImage(figur, tileWidth, tileHeight, null);
 	}
 
 	/*
