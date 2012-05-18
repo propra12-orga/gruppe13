@@ -1,7 +1,5 @@
 package SF;
 
-import javax.swing.JComponent;
-
 public class Figur {
 	/*
 	 * neues Object. Grundlage fuer Figuren Mutterklasse von Bomberman und
@@ -10,7 +8,7 @@ public class Figur {
 
 	// Instanz der Glasspane
 	private FeldGP glasspane;
-	
+
 	private int xposition;
 	private int yposition;
 
@@ -41,7 +39,7 @@ public class Figur {
 	public boolean feldfrei(int x, int y, FieldEntry[][] map) {
 		// Überprüfung, ob das zu besuchende Feld gültig ist
 		// Momentan sind alle Felder außer der solid-Kacheln gültig
-		if (map[x][y].getImage() != 0)
+		if (map[x][y].getDest())
 			return true;
 		else
 			return false;
@@ -54,8 +52,16 @@ public class Figur {
 		boolean b = this.feldfrei(x, getyPosition(), map);
 		if (b == true) {
 			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
-			glasspane.walkFigur(getxPosition(), getyPosition(), x, getyPosition());
+			glasspane.walkFigur(getxPosition(), getyPosition(), x,
+					getyPosition());
 			this.setxPosition(x);
+			// Menue aufrufen, wenn Ausgang erreicht
+			if (map[getxPosition()][getyPosition()].getImage() == 3) {
+				StartBomberman.frame.setVisible(false);
+				// Statt das Menue aufzurufen, sollte noch eine Meldung
+				// implementiert werden in Form eines JDialog.
+				StartBomberman.menu.setVisible(true);
+			}
 		}
 	}
 
@@ -65,8 +71,13 @@ public class Figur {
 		boolean b = this.feldfrei(x, getyPosition(), map);
 		if (b == true) {
 			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
-			glasspane.walkFigur(getxPosition(), getyPosition(), x, getyPosition());
+			glasspane.walkFigur(getxPosition(), getyPosition(), x,
+					getyPosition());
 			this.setxPosition(x);
+			if (map[getxPosition()][getyPosition()].getImage() == 3) {
+				StartBomberman.frame.setVisible(false);
+				StartBomberman.menu.setVisible(true);
+			}
 		}
 	}
 
@@ -76,8 +87,13 @@ public class Figur {
 		boolean b = this.feldfrei(getxPosition(), y, map);
 		if (b == true) {
 			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
-			glasspane.walkFigur(getxPosition(), getyPosition(), getxPosition(), y);
+			glasspane.walkFigur(getxPosition(), getyPosition(), getxPosition(),
+					y);
 			this.setyPosition(y);
+			if (map[getxPosition()][getyPosition()].getImage() == 3) {
+				StartBomberman.frame.setVisible(false);
+				StartBomberman.menu.setVisible(true);
+			}
 		}
 
 	}
@@ -88,8 +104,13 @@ public class Figur {
 		boolean b = this.feldfrei(getxPosition(), y, map);
 		if (b == true) {
 			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
-			glasspane.walkFigur(getxPosition(), getyPosition(), getxPosition(), y);
+			glasspane.walkFigur(getxPosition(), getyPosition(), getxPosition(),
+					y);
 			this.setyPosition(y);
+			if (map[getxPosition()][getyPosition()].getImage() == 3) {
+				StartBomberman.frame.setVisible(false);
+				StartBomberman.menu.setVisible(true);
+			}
 		}
 	}
 

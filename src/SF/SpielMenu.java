@@ -39,7 +39,6 @@ public class SpielMenu extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 
 		// Spiel beenden
-		// Schnittstelle zum Spiel fehlt -> Besprechen
 		if (arg0.getActionCommand().equals("exit")) {
 			System.exit(0);
 		}

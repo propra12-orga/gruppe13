@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Scanner;
 
 import javax.swing.JFrame;
 
@@ -19,11 +18,12 @@ public class StartBomberman {
 	public static final int TILE_WIDTH = 32;
 	public static final int TILE_HEIGHT = 32;
 	public static JFrame frame;
+	public static SpielMenu menu = new SpielMenu("Bomberman - Menü");
 
 	private static Figur bomberman;
 	private static Feld f;
+
 	public static void main(String[] args) {
-		final SpielMenu menu = new SpielMenu("Bomberman - Menü");
 		frame = new JFrame("Bomberman");
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -58,17 +58,15 @@ public class StartBomberman {
 		FeldGP gp = new FeldGP(f);
 		// Übergabe der GP an BM
 		bomberman.setGP(gp);
-		
+
 		// Zuweisung der GP an das Frame
 		frame.setGlassPane(gp);
 		frame.getGlassPane().setVisible(true);
-		
-		
+
 		// Key-Listener, implementiert die Steuerung durch
 		// Pfeiltasten
 		frame.addKeyListener(new KeyListener() {
-			
-		
+
 			@Override
 			public void keyPressed(KeyEvent e) {
 			}
@@ -91,27 +89,26 @@ public class StartBomberman {
 					bomberman.rechts(f);
 					break;
 				case 40:
-					//unten
+					// unten
 					bomberman.unten(f);
 					break;
 
 				default:
 					break;
 				}
-				
+
 			}
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				
+
 			}
 		});
-		
+
 	}
+
 	public static int getTileWidth() {
 		return TILE_WIDTH;
 	}
 
-	
-	
 }

@@ -3,6 +3,7 @@ package SF;
 public class FieldEntry {
 
 	private int item, image;
+	private boolean destroyable;
 
 	// GET/SET Item (erstmal un insteressant)
 	public void setItem() {
@@ -16,8 +17,10 @@ public class FieldEntry {
 		return item;
 	}
 
-	public FieldEntry() {
-
+	public FieldEntry(int image, boolean destroy, int item) {
+		this.image = image;
+		this.destroyable = destroy;
+		this.item = item;
 	}
 
 	// GET/SET Nummer des Bildes
@@ -27,6 +30,15 @@ public class FieldEntry {
 
 	public int getImage() {
 		return image;
+	}
+
+	// Zerstoerbarkeit
+	public void setDest(boolean d) {
+		this.destroyable = d;
+	}
+
+	public boolean getDest() {
+		return destroyable;
 	}
 
 	// ganzzahliger Zufallsgenerator
