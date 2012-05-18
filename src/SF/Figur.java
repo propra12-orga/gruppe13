@@ -1,11 +1,16 @@
 package SF;
 
+import javax.swing.JComponent;
+
 public class Figur {
 	/*
 	 * neues Object. Grundlage fuer Figuren Mutterklasse von Bomberman und
 	 * Monstern.
 	 */
 
+	// Instanz der Glasspane
+	private FeldGP glasspane;
+	
 	private int xposition;
 	private int yposition;
 
@@ -34,7 +39,9 @@ public class Figur {
 	}
 
 	public boolean feldfrei(int x, int y, FieldEntry[][] map) {
-		if (map[x][y].getImage() == 0)
+		// Überprüfung, ob das zu besuchende Feld gültig ist
+		// Momentan sind alle Felder außer der solid-Kacheln gültig
+		if (map[x][y].getImage() != 0)
 			return true;
 		else
 			return false;
@@ -42,9 +49,12 @@ public class Figur {
 
 	public void links(Feld field) {
 		FieldEntry[][] map = field.getmap();
+		// neue Position
 		int x = getxPosition() - 1;
 		boolean b = this.feldfrei(x, getyPosition(), map);
 		if (b == true) {
+			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
+			glasspane.walkFigur(getxPosition(), getyPosition(), x, getyPosition());
 			this.setxPosition(x);
 		}
 	}
@@ -54,6 +64,8 @@ public class Figur {
 		int x = getxPosition() + 1;
 		boolean b = this.feldfrei(x, getyPosition(), map);
 		if (b == true) {
+			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
+			glasspane.walkFigur(getxPosition(), getyPosition(), x, getyPosition());
 			this.setxPosition(x);
 		}
 	}
@@ -63,6 +75,8 @@ public class Figur {
 		int y = getyPosition() - 1;
 		boolean b = this.feldfrei(getxPosition(), y, map);
 		if (b == true) {
+			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
+			glasspane.walkFigur(getxPosition(), getyPosition(), getxPosition(), y);
 			this.setyPosition(y);
 		}
 
@@ -73,8 +87,15 @@ public class Figur {
 		int y = getyPosition() + 1;
 		boolean b = this.feldfrei(getxPosition(), y, map);
 		if (b == true) {
+			// Aufruf an die Glasspane, den BM entsprechend zu bewegen
+			glasspane.walkFigur(getxPosition(), getyPosition(), getxPosition(), y);
 			this.setyPosition(y);
 		}
+	}
+
+	// Setter, um die GP-Instanz zu sichern
+	public void setGP(FeldGP gp) {
+		this.glasspane = gp;
 	}
 
 	// TESTS

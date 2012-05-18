@@ -88,6 +88,7 @@ public class Feld extends JPanel {
 				}
 			}
 		}
+		
 	}
 
 	@Override
@@ -99,9 +100,11 @@ public class Feld extends JPanel {
 						* tileHeight, null);
 			}
 		}
-		g.drawImage(figur, tileWidth, tileHeight, null);
 	}
+	
 
+	
+	
 	/*
 	 * test*** public void showArray() {
 	 * 
@@ -110,6 +113,20 @@ public class Feld extends JPanel {
 	 * 
 	 * }
 	 */
+
+	// Getter für Kachelgroesse (wird in Glasspane verwendet)
+	public int getTileWidth() {
+		return tileWidth;
+	}
+
+	public int getTileHeight() {
+		return tileHeight;
+	}
+
+	// Getter für Image der Figur (wird in GP verwendet)
+	public Image getFigur() {
+		return figur;
+	}
 
 	// Gibt die map zurueck.
 	public FieldEntry[][] getmap() {

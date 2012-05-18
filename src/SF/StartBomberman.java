@@ -2,6 +2,8 @@ package SF;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Scanner;
@@ -14,10 +16,12 @@ public class StartBomberman {
 	public static int mapWidth = 19;
 	public static int mapHeight = 19;
 	// Kachelgroesse (Standard: 32x32 Pixel):
-	public static int tileWidth = 32;
-	public static int tileHeight = 32;
+	public static final int TILE_WIDTH = 32;
+	public static final int TILE_HEIGHT = 32;
 	public static JFrame frame;
 
+	private static Figur bomberman;
+	private static Feld f;
 	public static void main(String[] args) {
 		final SpielMenu menu = new SpielMenu("Bomberman - Menü");
 		frame = new JFrame("Bomberman");
@@ -31,11 +35,11 @@ public class StartBomberman {
 			}
 		});
 
-		Feld f = new Feld(mapWidth, mapHeight, tileWidth, tileHeight, "random");
+		f = new Feld(mapWidth, mapHeight, TILE_WIDTH, TILE_HEIGHT, "random");
 		frame.add(f);
 		// Fuer Linux ohne +6 und ohne +33!
-		int frameWidth = mapWidth * tileWidth + 6;
-		int frameHeight = mapHeight * tileHeight + 33;
+		int frameWidth = mapWidth * TILE_WIDTH + 6;
+		int frameHeight = mapHeight * TILE_HEIGHT + 33;
 		frame.setSize(frameWidth, frameHeight);
 		// Fenstergroesse fest
 		frame.setResizable(false);
@@ -48,27 +52,66 @@ public class StartBomberman {
 		frame.setVisible(false);
 		// f.showArray(); test***
 
-		// Steuerung (Das zeichnen fehlt noch)
-
-		Figur bomberman = new Figur(1, 1);
-
-		while (true) {
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Wo lang?");
-			int eingabe = sc.nextInt();
-			if (eingabe == 4) {
-				bomberman.links(f);
-			} else if (eingabe == 6) {
-				bomberman.rechts(f);
-			} else if (eingabe == 8) {
-				bomberman.oben(f);
-			} else if (eingabe == 2) {
-				bomberman.unten(f);
-			} else {
+		// Instantiierung von BM
+		bomberman = new Figur(1, 1);
+		// Instantiierung von GP
+		FeldGP gp = new FeldGP(f);
+		// Übergabe der GP an BM
+		bomberman.setGP(gp);
+		
+		// Zuweisung der GP an das Frame
+		frame.setGlassPane(gp);
+		frame.getGlassPane().setVisible(true);
+		
+		
+		// Key-Listener, implementiert die Steuerung durch
+		// Pfeiltasten
+		frame.addKeyListener(new KeyListener() {
+			
+		
+			@Override
+			public void keyPressed(KeyEvent e) {
 			}
-			System.out.println("Bomberman ist bei (" + bomberman.getxPosition()
-					+ "/" + bomberman.getyPosition() + ")");
-		}
 
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// Auslesen der gedrückten Tasten
+				// entsprechende Reaktion
+				switch (e.getKeyCode()) {
+				case 37:
+					// links
+					bomberman.links(f);
+					break;
+				case 38:
+					// oben
+					bomberman.oben(f);
+					break;
+				case 39:
+					// rechts
+					bomberman.rechts(f);
+					break;
+				case 40:
+					//unten
+					bomberman.unten(f);
+					break;
+
+				default:
+					break;
+				}
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+			}
+		});
+		
 	}
+	public static int getTileWidth() {
+		return TILE_WIDTH;
+	}
+
+	
+	
 }
