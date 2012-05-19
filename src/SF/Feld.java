@@ -54,8 +54,13 @@ public class Feld extends JPanel {
 				"/images/soft.png")).getImage();
 		this.tileImage[3] = new ImageIcon(this.getClass().getResource(
 				"/images/exit.png")).getImage();
+		this.tileImage[4] = new ImageIcon(this.getClass().getResource(
+				"/images/bombe.png")).getImage();
+		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
+				"/images/feuer.png")).getImage();
 		this.figur = new ImageIcon(this.getClass()
 				.getResource("/images/XD.png")).getImage();
+
 		// Kartenerstellung:
 		for (int i = 0; i < mapWidth; i++) {
 			map[0][i] = entry[0];
@@ -125,12 +130,11 @@ public class Feld extends JPanel {
 		return tileHeight;
 	}
 
-	// Getter fÃ¼r Image der Figur (wird in GP verwendet)
-	public Image getFigur() {
-		return figur;
+	// setmap Methode für die Bombe
+	public void setmap(int X, int Y, FieldEntry Change) {
+		this.map[X][Y] = Change;
 	}
 
-	// Gibt die map zurueck.
 	public FieldEntry[][] getmap() {
 		return this.map;
 	}
