@@ -60,6 +60,12 @@ public class Figur {
 				// implementiert werden in Form eines JDialog.
 				StartBomberman.menu.setVisible(true);
 			}
+			if (map[getxPosition()][getyPosition()].getImage() == 5) {
+				StartBomberman.frame.setVisible(false);
+				// Statt das Menue aufzurufen, sollte noch eine Meldung
+				// implementiert werden in Form eines JDialog.
+				StartBomberman.menu.setVisible(true);
+			}
 		}
 	}
 

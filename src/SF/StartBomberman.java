@@ -20,7 +20,7 @@ public class StartBomberman {
 	public static JFrame frame;
 	public static SpielMenu menu = new SpielMenu("Bomberman - Menü");
 
-	private static Figur bomberman;
+	public static Figur bomberman;
 	private static Feld f;
 
 	public static void main(String[] args) {

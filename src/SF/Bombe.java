@@ -25,6 +25,12 @@ public class Bombe {
 
 		// Explosion
 		for (int i = 0; i <= Radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == X+i) && (StartBomberman.bomberman.getyPosition() == Y)){
+				StartBomberman.frame.setVisible(false);
+				// Statt das Menue aufzurufen, sollte noch eine Meldung
+				// implementiert werden in Form eines JDialog.
+				StartBomberman.menu.setVisible(true);
+			}
 			if ((map[X + i][Y].getImage() != 0)
 					&& (map[X + i][Y].getImage() != 3)) {
 				f.setmap(X + i, Y, 5);
@@ -32,6 +38,12 @@ public class Bombe {
 				break;
 		}
 		for (int i = 0; i <= Radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == X) && (StartBomberman.bomberman.getyPosition() == Y+i)){
+				StartBomberman.frame.setVisible(false);
+				// Statt das Menue aufzurufen, sollte noch eine Meldung
+				// implementiert werden in Form eines JDialog.
+				StartBomberman.menu.setVisible(true);
+			}
 			if ((map[X][Y + i].getImage() != 0)
 					&& (map[X][Y + i].getImage() != 3)) {
 				f.setmap(X, Y + i, 5);
@@ -39,6 +51,12 @@ public class Bombe {
 				break;
 		}
 		for (int i = 0; i <= Radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == X-i) && (StartBomberman.bomberman.getyPosition() == Y)){
+				StartBomberman.frame.setVisible(false);
+				// Statt das Menue aufzurufen, sollte noch eine Meldung
+				// implementiert werden in Form eines JDialog.
+				StartBomberman.menu.setVisible(true);
+			}
 			if ((map[X - i][Y].getImage() != 0)
 					&& (map[X - i][Y].getImage() != 3)) {
 				f.setmap(X - i, Y, 5);
@@ -46,6 +64,12 @@ public class Bombe {
 				break;
 		}
 		for (int i = 0; i <= Radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == X) && (StartBomberman.bomberman.getyPosition() == Y-i)){
+				StartBomberman.frame.setVisible(false);
+				// Statt das Menue aufzurufen, sollte noch eine Meldung
+				// implementiert werden in Form eines JDialog.
+				StartBomberman.menu.setVisible(true);
+			}
 			if ((map[X][Y - i].getImage() != 0)
 					&& (map[X][Y - i].getImage() != 3)) {
 				f.setmap(X, Y - i, 5);
