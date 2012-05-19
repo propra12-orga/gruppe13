@@ -60,8 +60,8 @@ public class Feld extends JPanel {
 				"/images/bombe.png")).getImage();
 		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
 				"/images/feuer.png")).getImage();
-		this.figur = new ImageIcon(this.getClass()
-				.getResource("/images/XD.png")).getImage();
+		this.figur = new ImageIcon(this.getClass().getResource(
+				"/images/exp.gif")).getImage();
 
 		// Kartenerstellung:
 		for (int i = 0; i < mapWidth; i++) {
