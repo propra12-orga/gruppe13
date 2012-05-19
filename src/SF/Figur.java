@@ -37,12 +37,10 @@ public class Figur {
 	}
 
 	public boolean feldfrei(int x, int y, FieldEntry[][] map) {
-		// Überprüfung, ob das zu besuchende Feld gültig ist
-		// Momentan sind alle Felder außer der solid-Kacheln gültig
-		if (map[x][y].getDest())
-			return true;
-		else
-			return false;
+		// ueberprueft, ob ein Feld frei ist
+		// Momentan sind alle Felder ausser der solid-Kacheln gueltig
+
+		return map[x][y].getDest();
 	}
 
 	public void links(Feld field) {
@@ -119,10 +117,4 @@ public class Figur {
 		this.glasspane = gp;
 	}
 
-	// TESTS
-
-	/*
-	 * @Test public void neuFigur() { Figur a = new Figur(); a.setxPosition(5);
-	 * int b = a.getxPosition(); assertTrue(5==b); }
-	 */
 }
