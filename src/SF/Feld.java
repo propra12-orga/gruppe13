@@ -22,10 +22,12 @@ public class Feld extends JPanel {
 	private FieldEntry[][] map;
 	private Image figur;
 	// Felder initialisieren
-	private FieldEntry[] entry = { new FieldEntry(0, false, 0), // hard
+	public FieldEntry[] entry = { new FieldEntry(0, false, 0), // hard
 			new FieldEntry(1, true, 0), // grass
 			new FieldEntry(2, false, 0), // soft
 			new FieldEntry(3, true, 0), // exit
+			new FieldEntry(4, false, 0), // bomb
+			new FieldEntry(5, true, 0), // fire
 	};
 
 	public Feld(int mapWidth, int mapHeight, int tileWidth, int tileHeight,
@@ -44,7 +46,7 @@ public class Feld extends JPanel {
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;
 		// Die verschiedenen Kachelarten:
-		this.tileImage = new Image[4];
+		this.tileImage = new Image[6];
 
 		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
 				"/images/hard.png")).getImage();
@@ -130,9 +132,14 @@ public class Feld extends JPanel {
 		return tileHeight;
 	}
 
-	// setmap Methode f�r die Bombe
-	public void setmap(int X, int Y, FieldEntry Change) {
-		this.map[X][Y] = Change;
+	// Getter fÃ¼r Image der Figur (wird in GP verwendet)
+	public Image getFigur() {
+		return figur;
+	}
+
+	// setmap Methode f�r die Bombe
+	public void setmap(int X, int Y, int n) {
+		this.map[X][Y] = entry[n];
 	}
 
 	public FieldEntry[][] getmap() {

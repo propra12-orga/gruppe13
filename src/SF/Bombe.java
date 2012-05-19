@@ -1,15 +1,15 @@
-import java.util.Date;
+package SF;
 
-import SF.Feld;
+import java.util.Date;
 
 public class Bombe {
 
-	public static void Bombe(int X,int Y){
-		int Radius = 5;
-		FieldEntry[][] map = Feld.StartBomberman.getmap();
-		Feld.StartBomgerman.setmap(X,Y,FieldEntry(4,true,0));//Bombe legen
-		
-		//Countdown bis zur Explosion starten
+	public Bombe(int X, int Y, Feld f) {
+		int Radius = 1;
+		FieldEntry[][] map = f.getmap();
+		f.setmap(X, Y, 4);// Bombe legen
+
+		// Countdown bis zur Explosion starten
 		double Start = new Date().getTime();
 		double zeit = 0;
 
@@ -19,62 +19,66 @@ public class Bombe {
 
 		System.out.println("BUMM");
 
-		//Explosion
-		for (int i=0;i<Radius;i++){
-			if ((map[X+i][Y]!=FieldEntry(0,false,0)) && (map[X+i][Y]!=FieldEntry(3,true,0))){
-				Feld.StartBomerman.setmap(X+i,Y,FieldEntry(5,true,0));
-			}
-			else break;
+		// Explosion
+		for (int i = 0; i < Radius; i++) {
+			if ((map[X + i][Y].getImage() != 0)
+					&& (map[X + i][Y].getImage() != 3)) {
+				f.setmap(X + i, Y, 5);
+			} else
+				break;
 		}
-		for (int i=0;i<Radius;i++){
-			if ((map[X][Y+i]!=FieldEntry(0,false,0)) && (map[X][Y+i]!=FieldEntry(3,true,0))){
-				Feld.StartBomerman.setmap(X,Y+i,FieldEntry(5,true,0));
-			}
-			else break;
+		for (int i = 0; i < Radius; i++) {
+			if ((map[X][Y + i].getImage() != 0)
+					&& (map[X][Y + i].getImage() != 3)) {
+				f.setmap(X, Y + i, 5);
+			} else
+				break;
 		}
-		for (int i=0;i<Radius;i++){
-			if ((map[X-i][Y]!=FieldEntry(0,false,0)) && (map[X-i][Y]!=FieldEntry(3,true,0))){
-				Feld.StartBomerman.setmap(X-i,Y,FieldEntry(5,true,0));
-			}
-			else break;
+		for (int i = 0; i < Radius; i++) {
+			if ((map[X - i][Y].getImage() != 0)
+					&& (map[X - i][Y].getImage() != 3)) {
+				f.setmap(X - i, Y, 5);
+			} else
+				break;
 		}
-		for (int i=0;i<Radius;i++){
-			if ((map[X][Y-i]!=FieldEntry(0,false,0)) && (map[X][Y-i]!=FieldEntry(3,true,0))){
-				Feld.StartBomerman.setmap(X,Y-i,FieldEntry(5,true,0));
-			}
-			else break;
+		for (int i = 0; i < Radius; i++) {
+			if ((map[X][Y - i].getImage() != 0)
+					&& (map[X][Y - i].getImage() != 3)) {
+				f.setmap(X, Y - i, 5);
+			} else
+				break;
 		}
-		//Countdown2 bis Abklingen der Explosion
+		// Countdown2 bis Abklingen der Explosion
 		double Start1 = new Date().getTime();
 		double zeit1 = 0;
 
 		while (zeit1 <= Start1 + 200) {
 			zeit1 = new Date().getTime();
 		}
-	//Feuer entfernen
-		for (int i=0;i<Radius;i++){
-			if (map[X+i][Y]==FieldEntry(5,true,0)){
-				Feld.StartBomberman.setmap(X+i,Y,FieldEntry(1,true,0))
-			}
-			else break;
+		// Feuer entfernen
+		for (int i = 0; i < Radius; i++) {
+			if (map[X + i][Y].getImage() == 5) {
+				f.setmap(X + i, Y, 1);
+			} else
+				break;
 		}
-		for (int i=0;i<Radius;i++){
-			if (map[X-i][Y]==FieldEntry(5,true,0)){
-				Feld.StartBomberman.setmap(X-i,Y,FieldEntry(1,true,0))
-			}
-			else break;
+		for (int i = 0; i < Radius; i++) {
+			if (map[X - i][Y].getImage() == 5) {
+				f.setmap(X - i, Y, 1);
+			} else
+				break;
 		}
-		for (int i=0;i<Radius;i++){
-			if (map[X][Y+i]==FieldEntry(5,true,0)){
-				Feld.StartBomberman.setmap(X,Y+i,FieldEntry(1,true,0))
-			}
-			else break;
+		for (int i = 0; i < Radius; i++) {
+			if (map[X][Y + i].getImage() == 5) {
+				f.setmap(X, Y + i, 1);
+			} else
+				break;
 		}
-			for (int i=0;i<Radius;i++){
-				if (map[X][Y-i]==FieldEntry(5,true,0)){
-					Feld.StartBomberman.setmap(X,Y-i,FieldEntry(1,true,0))
-				}
-				else break;
-			}
+		for (int i = 0; i < Radius; i++) {
+			if (map[X][Y - i].getImage() == 5) {
+				f.setmap(X, Y - i, 1);
+			} else
+				break;
+		}
 	}
 }
