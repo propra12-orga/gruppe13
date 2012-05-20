@@ -85,14 +85,15 @@ public class Feld extends JPanel {
 						map[i][j] = entry[1];
 
 					} else if (((i == 1) && (j == 3)) || ((i == 3) && (j == 1))) {
-						map[i][j] = entry[2];
+						map[i][j] = new FieldEntry(2, false);
 					} else if ((i == mapHeight - 2) && (j == mapWidth - 2)) {
-						map[i][j] = entry[0];
+						map[i][j] = entry[3];
 					}
 
 					else {
 						if (this.level.equals("random")) {
-							map[i][j] = entry[this.Random(1, 2)];
+							int r = this.Random(1, 2);
+							map[i][j] = new FieldEntry(r, false);
 						}
 						if (this.level.equals("test")) {
 							map[i][j] = entry[1];

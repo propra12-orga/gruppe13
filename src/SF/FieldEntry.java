@@ -17,15 +17,15 @@ public class FieldEntry {
 	public FieldEntry(int image, boolean walkable) {
 		this.image = image;
 		this.walkable = walkable;
+		if (image == 2) {
+			this.setItem();
+		}
 
 	}
 
 	// GET/SET Nummer des Bildes
 	public void setImage(int image) {
 		this.image = image;
-		if (image == 2) {
-			this.setItem();
-		}
 	}
 
 	public int getImage() {

@@ -109,6 +109,9 @@ public class StartBomberman {
 
 			}
 		});
+		// FieldEntry[][] map = f.getmap();
+		// System.out.println(map[1][3].getItem());
+		// System.out.println(map[3][1].getItem());
 
 	}
 
