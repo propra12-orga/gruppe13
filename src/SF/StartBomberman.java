@@ -116,4 +116,7 @@ public class StartBomberman {
 		return TILE_WIDTH;
 	}
 
+	public static Feld getFeld() {
+		return f;
+	}
 }

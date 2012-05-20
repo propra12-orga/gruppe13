@@ -40,12 +40,7 @@ public class Figur {
 		// ueberprueft, ob ein Feld frei ist
 		// Momentan sind alle Felder ausser der solid-Kacheln gueltig
 
-		if ((map[x][y].getImage() != 0) && (map[x][y].getImage() != 2)
-				&& (map[x][y].getImage() != 4)) {
-			return true;
-		} else {
-			return false;
-		}
+		return map[x][y].getWalk();
 	}
 
 	public void links(Feld field) {
@@ -127,5 +122,4 @@ public class Figur {
 	public void setGP(FeldGP gp) {
 		this.glasspane = gp;
 	}
-
 }

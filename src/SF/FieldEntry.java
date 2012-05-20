@@ -3,6 +3,7 @@ package SF;
 public class FieldEntry {
 
 	private int item, image;
+	private boolean walkable;
 
 	// GET/SET Item (erstmal un insteressant)
 	public void setItem() {
@@ -13,7 +14,9 @@ public class FieldEntry {
 		return item;
 	}
 
-	public FieldEntry() {
+	public FieldEntry(int image, boolean walkable) {
+		this.image = image;
+		this.walkable = walkable;
 
 	}
 
@@ -33,6 +36,10 @@ public class FieldEntry {
 	public int Random(int l, int h) {
 		h++;
 		return (int) (Math.random() * (h - l) + l);
+	}
+
+	public boolean getWalk() {
+		return walkable;
 	}
 
 }

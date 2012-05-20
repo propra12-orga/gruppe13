@@ -44,7 +44,9 @@ public class SpielMenu extends JFrame implements ActionListener {
 		}
 		// Spiel starten
 		if (arg0.getActionCommand().equals("go")) {
-
+			StartBomberman.bomberman.setxPosition(1);
+			StartBomberman.bomberman.setyPosition(1);
+			StartBomberman.getFeld().generateMap();
 			StartBomberman.frame.setVisible(true);
 			// Menue ausblenden beim Spielstart
 			setVisible(false);
