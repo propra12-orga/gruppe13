@@ -2,7 +2,6 @@ package SF;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -21,23 +20,18 @@ public class Feld extends JPanel {
 	private Image[] tileImage;
 	private FieldEntry[][] map;
 	private Image figur;
-	// Felder initialisieren
-	public FieldEntry[] entry = { new FieldEntry(0, false, 0), // hard
-			new FieldEntry(1, true, 0), // grass
-			new FieldEntry(2, false, 0), // soft
-			new FieldEntry(3, true, 0), // exit
-			new FieldEntry(4, false, 0), // bomb
-			new FieldEntry(5, true, 0), // fire
-	};
 
 	public Feld(int mapWidth, int mapHeight, int tileWidth, int tileHeight,
 			String level) {
 		// Erstellung ObjectArray
 		this.map = new FieldEntry[mapWidth][mapHeight];
-		/*
-		 * for (int i = 0; i < mapWidth; i++) { for (int j = 0; j < mapHeight;
-		 * j++) { map[i][j] = new FieldEntry(); } }
-		 */
+		// Felder initialisieren
+		for (int i = 0; i < mapWidth; i++) {
+			for (int j = 0; j < mapHeight; j++) {
+				map[i][j] = new FieldEntry();
+			}
+		}
+
 		this.level = level;
 		// Spielfeldgroesse:
 		this.mapWidth = mapWidth;
@@ -64,43 +58,48 @@ public class Feld extends JPanel {
 				"/images/exp.gif")).getImage();
 
 		// Kartenerstellung:
+		this.generateMap();
+
+	}
+
+	// Kartenerstellung
+	public void generateMap() {
 		for (int i = 0; i < mapWidth; i++) {
-			map[0][i] = entry[0];
-			map[mapHeight - 1][i] = entry[0];
+			map[0][i].setImage(0);
+			map[mapHeight - 1][i].setImage(0);
 		}
 		for (int i = 0; i < mapHeight; i++) {
-			map[i][0] = entry[0];
-			map[i][mapWidth - 1] = entry[0];
+			map[i][0].setImage(0);
+			map[i][mapWidth - 1].setImage(0);
 		}
-		Random dice = new Random();
+
 		for (int i = 1; i < mapHeight - 1; i++) {
 			for (int j = 1; j < mapWidth - 1; j++) {
 				if ((i % 2 == 0) && (j % 2 == 0)) {
-					map[i][j] = entry[0];
+					map[i][j].setImage(0);
 				} else {
 					if (((i == 1) && (j == 1)) || ((i == 1) && (j == 2))
 							|| ((i == 2) && (j == 1))) {
-						map[i][j] = entry[1];
+						map[i][j].setImage(1);
 
 					} else if (((i == 1) && (j == 3)) || ((i == 3) && (j == 1))) {
-						map[i][j] = entry[2];
+						map[i][j].setImage(2);
 					} else if ((i == mapHeight - 2) && (j == mapWidth - 2)) {
-						map[i][j] = entry[3];
+						map[i][j].setImage(0);
 					}
 
 					else {
 						if (this.level.equals("random")) {
-							map[i][j] = entry[1 + dice.nextInt(2)];
+							map[i][j].setImage(this.Random(1, 2));
 						}
 						if (this.level.equals("test")) {
-							map[i][j] = entry[1];
+							map[i][j].setImage(1);
 						} else {
 						}
 					}
 				}
 			}
 		}
-
 	}
 
 	@Override
@@ -114,14 +113,11 @@ public class Feld extends JPanel {
 		}
 	}
 
-	/*
-	 * test*** public void showArray() {
-	 * 
-	 * for (int i = 1; i < mapWidth; i++) { for (int j = 1; j < mapHeight; j++)
-	 * { System.out.println(map[i][j]); } }
-	 * 
-	 * }
-	 */
+	// ganzzahliger Zufallsgenerator
+	public int Random(int l, int h) {
+		h++;
+		return (int) (Math.random() * (h - l) + l);
+	}
 
 	// Getter für Kachelgroesse (wird in Glasspane verwendet)
 	public int getTileWidth() {
@@ -139,7 +135,7 @@ public class Feld extends JPanel {
 
 	// setmap Methode f�r die Bombe
 	public void setmap(int X, int Y, int n) {
-		this.map[X][Y] = entry[n];
+		this.map[X][Y].setImage(n);
 	}
 
 	public FieldEntry[][] getmap() {

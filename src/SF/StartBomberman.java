@@ -18,7 +18,7 @@ public class StartBomberman {
 	public static final int TILE_WIDTH = 32;
 	public static final int TILE_HEIGHT = 32;
 	public static JFrame frame;
-	public static SpielMenu menu = new SpielMenu("Bomberman - Menü");
+	public static SpielMenu menu = new SpielMenu("Bomberman - Menue");
 
 	public static Figur bomberman;
 	private static Feld f;
@@ -26,6 +26,7 @@ public class StartBomberman {
 	public static void main(String[] args) {
 		frame = new JFrame("Bomberman");
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Beim Schliessen wird das Menue wieder angezeigt
 		frame.addWindowListener(new WindowAdapter() {
@@ -50,7 +51,6 @@ public class StartBomberman {
 		int top = (screenSize.height - frameHeight) / 2;
 		frame.setLocation(left, top);
 		frame.setVisible(false);
-		// f.showArray(); test***
 
 		// Instantiierung von BM
 		bomberman = new Figur(1, 1);
@@ -92,17 +92,12 @@ public class StartBomberman {
 					// unten
 					bomberman.unten(f);
 					break;
-				case 10:
-					// Bombe legen
-					new Bombe(bomberman.getxPosition(), bomberman
+				case 32:
+					// spacebar
+					Bombe bomb = new Bombe(bomberman.getxPosition(), bomberman
 							.getyPosition(), f);
-					/*
-					 * try { Thread.sleep(2000); } catch (InterruptedException
-					 * e1) { // TODO Auto-generated catch block
-					 * e1.printStackTrace(); }
-					 */
-					break;
 
+					break;
 				default:
 					break;
 				}
