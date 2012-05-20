@@ -1,6 +1,5 @@
 //Variablennamen bitte KLEIN!
 
-
 package SF;
 
 import java.util.Date;
@@ -8,24 +7,30 @@ import java.util.Date;
 public class Bombe {
 
 	public Bombe(int X, int Y, Feld f) {
-		//Radius ist Standardmässig 1.
+		// Radius ist Standardmässig 1.
 		int Radius = 1;
 		FieldEntry[][] map = f.getmap();
 		f.setmap(X, Y, 4);// Bombe legen
 
 		// Countdown bis zur Explosion starten
-		double Start = new Date().getTime();
-		double zeit = 0;
-
-		while (zeit <= Start + 2000) {
-			zeit = new Date().getTime();
+		/*
+		 * double Start = new Date().getTime(); double zeit = 0;
+		 * 
+		 * while (System.currentTimeMillis() <= Start + 2000) { zeit = new
+		 * Date().getTime(); }
+		 */
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		System.out.println("BUMM");
+		// System.out.println("BUMM");
 
 		// Explosion
 		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X+i) && (StartBomberman.bomberman.getyPosition() == Y)){
+			if ((StartBomberman.bomberman.getxPosition() == X + i)
+					&& (StartBomberman.bomberman.getyPosition() == Y)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
@@ -38,7 +43,8 @@ public class Bombe {
 				break;
 		}
 		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X) && (StartBomberman.bomberman.getyPosition() == Y+i)){
+			if ((StartBomberman.bomberman.getxPosition() == X)
+					&& (StartBomberman.bomberman.getyPosition() == Y + i)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
@@ -51,7 +57,8 @@ public class Bombe {
 				break;
 		}
 		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X-i) && (StartBomberman.bomberman.getyPosition() == Y)){
+			if ((StartBomberman.bomberman.getxPosition() == X - i)
+					&& (StartBomberman.bomberman.getyPosition() == Y)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
@@ -64,7 +71,8 @@ public class Bombe {
 				break;
 		}
 		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X) && (StartBomberman.bomberman.getyPosition() == Y-i)){
+			if ((StartBomberman.bomberman.getxPosition() == X)
+					&& (StartBomberman.bomberman.getyPosition() == Y - i)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.

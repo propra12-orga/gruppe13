@@ -92,6 +92,16 @@ public class StartBomberman {
 					// unten
 					bomberman.unten(f);
 					break;
+				case 10:
+					// Bombe legen
+					new Bombe(bomberman.getxPosition(), bomberman
+							.getyPosition(), f);
+					/*
+					 * try { Thread.sleep(2000); } catch (InterruptedException
+					 * e1) { // TODO Auto-generated catch block
+					 * e1.printStackTrace(); }
+					 */
+					break;
 
 				default:
 					break;
