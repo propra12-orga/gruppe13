@@ -1,13 +1,21 @@
-//Variablennamen bitte KLEIN!
-
 package SF;
-
-import java.util.Date;
 
 public class Bombe {
 
-	public Bombe(int x, int y, Feld f) {
-		// Radius ist Standardm√§ssig 1.
+	private int xpos;
+	private int ypos;
+
+	public Bombe(int xposition, int yposition) {
+		this.xpos = xposition;
+		this.ypos = yposition;
+	}
+
+	// zuendet die Bombe
+	public void explode(Feld f) throws InterruptedException {
+		int x = this.xpos;
+		int y = this.ypos;
+
+		// Radius ist Standardmaessig 1.
 		int radius = 1;
 		FieldEntry[][] map = f.getmap();
 		f.setmap(x, y, 4);// Bombe legen
@@ -85,12 +93,16 @@ public class Bombe {
 				break;
 		}
 		// Countdown2 bis Abklingen der Explosion
-		double Start1 = new Date().getTime();
-		double zeit1 = 0;
+		// double Start1 = new Date().getTime();
+		// double zeit1 = 0;
 
-		while (zeit1 <= Start1 + 200) {
-			zeit1 = new Date().getTime();
-		}
+		// PROBLEMKIND! WIr brauchen Threads oder eine andere lˆsung
+		/*
+		 * while (zeit1 <= Start1 + 200) { zeit1 = new Date().getTime(); }
+		 */
+
+		Thread.sleep(500);
+
 		// Feuer entfernen
 		for (int i = 0; i <= radius; i++) {
 			if (map[x + i][y].getImage() == 5) {
