@@ -6,11 +6,11 @@ import java.util.Date;
 
 public class Bombe {
 
-	public Bombe(int X, int Y, Feld f) {
+	public Bombe(int x, int y, Feld f) {
 		// Radius ist Standardmässig 1.
-		int Radius = 1;
+		int radius = 1;
 		FieldEntry[][] map = f.getmap();
-		f.setmap(X, Y, 4);// Bombe legen
+		f.setmap(x, y, 4);// Bombe legen
 
 		// Countdown bis zur Explosion starten
 		/*
@@ -28,59 +28,59 @@ public class Bombe {
 		// System.out.println("BUMM");
 
 		// Explosion
-		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X + i)
-					&& (StartBomberman.bomberman.getyPosition() == Y)) {
+		for (int i = 0; i <= radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == x + i)
+					&& (StartBomberman.bomberman.getyPosition() == y)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
 				StartBomberman.menu.setVisible(true);
 			}
-			if ((map[X + i][Y].getImage() != 0)
-					&& (map[X + i][Y].getImage() != 3)) {
-				f.setmap(X + i, Y, 5);
+			if ((map[x + i][y].getImage() != 0)
+					&& (map[x + i][y].getImage() != 3)) {
+				f.setmap(x + i, y, 5);
 			} else
 				break;
 		}
-		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X)
-					&& (StartBomberman.bomberman.getyPosition() == Y + i)) {
+		for (int i = 0; i <= radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == x)
+					&& (StartBomberman.bomberman.getyPosition() == y + i)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
 				StartBomberman.menu.setVisible(true);
 			}
-			if ((map[X][Y + i].getImage() != 0)
-					&& (map[X][Y + i].getImage() != 3)) {
-				f.setmap(X, Y + i, 5);
+			if ((map[x][y + i].getImage() != 0)
+					&& (map[x][y + i].getImage() != 3)) {
+				f.setmap(x, y + i, 5);
 			} else
 				break;
 		}
-		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X - i)
-					&& (StartBomberman.bomberman.getyPosition() == Y)) {
+		for (int i = 0; i <= radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == x - i)
+					&& (StartBomberman.bomberman.getyPosition() == y)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
 				StartBomberman.menu.setVisible(true);
 			}
-			if ((map[X - i][Y].getImage() != 0)
-					&& (map[X - i][Y].getImage() != 3)) {
-				f.setmap(X - i, Y, 5);
+			if ((map[x - i][y].getImage() != 0)
+					&& (map[x - i][y].getImage() != 3)) {
+				f.setmap(x - i, y, 5);
 			} else
 				break;
 		}
-		for (int i = 0; i <= Radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == X)
-					&& (StartBomberman.bomberman.getyPosition() == Y - i)) {
+		for (int i = 0; i <= radius; i++) {
+			if ((StartBomberman.bomberman.getxPosition() == x)
+					&& (StartBomberman.bomberman.getyPosition() == y - i)) {
 				StartBomberman.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
 				StartBomberman.menu.setVisible(true);
 			}
-			if ((map[X][Y - i].getImage() != 0)
-					&& (map[X][Y - i].getImage() != 3)) {
-				f.setmap(X, Y - i, 5);
+			if ((map[x][y - i].getImage() != 0)
+					&& (map[x][y - i].getImage() != 3)) {
+				f.setmap(x, y - i, 5);
 			} else
 				break;
 		}
@@ -92,27 +92,27 @@ public class Bombe {
 			zeit1 = new Date().getTime();
 		}
 		// Feuer entfernen
-		for (int i = 0; i <= Radius; i++) {
-			if (map[X + i][Y].getImage() == 5) {
-				f.setmap(X + i, Y, 1);
+		for (int i = 0; i <= radius; i++) {
+			if (map[x + i][y].getImage() == 5) {
+				f.setmap(x + i, y, 1);
 			} else
 				break;
 		}
-		for (int i = 0; i <= Radius; i++) {
-			if (map[X - i][Y].getImage() == 5) {
-				f.setmap(X - i, Y, 1);
+		for (int i = 0; i <= radius; i++) {
+			if (map[x - i][y].getImage() == 5) {
+				f.setmap(x - i, y, 1);
 			} else
 				break;
 		}
-		for (int i = 0; i <= Radius; i++) {
-			if (map[X][Y + i].getImage() == 5) {
-				f.setmap(X, Y + i, 1);
+		for (int i = 0; i <= radius; i++) {
+			if (map[x][y + i].getImage() == 5) {
+				f.setmap(x, y + i, 1);
 			} else
 				break;
 		}
-		for (int i = 0; i <= Radius; i++) {
-			if (map[X][Y - i].getImage() == 5) {
-				f.setmap(X, Y - i, 1);
+		for (int i = 0; i <= radius; i++) {
+			if (map[x][y - i].getImage() == 5) {
+				f.setmap(x, y - i, 1);
 			} else
 				break;
 		}
