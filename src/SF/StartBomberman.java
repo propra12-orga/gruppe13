@@ -19,6 +19,7 @@ public class StartBomberman {
 	public static final int TILE_HEIGHT = 32;
 	public static JFrame frame;
 	public static SpielMenu menu = new SpielMenu("Bomberman - Menue");
+	public static FeldGP gp;
 
 	public static Figur bomberman;
 	private static Feld f;
@@ -55,7 +56,7 @@ public class StartBomberman {
 		// Instantiierung von BM
 		bomberman = new Figur(1, 1);
 		// Instantiierung von GP
-		FeldGP gp = new FeldGP(f);
+		gp = new FeldGP(f);
 		// Übergabe der GP an BM
 		bomberman.setGP(gp);
 
