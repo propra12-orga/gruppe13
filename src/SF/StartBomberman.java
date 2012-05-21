@@ -96,14 +96,14 @@ public class StartBomberman {
 				case 32:
 					// spacebar
 					Bombe bomb = new Bombe(bomberman.getxPosition(), bomberman
-							.getyPosition());
+							.getyPosition(), f);
 
-					try {
-						bomb.explode(f);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					// try {
+					bomb.start();
+					// } catch (InterruptedException e1) {
+					// // TODO Auto-generated catch block
+					// e1.printStackTrace();
+					// }
 
 					break;
 				default:

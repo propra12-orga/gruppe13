@@ -136,11 +136,6 @@ public class Feld extends JPanel {
 		return figur;
 	}
 
-	// setmap Methode fuer die Bombe
-	public void setmap(int x, int y, int n) {
-		this.map[x][y].setImage(n);
-	}
-
 	public FieldEntry[][] getmap() {
 		return this.map;
 	}
