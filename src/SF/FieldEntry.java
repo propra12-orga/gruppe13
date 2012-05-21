@@ -42,4 +42,7 @@ public class FieldEntry {
 		return walkable;
 	}
 
+	public void setWalk(boolean walk) {
+		this.walkable = walk;
+	}
 }

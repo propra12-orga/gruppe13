@@ -121,6 +121,19 @@ public class StartBomberman {
 		// System.out.println(map[1][3].getItem());
 		// System.out.println(map[3][1].getItem());
 
+		// alle Änderungen sollen hier
+		// erfasst und neu gezeichnet
+		// werden.
+		while (frame.isVisible() == true) {
+			f = Synchroniser.feldaktualisierung();
+			f.repaint(); // repaint funktioniert wahrscheinlich anders
+			try {
+				Thread.sleep(40);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 
 	public static int getTileWidth() {

@@ -4,7 +4,7 @@ public class Bombe extends Thread {
 
 	private int xpos;
 	private int ypos;
-	private Feld f;
+	private static Feld f;
 
 	public Bombe(int xposition, int yposition, Feld f) {
 		this.xpos = xposition;
@@ -48,6 +48,7 @@ public class Bombe extends Thread {
 			if ((map[x + i][y].getImage() != 0)
 					&& (map[x + i][y].getImage() != 3)) {
 				map[x + i][y].setImage(5);
+				map[x + i][y].setWalk(true);
 			} else
 				break;
 		}
@@ -62,6 +63,7 @@ public class Bombe extends Thread {
 			if ((map[x][y + i].getImage() != 0)
 					&& (map[x][y + i].getImage() != 3)) {
 				map[x][y + i].setImage(5);
+				map[x][y + i].setWalk(true);
 			} else
 				break;
 		}
@@ -76,6 +78,7 @@ public class Bombe extends Thread {
 			if ((map[x - i][y].getImage() != 0)
 					&& (map[x - i][y].getImage() != 3)) {
 				map[x - i][y].setImage(5);
+				map[x - i][y].setWalk(true);
 			} else
 				break;
 		}
@@ -90,6 +93,7 @@ public class Bombe extends Thread {
 			if ((map[x][y - i].getImage() != 0)
 					&& (map[x][y - i].getImage() != 3)) {
 				map[x][y - i].setImage(5);
+				map[x][y - i].setWalk(true);
 			} else
 				break;
 		}
@@ -135,4 +139,10 @@ public class Bombe extends Thread {
 				break;
 		}
 	}
+
+	public static Feld aktualisierungBombe() { // gibt die Änderungen der Bombe
+												// an den Synchroniser weiter
+		return f;
+	}
+
 }
