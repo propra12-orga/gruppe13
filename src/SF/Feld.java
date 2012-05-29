@@ -44,12 +44,18 @@ public class Feld extends JPanel {
 		// Die verschiedenen Kachelarten:
 		this.tileImage = new Image[6];
 
+		// this.tileImage[0] = new ImageIcon(this.getClass().getResource(
+		// "/images/hard.png")).getImage();
 		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
-				"/images/hard.png")).getImage();
+				"/images/cosx32.gif")).getImage();
+		// this.tileImage[1] = new ImageIcon(this.getClass().getResource(
+		// "/images/grass.png")).getImage();
 		this.tileImage[1] = new ImageIcon(this.getClass().getResource(
-				"/images/grass.png")).getImage();
+				"/images/Tafel32.gif")).getImage();
+		// this.tileImage[2] = new ImageIcon(this.getClass().getResource(
+		// "/images/soft.png")).getImage();
 		this.tileImage[2] = new ImageIcon(this.getClass().getResource(
-				"/images/soft.png")).getImage();
+				"/images/X232.gif")).getImage();
 		this.tileImage[3] = new ImageIcon(this.getClass().getResource(
 				"/images/exit.png")).getImage();
 		this.tileImage[4] = new ImageIcon(this.getClass().getResource(
