@@ -60,10 +60,14 @@ public class Feld extends JPanel {
 				"/images/032.gif")).getImage();
 		// this.tileImage[3] = new ImageIcon(this.getClass().getResource(
 		// "/images/exit.png")).getImage();
+		// this.tileImage[4] = new ImageIcon(this.getClass().getResource(
+		// "/images/bombe.png")).getImage();
 		this.tileImage[4] = new ImageIcon(this.getClass().getResource(
-				"/images/bombe.png")).getImage();
+				"/images/AblBombe32.gif")).getImage();
+		// this.tileImage[5] = new ImageIcon(this.getClass().getResource(
+		// "/images/feuer.png")).getImage();
 		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
-				"/images/feuer.png")).getImage();
+				"/images/Explosion32.gif")).getImage();
 		this.figur = new ImageIcon(this.getClass().getResource(
 				"/images/exp.gif")).getImage();
 
