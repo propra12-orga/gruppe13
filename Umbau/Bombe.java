@@ -1,5 +1,3 @@
-package SF;
-
 public class Bombe extends Thread {
 
 	private int xpos;
@@ -38,12 +36,12 @@ public class Bombe extends Thread {
 
 		// Explosion
 		for (int i = 0; i <= radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == x + i)
-					&& (StartBomberman.bomberman.getyPosition() == y)) {
-				StartBomberman.frame.setVisible(false);
+			if ((Start.bomberman.getxPosition() == x + i)
+					&& (Start.bomberman.getyPosition() == y)) {
+				Start.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
-				StartBomberman.menu.setVisible(true);
+				Start.menue.setVisible(true);
 			}
 			if ((map[x + i][y].getImage() != 0)
 					&& (map[x + i][y].getImage() != 3)) {
@@ -53,12 +51,12 @@ public class Bombe extends Thread {
 				break;
 		}
 		for (int i = 0; i <= radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == x)
-					&& (StartBomberman.bomberman.getyPosition() == y + i)) {
-				StartBomberman.frame.setVisible(false);
+			if ((Start.bomberman.getxPosition() == x)
+					&& (Start.bomberman.getyPosition() == y + i)) {
+				Start.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
-				StartBomberman.menu.setVisible(true);
+				Start.menue.setVisible(true);
 			}
 			if ((map[x][y + i].getImage() != 0)
 					&& (map[x][y + i].getImage() != 3)) {
@@ -68,12 +66,12 @@ public class Bombe extends Thread {
 				break;
 		}
 		for (int i = 0; i <= radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == x - i)
-					&& (StartBomberman.bomberman.getyPosition() == y)) {
-				StartBomberman.frame.setVisible(false);
+			if ((Start.bomberman.getxPosition() == x - i)
+					&& (Start.bomberman.getyPosition() == y)) {
+				Start.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
-				StartBomberman.menu.setVisible(true);
+				Start.menue.setVisible(true);
 			}
 			if ((map[x - i][y].getImage() != 0)
 					&& (map[x - i][y].getImage() != 3)) {
@@ -83,12 +81,12 @@ public class Bombe extends Thread {
 				break;
 		}
 		for (int i = 0; i <= radius; i++) {
-			if ((StartBomberman.bomberman.getxPosition() == x)
-					&& (StartBomberman.bomberman.getyPosition() == y - i)) {
-				StartBomberman.frame.setVisible(false);
+			if ((Start.bomberman.getxPosition() == x)
+					&& (Start.bomberman.getyPosition() == y - i)) {
+				Start.frame.setVisible(false);
 				// Statt das Menue aufzurufen, sollte noch eine Meldung
 				// implementiert werden in Form eines JDialog.
-				StartBomberman.menu.setVisible(true);
+				Start.menue.setVisible(true);
 			}
 			if ((map[x][y - i].getImage() != 0)
 					&& (map[x][y - i].getImage() != 3)) {
