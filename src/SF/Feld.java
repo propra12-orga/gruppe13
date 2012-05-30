@@ -57,7 +57,7 @@ public class Feld extends JPanel {
 		this.tileImage[2] = new ImageIcon(this.getClass().getResource(
 				"/images/X232.gif")).getImage();
 		this.tileImage[3] = new ImageIcon(this.getClass().getResource(
-				"/images/032.gif")).getImage();
+				"/images/qed32.gif")).getImage();
 		// this.tileImage[3] = new ImageIcon(this.getClass().getResource(
 		// "/images/exit.png")).getImage();
 		// this.tileImage[4] = new ImageIcon(this.getClass().getResource(
