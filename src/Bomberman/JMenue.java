@@ -4,10 +4,13 @@ import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 public class JMenue extends JFrame implements ActionListener {
@@ -23,6 +26,7 @@ public class JMenue extends JFrame implements ActionListener {
 	public static final int tileHeight = 32;
 
 	public static JFeld feld;
+	public static JFrame choice = new Levelauswahl();
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,14 +36,18 @@ public class JMenue extends JFrame implements ActionListener {
 		LayoutManager manager = new FlowLayout();
 		setLayout(manager);
 
-		JButton spielstarten1P = new JButton("Spiel starten (1P)");
+		JButton spielstarten1P = new JButton("Zufallskarte (1P)");
 		spielstarten1P.setActionCommand("go1");
 		spielstarten1P.addActionListener(this);
 		add(spielstarten1P);
-		JButton spielstarten2P = new JButton("Spiel starten (2P)");
+		JButton spielstarten2P = new JButton("Multiplayer (2P)");
 		spielstarten2P.setActionCommand("go2");
 		spielstarten2P.addActionListener(this);
 		add(spielstarten2P);
+		JButton random = new JButton("Levelauswahl");
+		random.setActionCommand("go3");
+		random.addActionListener(this);
+		add(random);
 		JButton spielbeenden = new JButton("Spiel beenden");
 		spielbeenden.setActionCommand("exit");
 		spielbeenden.addActionListener(this);
@@ -88,7 +96,38 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 
 		}
+		if (arg0.getActionCommand().equals("go3")) {
+
+			// Spielfeld auslesen
+			setVisible(false);
+			// Zeigt Auswahl an
+			choice.setVisible(true);
+			// Listener der auf Auswahl reagiert
+			// Bug: Fehler beim Beenden, da durch setSelectedIndex(-1)
+			// das Item "null" ausgewählt wird. Kann von Mapreader natuerlich
+			// nicht erkannt werden. -> Muss beim Beenden ins Menue und
+			// den Listener entfernen!
+			Levelauswahl.levellist.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+					JComboBox selectedChoice = (JComboBox) e.getSource();
+					String level = (String) selectedChoice.getSelectedItem();
+					Mapreader create = new Mapreader(level);
+					feld = new JFeld(create.getWidth(), create.getHeight(),
+							tileWidth, tileHeight, level, false);
+					choice.dispose();
+					feld.addWindowListener(new WindowAdapter() {
+						public void windowClosing(WindowEvent e) {
+							feld.dispose();
+							Levelauswahl.levellist.setSelectedIndex(-1);
+							setVisible(true);
+						}
+					});
+				}
+			});
+
+			// Menue ausblenden beim Spielstart
+
+		}
 
 	}
-
 }

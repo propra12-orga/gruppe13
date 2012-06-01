@@ -20,7 +20,7 @@ public class JFeld extends JFrame {
 	private int tileHeight;
 	private String level; // String für Levelauswahl
 	private boolean multi;// true = multiplayer (2 Player) , false =
-							// Singleplayer
+	// Singleplayer
 	private Image[] tileImage;
 	private FieldEntry[][] map;
 	private static Figur bm1;
@@ -175,43 +175,40 @@ public class JFeld extends JFrame {
 				}
 			});
 		}
-
 	}
 
-	// Kartenerstellung
+	// Kartenerstellung (random und multiplayer)
 	public void generateMap() {
-		for (int i = 0; i < mapWidth; i++) {
-			map[0][i] = entry[0];
-			map[mapHeight - 1][i] = entry[0];
-		}
-		for (int i = 0; i < mapHeight; i++) {
-			map[i][0] = entry[0];
-			map[i][mapWidth - 1] = entry[0];
-		}
+		if (this.level.equals("random")) {
+			setTitle("Bomberman - Random");
+			for (int i = 0; i < mapWidth; i++) {
+				map[0][i] = entry[0];
+				map[mapHeight - 1][i] = entry[0];
+			}
+			for (int i = 0; i < mapHeight; i++) {
+				map[i][0] = entry[0];
+				map[i][mapWidth - 1] = entry[0];
+			}
 
-		for (int i = 1; i < mapHeight - 1; i++) {
-			for (int j = 1; j < mapWidth - 1; j++) {
-				if ((i % 2 == 0) && (j % 2 == 0)) {
-					map[i][j] = entry[0];
-				} else {
-					if (((i == 1) && (j == 1)) || ((i == 1) && (j == 2))
-							|| ((i == 2) && (j == 1))) {
-						map[i][j] = entry[1];
+			for (int i = 1; i < mapHeight - 1; i++) {
+				for (int j = 1; j < mapWidth - 1; j++) {
+					if ((i % 2 == 0) && (j % 2 == 0)) {
+						map[i][j] = entry[0];
+					} else {
+						if (((i == 1) && (j == 1)) || ((i == 1) && (j == 2))
+								|| ((i == 2) && (j == 1))) {
+							map[i][j] = entry[1];
 
-					} else if (((i == 1) && (j == 3)) || ((i == 3) && (j == 1))) {
-						map[i][j] = new FieldEntry(2, false);
-					} else if ((i == mapHeight - 2) && (j == mapWidth - 2)) {
-						map[i][j] = entry[3];
-					}
+						} else if (((i == 1) && (j == 3))
+								|| ((i == 3) && (j == 1))) {
+							map[i][j] = new FieldEntry(2, false);
+						} else if ((i == mapHeight - 2) && (j == mapWidth - 2)) {
+							map[i][j] = entry[3];
+						}
 
-					else {
-						if (this.level.equals("random")) {
+						else {
 							int r = this.Random(1, 2);
 							map[i][j] = new FieldEntry(r, false);
-						}
-						if (this.level.equals("test")) {
-							map[i][j] = entry[1];
-						} else {
 						}
 					}
 				}
@@ -219,8 +216,17 @@ public class JFeld extends JFrame {
 					map[mapHeight - 2][mapWidth - 2] = entry[1];
 					map[mapHeight - 3][mapWidth - 2] = entry[1];
 					map[mapHeight - 2][mapWidth - 3] = entry[1];
-					map[mapHeight - 4][mapWidth - 2] = new FieldEntry(2, false);
-					map[mapHeight - 2][mapWidth - 4] = new FieldEntry(2, false);
+					map[mapHeight - 4][mapWidth - 2] = entry[2];
+					map[mapHeight - 2][mapWidth - 4] = entry[2];
+				}
+			}
+			// Wenn nicht Zufall, dann Karte lesen:
+		} else {
+			setTitle("Bomberman - " + this.level);
+			Mapreader create = new Mapreader(this.level);
+			for (int i = 0; i < create.getWidth(); i++) {
+				for (int j = 0; j < create.getHeight(); j++) {
+					map[i][j] = entry[create.getEntry(i, j)];
 				}
 			}
 		}

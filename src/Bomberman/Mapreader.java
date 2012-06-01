@@ -1,4 +1,4 @@
-package SF;
+package Bomberman;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,15 +10,15 @@ public class Mapreader {
 	private static String mapdir = "src/maps/";
 	// Kartenname
 	private static String map;
-	private static String name;
+	private String name;
 	// Groesse der Karte
-	private static int width;
-	private static int height;
+	private int width;
+	private int height;
 	// Feldeintraege
-	private static int[][] entry;
+	private int[][] entry;
 
-	public static int[][] readmap(String[] args) {
-		map = args[0];
+	public Mapreader(String level) {
+		map = level;
 		try {
 			BufferedReader file = new BufferedReader(new FileReader(mapdir
 					+ map + ".txt"));
@@ -29,31 +29,34 @@ public class Mapreader {
 				name = zeile;
 				k++;
 			}
-			width = Integer.parseInt(zeile.split(" ")[0]);
-			height = Integer.parseInt(zeile.split(" ")[1]);
-			entry = new int[width][height];
+			this.width = Integer.parseInt(zeile.split(" ")[0]);
+			this.height = Integer.parseInt(zeile.split(" ")[1]);
+			this.entry = new int[width][height];
 			int i = 0;
 			while ((zeile = file.readLine()) != null && k == 2) {
 				for (int j = 0; j < height; j++) {
-					entry[i][j] = Integer.parseInt(zeile.split(" ")[j]);
+					this.entry[i][j] = Integer.parseInt(zeile.split(" ")[j]);
 				}
 				i++;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return entry;
 	}
 
-	public static String getName() {
-		return name;
+	public int getEntry(int i, int j) {
+		return this.entry[i][j];
 	}
 
-	public static int getWidth() {
-		return width;
+	public String getName() {
+		return this.name;
 	}
 
-	public static int getHeight() {
-		return height;
+	public int getWidth() {
+		return this.width;
+	}
+
+	public int getHeight() {
+		return this.height;
 	}
 }
