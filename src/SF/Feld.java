@@ -44,10 +44,10 @@ public class Feld extends JPanel {
 		// Die verschiedenen Kachelarten:
 		this.tileImage = new Image[6];
 
-		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
-				"/images/hard.png")).getImage();
 		// this.tileImage[0] = new ImageIcon(this.getClass().getResource(
-		// "/images/cosx32.gif")).getImage();
+		// "/images/hard.png")).getImage();
+		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
+				"/images/cossinx32.gif")).getImage();
 		// this.tileImage[1] = new ImageIcon(this.getClass().getResource(
 		// "/images/grass.png")).getImage();
 		this.tileImage[1] = new ImageIcon(this.getClass().getResource(
@@ -56,18 +56,22 @@ public class Feld extends JPanel {
 		// "/images/soft.png")).getImage();
 		this.tileImage[2] = new ImageIcon(this.getClass().getResource(
 				"/images/X232.gif")).getImage();
+
+		this.tileImage[3] = new ImageIcon(this.getClass().getResource(
+				"/images/qed32.gif")).getImage();
+
 		// this.tileImage[3] = new ImageIcon(this.getClass().getResource(
 		// "/images/032.gif")).getImage();
-		this.tileImage[3] = new ImageIcon(this.getClass().getResource(
-				"/images/exit.png")).getImage();
+		// this.tileImage[3] = new ImageIcon(this.getClass().getResource(
+		// "/images/exit.png")).getImage();
 		// this.tileImage[4] = new ImageIcon(this.getClass().getResource(
 		// "/images/bombe.png")).getImage();
-		// this.tileImage[4] = new ImageIcon(this.getClass().getResource(
-		// "/images/AblBombe32.gif")).getImage();
-		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
-				"/images/feuer.png")).getImage();
+		this.tileImage[4] = new ImageIcon(this.getClass().getResource(
+				"/images/AblBombe32.gif")).getImage();
 		// this.tileImage[5] = new ImageIcon(this.getClass().getResource(
-		// "/images/Explosion32.gif")).getImage();
+		// "/images/feuer.png")).getImage();
+		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
+				"/images/Explosion32.gif")).getImage();
 		this.figur = new ImageIcon(this.getClass().getResource(
 				"/images/exp.gif")).getImage();
 

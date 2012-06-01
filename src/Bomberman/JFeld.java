@@ -51,17 +51,17 @@ public class JFeld extends JFrame {
 		this.tileImage = new Image[6];
 
 		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
-				"/images/hard.png")).getImage();
+				"/images/cossinx32.gif")).getImage();
 		this.tileImage[1] = new ImageIcon(this.getClass().getResource(
 				"/images/Tafel32.gif")).getImage();
 		this.tileImage[2] = new ImageIcon(this.getClass().getResource(
 				"/images/X232.gif")).getImage();
 		this.tileImage[3] = new ImageIcon(this.getClass().getResource(
-				"/images/exit.png")).getImage();
+				"/images/qed32.gif")).getImage();
 		this.tileImage[4] = new ImageIcon(this.getClass().getResource(
-				"/images/bombe.png")).getImage();
+				"/images/AblBombe32.gif")).getImage();
 		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
-				"/images/feuer.png")).getImage();
+				"/images/Explosion32.gif")).getImage();
 		JFeld.P1 = new ImageIcon(this.getClass().getResource("/images/exp.gif"))
 				.getImage();
 		JFeld.P2 = new ImageIcon(this.getClass().getResource("/images/pi.gif"))
