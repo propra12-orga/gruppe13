@@ -28,6 +28,7 @@ public class JMenue extends JFrame implements ActionListener {
 	public static JFeld feld;
 	public static JJFrame frame;
 	static Figur bm1, bm2;
+
 	public static JFrame choice = new JLevelauswahl();
 
 	private static final long serialVersionUID = 1L;
