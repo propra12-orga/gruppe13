@@ -127,6 +127,8 @@ public class JMenue extends JFrame implements ActionListener {
 							setVisible(true);
 						}
 					});
+					bm1 = new Figur(1, 1);
+					new Control(frame, bm1, feld, 0);
 				}
 			});
 
