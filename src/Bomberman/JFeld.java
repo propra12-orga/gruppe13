@@ -2,13 +2,11 @@ package Bomberman;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class JFeld extends JFrame {
+public class JFeld extends JPanel {
 
 	/**
 	 * 
@@ -23,8 +21,6 @@ public class JFeld extends JFrame {
 	// Singleplayer
 	private Image[] tileImage;
 	private FieldEntry[][] map;
-	private static Figur bm1;
-	private static Figur bm2;
 	// Felder initialisieren
 	private FieldEntry[] entry = { new FieldEntry(0, false), // hard
 			new FieldEntry(1, true), // tafel
@@ -70,117 +66,12 @@ public class JFeld extends JFrame {
 		// Kartenerstellung:
 		this.generateMap();
 
-		// Framesize
-		int frameWidth = mapWidth * tileWidth + 6;
-		int frameHeight = mapHeight * tileHeight + 28;
-		setSize(frameWidth, frameHeight);
-
-		// Fenstergroesse fest
-		setResizable(false);
-		setLocationRelativeTo(null);
-		setVisible(true);
-
-		// bomberman
-		bm1 = new Figur(1, 1);
-		addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// Auslesen der gedrückten Tasten
-				// entsprechende Reaktion
-				switch (e.getKeyCode()) {
-				case 37:
-					// links
-					bm1.links(map);
-					repaint();
-					break;
-				case 38:
-					// oben
-					bm1.oben(map);
-					repaint();
-					break;
-				case 39:
-					// rechts
-					bm1.rechts(map);
-					repaint();
-					break;
-				case 40:
-					// unten
-					bm1.unten(map);
-					repaint();
-					break;
-				case 13:
-					// enter
-					break;
-				default:
-					break;
-				}
-
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-
-			}
-		});
-		if (multi == true) {
-			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
-			addKeyListener(new KeyListener() {
-
-				@Override
-				public void keyPressed(KeyEvent e) {
-				}
-
-				@Override
-				public void keyReleased(KeyEvent e) {
-					// Auslesen der gedrückten Tasten
-					// entsprechende Reaktion
-					switch (e.getKeyCode()) {
-					case 65:
-						// a
-						bm2.links(map);
-						repaint();
-						break;
-					case 87:
-						// w
-						bm2.oben(map);
-						repaint();
-						break;
-					case 68:
-						// d
-						bm2.rechts(map);
-						repaint();
-						break;
-					case 83:
-						// s
-						bm2.unten(map);
-						repaint();
-						break;
-					case 32:
-						// spacebar
-						break;
-					default:
-						break;
-					}
-
-				}
-
-				@Override
-				public void keyTyped(KeyEvent e) {
-
-				}
-			});
-		}
 	}
 
 	// Kartenerstellung (random und multiplayer)
 	public void generateMap() {
 		if (this.level.equals("random")) {
-			setTitle("Bomberman - Random");
+
 			for (int i = 0; i < mapWidth; i++) {
 				map[0][i] = entry[0];
 				map[mapHeight - 1][i] = entry[0];
@@ -222,7 +113,7 @@ public class JFeld extends JFrame {
 			}
 			// Wenn nicht Zufall, dann Karte lesen:
 		} else {
-			setTitle("Bomberman - " + this.level);
+
 			Mapreader create = new Mapreader(this.level);
 			for (int i = 0; i < create.getWidth(); i++) {
 				for (int j = 0; j < create.getHeight(); j++) {
@@ -237,15 +128,15 @@ public class JFeld extends JFrame {
 		super.paint(g);
 		for (int i = 0; i < mapWidth; i++) {
 			for (int j = 0; j < mapHeight; j++) {
-				g.drawImage(tileImage[map[j][i].getImage()], i * tileWidth + 3,
-						j * tileHeight + 25, null);
+				g.drawImage(tileImage[map[j][i].getImage()], i * tileWidth, j
+						* tileHeight, null);
 			}
 		}
-		g.drawImage(P1, bm1.getxPosition() * tileWidth + 5, bm1.getyPosition()
-				* tileHeight + 25, null);
+		g.drawImage(P1, JMenue.bm1.getxPosition() * tileWidth,
+				JMenue.bm1.getyPosition() * tileHeight, null);
 		if (multi == true) {
-			g.drawImage(P2, bm2.getxPosition() * tileWidth + 5,
-					bm2.getyPosition() * tileHeight + 25, null);
+			g.drawImage(P2, JMenue.bm2.getxPosition() * tileWidth,
+					JMenue.bm2.getyPosition() * tileHeight, null);
 		}
 
 	}
@@ -254,6 +145,10 @@ public class JFeld extends JFrame {
 	public int Random(int l, int h) {
 		h++;
 		return (int) (Math.random() * (h - l) + l);
+	}
+
+	public FieldEntry[][] getmap() {
+		return map;
 	}
 
 }

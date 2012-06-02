@@ -6,7 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-public class Levelauswahl extends JFrame {
+public class JLevelauswahl extends JFrame {
 	/**
 	 * 
 	 */
@@ -14,7 +14,7 @@ public class Levelauswahl extends JFrame {
 
 	public static JComboBox levellist;
 
-	public Levelauswahl() {
+	public JLevelauswahl() {
 		// Verfuegbare Level
 		String[] data = { "test1", "test2" };
 		levellist = new JComboBox(data);
@@ -26,6 +26,7 @@ public class Levelauswahl extends JFrame {
 		setSize(250, 50);
 		add(levellist);
 		setLocationRelativeTo(null);
+
 	}
 
 	public String getChoice() {

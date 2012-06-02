@@ -26,7 +26,9 @@ public class JMenue extends JFrame implements ActionListener {
 	public static final int tileHeight = 32;
 
 	public static JFeld feld;
-	public static JFrame choice = new Levelauswahl();
+	public static JJFrame frame;
+	static Figur bm1, bm2;
+	public static JFrame choice = new JLevelauswahl();
 
 	private static final long serialVersionUID = 1L;
 
@@ -70,12 +72,13 @@ public class JMenue extends JFrame implements ActionListener {
 			// Spielfeld erstellen
 			feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
 					"random", false);
-			feld.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					feld.setVisible(false);
-					setVisible(true);
-				}
-			});
+			// Frame definieren
+			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+					feld);
+			frame.setTitle("Bomberman - Random (1P)");
+			bm1 = new Figur(1, 1);
+			// Steuerung hinzufügen
+			new Control(frame, bm1, feld, 0);
 			// Menue ausblenden beim Spielstart
 			setVisible(false);
 
@@ -83,16 +86,15 @@ public class JMenue extends JFrame implements ActionListener {
 		// Spiel starten 2P
 		if (arg0.getActionCommand().equals("go2")) {
 
-			// Spielfeld erstellen
 			feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
 					"random", true);
-			feld.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					feld.setVisible(false);
-					setVisible(true);
-				}
-			});
-			// Menue ausblenden beim Spielstart
+			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+					feld);
+			frame.setTitle("Bomberman - Random (2P)");
+			bm1 = new Figur(1, 1);
+			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
+			new Control(frame, bm1, feld, 0);
+			new Control(frame, bm2, feld, 1);
 			setVisible(false);
 
 		}
@@ -107,18 +109,21 @@ public class JMenue extends JFrame implements ActionListener {
 			// das Item "null" ausgewÃ¤hlt wird. Kann von Mapreader natuerlich
 			// nicht erkannt werden. -> Muss beim Beenden ins Menue und
 			// den Listener entfernen!
-			Levelauswahl.levellist.addItemListener(new ItemListener() {
+			JLevelauswahl.levellist.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					JComboBox selectedChoice = (JComboBox) e.getSource();
 					String level = (String) selectedChoice.getSelectedItem();
 					Mapreader create = new Mapreader(level);
 					feld = new JFeld(create.getWidth(), create.getHeight(),
 							tileWidth, tileHeight, level, false);
+					frame = new JJFrame(mapWidth, mapHeight, tileWidth,
+							tileHeight, feld);
+					frame.setTitle("Bomberman - " + level);
 					choice.dispose();
-					feld.addWindowListener(new WindowAdapter() {
+					frame.addWindowListener(new WindowAdapter() {
 						public void windowClosing(WindowEvent e) {
-							feld.dispose();
-							Levelauswahl.levellist.setSelectedIndex(-1);
+							frame.dispose();
+							JLevelauswahl.levellist.setSelectedIndex(-1);
 							setVisible(true);
 						}
 					});
