@@ -1,6 +1,8 @@
 package Bomberman;
 
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,7 +28,12 @@ public class JLevelauswahl extends JFrame {
 		setSize(250, 50);
 		add(levellist);
 		setLocationRelativeTo(null);
-
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				Start.M.setVisible(true);
+			}
+		});
 	}
 
 	public String getChoice() {

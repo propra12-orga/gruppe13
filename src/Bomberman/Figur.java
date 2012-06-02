@@ -47,7 +47,7 @@ public class Figur {
 		if (b == true) {
 			this.setxPosition(x);
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.feld.setVisible(false);
+				JMenue.frame.setVisible(false);
 				Start.M.setVisible(true);
 			}
 		}
@@ -59,7 +59,7 @@ public class Figur {
 		if (b == true) {
 			this.setxPosition(x);
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.feld.setVisible(false);
+				JMenue.frame.setVisible(false);
 				Start.M.setVisible(true);
 			}
 		}
@@ -71,7 +71,7 @@ public class Figur {
 		if (b == true) {
 			this.setyPosition(y);
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.feld.setVisible(false);
+				JMenue.frame.setVisible(false);
 				Start.M.setVisible(true);
 			}
 		}
@@ -83,7 +83,7 @@ public class Figur {
 		if (b == true) {
 			this.setyPosition(y);
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.feld.setVisible(false);
+				JMenue.frame.setVisible(false);
 				Start.M.setVisible(true);
 			}
 		}

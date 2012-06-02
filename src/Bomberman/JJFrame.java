@@ -17,6 +17,7 @@ public class JJFrame extends JFrame {
 		add(feld);
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
+				JMenue.frame.dispose();
 				Start.M.setVisible(true);
 			}
 		});

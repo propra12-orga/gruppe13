@@ -122,9 +122,7 @@ public class JMenue extends JFrame implements ActionListener {
 					choice.dispose();
 					frame.addWindowListener(new WindowAdapter() {
 						public void windowClosing(WindowEvent e) {
-							frame.dispose();
 							JLevelauswahl.levellist.setSelectedIndex(-1);
-							setVisible(true);
 						}
 					});
 					bm1 = new Figur(1, 1);
