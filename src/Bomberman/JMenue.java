@@ -8,8 +8,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,6 +30,13 @@ public class JMenue extends JFrame implements ActionListener {
 	static Figur bm1, bm2;
 
 	public static JFrame choice = new JLevelauswahl();
+
+	// Zeichnet das Feld immer wieder neu
+	static javax.swing.Timer t = new javax.swing.Timer(1, new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			frame.repaint();
+		}
+	});
 
 	private static final long serialVersionUID = 1L;
 
@@ -84,14 +89,8 @@ public class JMenue extends JFrame implements ActionListener {
 			new Control(frame, bm1, feld, 0);
 			// Menue ausblenden beim Spielstart
 			setVisible(false);
-
-			// Zeichnet das Feld immer wieder neu
-			new Timer().schedule(new TimerTask() {
-				@Override
-				public void run() {
-					feld.repaint();
-				}
-			}, 0, 100);
+			// Timer Start Neuzeichnen
+			t.start();
 
 		}
 		// Spiel starten 2P
@@ -107,14 +106,7 @@ public class JMenue extends JFrame implements ActionListener {
 			new Control(frame, bm1, feld, 0);
 			new Control(frame, bm2, feld, 1);
 			setVisible(false);
-
-			// Zeichnet das Feld immer wieder neu
-			new Timer().schedule(new TimerTask() {
-				@Override
-				public void run() {
-					feld.repaint();
-				}
-			}, 0, 100);
+			t.start();
 
 		}
 		if (arg0.getActionCommand().equals("go3")) {
@@ -137,6 +129,7 @@ public class JMenue extends JFrame implements ActionListener {
 							tileWidth, tileHeight, level, false);
 					frame = new JJFrame(mapWidth, mapHeight, tileWidth,
 							tileHeight, feld);
+					t.start();
 					frame.setTitle("Bomberman - " + level);
 					choice.dispose();
 					frame.addWindowListener(new WindowAdapter() {
@@ -149,16 +142,9 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			});
 
-			// Menue ausblenden beim Spielstart
+			setVisible(false);
 
 		}
 
-		// Zeichnet das Feld immer wieder neu
-		new Timer().schedule(new TimerTask() {
-			@Override
-			public void run() {
-				feld.repaint();
-			}
-		}, 0, 100);
 	}
 }

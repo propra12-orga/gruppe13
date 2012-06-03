@@ -19,6 +19,8 @@ public class JJFrame extends JFrame {
 			public void windowClosing(WindowEvent e) {
 				JMenue.frame.dispose();
 				Start.M.setVisible(true);
+				JMenue.t.stop();
+				JFeld.exit = false;
 			}
 		});
 		// Framesize

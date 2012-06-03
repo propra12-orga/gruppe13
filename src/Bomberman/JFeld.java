@@ -16,13 +16,13 @@ public class JFeld extends JPanel {
 	private int mapHeight;
 	private int tileWidth;
 	private int tileHeight;
-	private String level; // String für Levelauswahl
+	private String level; // String fuer Levelauswahl
 	private boolean multi;// true = multiplayer (2 Player) , false =
 	// Singleplayer
 	private Image[] tileImage;
 	private FieldEntry[][] map;
 	// Felder initialisieren
-	private FieldEntry[] entry = { new FieldEntry(0, false), // hard
+	static FieldEntry[] entry = { new FieldEntry(0, false), // hard
 			new FieldEntry(1, true), // tafel
 			new FieldEntry(2, false), // x
 			new FieldEntry(3, true), // exit
@@ -30,6 +30,7 @@ public class JFeld extends JPanel {
 			new FieldEntry(5, true) // feuer
 	};
 	public static Image P1, P2;
+	public static boolean exit = false;
 
 	public JFeld(int mapWidth, int mapHeight, int tileWidth, int tileHeight,
 			String level, boolean multi) {
@@ -64,7 +65,9 @@ public class JFeld extends JPanel {
 				.getImage();
 
 		// Kartenerstellung:
-		this.generateMap();
+		while (exit == false) {
+			this.generateMap();
+		}
 
 	}
 
@@ -93,17 +96,20 @@ public class JFeld extends JPanel {
 						} else if (((i == 1) && (j == 3))
 								|| ((i == 3) && (j == 1))) {
 							map[i][j] = new FieldEntry(2, false);
-						} else if ((i == mapHeight - 2) && (j == mapWidth - 2)) {
-							map[i][j] = entry[3];
 						}
 
 						else {
 							int r = this.Random(1, 2);
-							map[i][j] = new FieldEntry(r, false);
+							if (r == 1) {
+								map[i][j] = entry[1];
+							} else {
+								map[i][j] = new FieldEntry(2, false);
+							}
 						}
 					}
 				}
 				if (multi == true) {
+					// Startgebiet 2P
 					map[mapHeight - 2][mapWidth - 2] = entry[1];
 					map[mapHeight - 3][mapWidth - 2] = entry[1];
 					map[mapHeight - 2][mapWidth - 3] = entry[1];
@@ -128,7 +134,7 @@ public class JFeld extends JPanel {
 		super.paint(g);
 		for (int i = 0; i < mapWidth; i++) {
 			for (int j = 0; j < mapHeight; j++) {
-				g.drawImage(tileImage[map[j][i].getImage()], i * tileWidth, j
+				g.drawImage(tileImage[map[i][j].getImage()], i * tileWidth, j
 						* tileHeight, null);
 			}
 		}
@@ -149,10 +155,6 @@ public class JFeld extends JPanel {
 
 	public FieldEntry[][] getmap() {
 		return map;
-	}
-
-	public void setmap(int x, int y, int n) {
-		map[x][y] = entry[n];
 	}
 
 }

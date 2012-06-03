@@ -34,57 +34,70 @@ public class Figur {
 		this.yposition = ypos;
 	}
 
-	public boolean feldfrei(int x, int y, FieldEntry[][] map) {
-		// ueberprueft, ob ein Feld frei ist
-		// Momentan sind alle Felder ausser der solid-Kacheln gueltig
-
-		return map[x][y].getWalk();
-	}
-
 	public void rechts(FieldEntry[][] map) {
-		int x = getxPosition() + 1;
-		boolean b = this.feldfrei(x, getyPosition(), map);
-		if (b == true) {
-			this.setxPosition(x);
+		// Ueberprueft ob Feld frei ist
+		if (map[getxPosition() + 1][getyPosition()].getWalk() == true) {
+			this.setxPosition(getxPosition() + 1);
+			// Check Exit
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.frame.setVisible(false);
+				JMenue.frame.dispose();
 				Start.M.setVisible(true);
+				JFeld.exit = false;
 			}
+			// Check Flamme
+			if (map[getxPosition()][getyPosition()].getImage() == 5) {
+				JMenue.frame.dispose();
+				Start.M.setVisible(true);
+				JFeld.exit = false;
+			}
+
 		}
 	}
 
 	public void links(FieldEntry[][] map) {
-		int x = getxPosition() - 1;
-		boolean b = this.feldfrei(x, getyPosition(), map);
-		if (b == true) {
-			this.setxPosition(x);
+		if (map[getxPosition() - 1][getyPosition()].getWalk() == true) {
+			this.setxPosition(getxPosition() - 1);
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.frame.setVisible(false);
+				JMenue.frame.dispose();
 				Start.M.setVisible(true);
+				JFeld.exit = false;
+			}
+			if (map[getxPosition()][getyPosition()].getImage() == 5) {
+				JMenue.frame.dispose();
+				Start.M.setVisible(true);
+				JFeld.exit = false;
 			}
 		}
 	}
 
 	public void unten(FieldEntry[][] map) {
-		int y = getyPosition() + 1;
-		boolean b = this.feldfrei(getxPosition(), y, map);
-		if (b == true) {
-			this.setyPosition(y);
+		if (map[getxPosition()][getyPosition() + 1].getWalk() == true) {
+			this.setyPosition(getyPosition() + 1);
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.frame.setVisible(false);
+				JMenue.frame.dispose();
 				Start.M.setVisible(true);
+				JFeld.exit = false;
+			}
+			if (map[getxPosition()][getyPosition()].getImage() == 5) {
+				JMenue.frame.dispose();
+				Start.M.setVisible(true);
+				JFeld.exit = false;
 			}
 		}
 	}
 
 	public void oben(FieldEntry[][] map) {
-		int y = getyPosition() - 1;
-		boolean b = this.feldfrei(getxPosition(), y, map);
-		if (b == true) {
-			this.setyPosition(y);
+		if (map[getxPosition()][getyPosition() - 1].getWalk() == true) {
+			this.setyPosition(getyPosition() - 1);
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
-				JMenue.frame.setVisible(false);
+				JMenue.frame.dispose();
 				Start.M.setVisible(true);
+				JFeld.exit = false;
+			}
+			if (map[getxPosition()][getyPosition()].getImage() == 5) {
+				JMenue.frame.dispose();
+				Start.M.setVisible(true);
+				JFeld.exit = false;
 			}
 		}
 	}

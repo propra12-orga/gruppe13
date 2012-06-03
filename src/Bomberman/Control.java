@@ -26,25 +26,23 @@ public class Control {
 					case 65:
 						// a
 						bm.links(feld.getmap());
-						// f.repaint();
 						break;
 					case 87:
 						// w
 						bm.oben(feld.getmap());
-						// f.repaint();
 						break;
 					case 68:
 						// d
 						bm.rechts(feld.getmap());
-						// f.repaint();
 						break;
 					case 83:
 						// s
 						bm.unten(feld.getmap());
-						// f.repaint();
 						break;
 					case 32:
 						// spacebar
+						new TBomb(bm.getxPosition(), bm.getyPosition(), feld
+								.getmap()).start();
 						break;
 					default:
 						break;
@@ -73,25 +71,27 @@ public class Control {
 					case 37:
 						// links
 						bm.links(feld.getmap());
-						// f.repaint();
+						f.repaint();
 						break;
 					case 38:
 						// oben
 						bm.oben(feld.getmap());
-						// f.repaint();
+						f.repaint();
 						break;
 					case 39:
 						// rechts
 						bm.rechts(feld.getmap());
-						// f.repaint();
+						f.repaint();
 						break;
 					case 40:
 						// unten
 						bm.unten(feld.getmap());
-						// f.repaint();
+						f.repaint();
 						break;
-					case 13:
+					case 8:
 						// enter
+						new TBomb(bm.getxPosition(), bm.getyPosition(), feld
+								.getmap()).start();
 						break;
 					default:
 						break;

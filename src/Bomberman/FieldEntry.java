@@ -7,7 +7,13 @@ public class FieldEntry {
 
 	// GET/SET Item (erstmal un insteressant)
 	public void setItem() {
-		this.item = this.Random(1, 4);
+		this.item = this.Random(1, 1);
+		if (JFeld.exit == false) {
+			if (this.Random(1, 100) == 100) {
+				this.item = 3;
+				JFeld.exit = true;
+			}
+		}
 	}
 
 	public int getItem() {
