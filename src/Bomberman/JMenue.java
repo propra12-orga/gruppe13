@@ -80,7 +80,7 @@ public class JMenue extends JFrame implements ActionListener {
 					feld);
 			frame.setTitle("Bomberman - Random (1P)");
 			bm1 = new Figur(1, 1);
-			// Steuerung hinzufügen
+			// Steuerung hinzufï¿½gen
 			new Control(frame, bm1, feld, 0);
 			// Menue ausblenden beim Spielstart
 			setVisible(false);
@@ -146,19 +146,18 @@ public class JMenue extends JFrame implements ActionListener {
 					});
 					bm1 = new Figur(1, 1);
 					new Control(frame, bm1, feld, 0);
+					// Zeichnet das Feld immer wieder neu
+					new Timer().schedule(new TimerTask() {
+						@Override
+						public void run() {
+							feld.repaint();
+						}
+					}, 0, 100);
 				}
 			});
 
 			// Menue ausblenden beim Spielstart
 
 		}
-
-		// Zeichnet das Feld immer wieder neu
-		new Timer().schedule(new TimerTask() {
-			@Override
-			public void run() {
-				feld.repaint();
-			}
-		}, 0, 100);
 	}
 }
