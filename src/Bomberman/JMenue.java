@@ -85,12 +85,13 @@ public class JMenue extends JFrame implements ActionListener {
 			// Menue ausblenden beim Spielstart
 			setVisible(false);
 
+			// Zeichnet das Feld immer wieder neu
 			new Timer().schedule(new TimerTask() {
 				@Override
 				public void run() {
 					feld.repaint();
 				}
-			}, 0, 500);
+			}, 0, 100);
 
 		}
 		// Spiel starten 2P
@@ -107,12 +108,13 @@ public class JMenue extends JFrame implements ActionListener {
 			new Control(frame, bm2, feld, 1);
 			setVisible(false);
 
+			// Zeichnet das Feld immer wieder neu
 			new Timer().schedule(new TimerTask() {
 				@Override
 				public void run() {
 					feld.repaint();
 				}
-			}, 0, 500);
+			}, 0, 100);
 
 		}
 		if (arg0.getActionCommand().equals("go3")) {
@@ -147,16 +149,16 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			});
 
-			new Timer().schedule(new TimerTask() {
-				@Override
-				public void run() {
-					feld.repaint();
-				}
-			}, 0, 500);
-
 			// Menue ausblenden beim Spielstart
 
 		}
 
+		// Zeichnet das Feld immer wieder neu
+		new Timer().schedule(new TimerTask() {
+			@Override
+			public void run() {
+				feld.repaint();
+			}
+		}, 0, 100);
 	}
 }
