@@ -8,6 +8,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -83,6 +85,13 @@ public class JMenue extends JFrame implements ActionListener {
 			// Menue ausblenden beim Spielstart
 			setVisible(false);
 
+			new Timer().schedule(new TimerTask() {
+				@Override
+				public void run() {
+					feld.repaint();
+				}
+			}, 0, 500);
+
 		}
 		// Spiel starten 2P
 		if (arg0.getActionCommand().equals("go2")) {
@@ -97,6 +106,13 @@ public class JMenue extends JFrame implements ActionListener {
 			new Control(frame, bm1, feld, 0);
 			new Control(frame, bm2, feld, 1);
 			setVisible(false);
+
+			new Timer().schedule(new TimerTask() {
+				@Override
+				public void run() {
+					feld.repaint();
+				}
+			}, 0, 500);
 
 		}
 		if (arg0.getActionCommand().equals("go3")) {
@@ -130,6 +146,13 @@ public class JMenue extends JFrame implements ActionListener {
 					new Control(frame, bm1, feld, 0);
 				}
 			});
+
+			new Timer().schedule(new TimerTask() {
+				@Override
+				public void run() {
+					feld.repaint();
+				}
+			}, 0, 500);
 
 			// Menue ausblenden beim Spielstart
 
