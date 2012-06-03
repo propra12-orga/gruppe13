@@ -151,4 +151,8 @@ public class JFeld extends JPanel {
 		return map;
 	}
 
+	public void setmap(int x, int y, int n) {
+		map[x][y] = entry[n];
+	}
+
 }
