@@ -42,7 +42,7 @@ public class Control {
 					case 32:
 						// spacebar
 						new TBomb(bm.getxPosition(), bm.getyPosition(), feld
-								.getmap()).start();
+								.getmap(), 0).start();
 						break;
 					default:
 						break;
@@ -91,7 +91,7 @@ public class Control {
 					case 8:
 						// enter
 						new TBomb(bm.getxPosition(), bm.getyPosition(), feld
-								.getmap()).start();
+								.getmap(), 1).start();
 						break;
 					default:
 						break;

@@ -6,5 +6,8 @@ public class Start {
 
 	public static void main(String[] args) {
 		M = new JMenue("Bomberman-Menue");
+		int[] g = new int[2];
+		g[1] = 93;
+		System.out.println(g[1]);
 	}
 }

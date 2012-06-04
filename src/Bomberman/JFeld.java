@@ -17,7 +17,7 @@ public class JFeld extends JPanel {
 	private int tileWidth;
 	private int tileHeight;
 	private String level; // String fuer Levelauswahl
-	private boolean multi;// true = multiplayer (2 Player) , false =
+	public static boolean multi;// true = multiplayer (2 Player) , false =
 	// Singleplayer
 	private Image[] tileImage;
 	private FieldEntry[][] map;
@@ -36,7 +36,7 @@ public class JFeld extends JPanel {
 			String level, boolean multi) {
 		// Erstellung ObjectArray
 		this.map = new FieldEntry[mapWidth][mapHeight];
-		this.multi = multi;
+		JFeld.multi = multi;
 		this.level = level;
 		// Spielfeldgroesse:
 		this.mapWidth = mapWidth;

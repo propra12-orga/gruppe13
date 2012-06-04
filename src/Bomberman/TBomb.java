@@ -3,90 +3,132 @@ package Bomberman;
 public class TBomb extends Thread {
 
 	public static int radius = 2;
-	private int xpos, ypos;
+	private int[] xpos = new int[2];
+	private int[] ypos = new int[2];
 	private FieldEntry[][] map;
 	private boolean checkl = true, checkr = true, checko = true, checku = true,
 			iteml = false, itemr = false, itemo = false, itemu = false;
-	private int r = -1, l = -1, u = -1, o = -1, itemrr, itemll, itemuu, itemoo;
+	private int r = -1, l = -1, u = -1, o = -1, itemrr, itemll, itemuu, itemoo,
+			b;
 
-	public TBomb(int xpos, int ypos, FieldEntry[][] map) {
-		this.xpos = xpos;
-		this.ypos = ypos;
+	public TBomb(int xpos, int ypos, FieldEntry[][] map, int k) {
+		this.xpos[k] = xpos;
+		this.ypos[k] = ypos;
 		this.map = map;
+		this.b = k;
 	}
 
 	public void suicide() {
-		boolean ckr = true, ckl = true, cko = true, cku = true;
-		if (JMenue.bm1.getxPosition() == xpos
-				&& JMenue.bm1.getyPosition() == ypos) {
+		if (JMenue.bm1.getxPosition() == xpos[0]
+				&& JMenue.bm1.getyPosition() == ypos[0]) {
 			JMenue.frame.dispose();
 			Start.M.setVisible(true);
 			JFeld.exit = false;
+			System.out.println("Suicide Noob 1P");
+		} else {
+			for (int i = 0; i <= radius; i++) {
+				if (i <= r) {
+					if (JMenue.bm1.getxPosition() == xpos[0] + i
+							&& JMenue.bm1.getyPosition() == ypos[0]) {
+						JMenue.frame.dispose();
+						Start.M.setVisible(true);
+						JFeld.exit = false;
+						System.out.println("Suicide Noob 1P");
+					}
+
+				}
+				if (i <= l) {
+					if (JMenue.bm1.getxPosition() == xpos[0] - i
+							&& JMenue.bm1.getyPosition() == ypos[0]) {
+						JMenue.frame.dispose();
+						Start.M.setVisible(true);
+						JFeld.exit = false;
+						System.out.println("Suicide Noob 1P");
+					}
+
+				}
+				if (i <= u) {
+					if (JMenue.bm1.getxPosition() == xpos[0]
+							&& JMenue.bm1.getyPosition() == ypos[0] + i) {
+						JMenue.frame.dispose();
+						Start.M.setVisible(true);
+						JFeld.exit = false;
+						System.out.println("Suicide Noob 1P");
+					}
+
+				}
+				if (i <= o) {
+					if (JMenue.bm1.getxPosition() == xpos[0]
+							&& JMenue.bm1.getyPosition() == ypos[0] - i) {
+						JMenue.frame.dispose();
+						Start.M.setVisible(true);
+						JFeld.exit = false;
+						System.out.println("Suicide Noob 1P");
+					}
+
+				}
+			}
 		}
-		for (int i = 0; i <= radius; i++) {
+		if (JFeld.multi == true) {
+			if (JMenue.bm2.getxPosition() == xpos[1]
+					&& JMenue.bm2.getyPosition() == ypos[1]) {
+				JMenue.frame.dispose();
+				Start.M.setVisible(true);
+				JFeld.exit = false;
+				System.out.println("Suicide Noob 2P");
+			} else {
+				for (int i = 0; i <= radius; i++) {
+					if (i <= r) {
+						if (JMenue.bm2.getxPosition() == xpos[1] + i
+								&& JMenue.bm2.getyPosition() == ypos[1]) {
+							JMenue.frame.dispose();
+							Start.M.setVisible(true);
+							JFeld.exit = false;
+							System.out.println("Suicide Noob 2P");
+						}
 
-			if (ckr == true) {
-				if (map[xpos + i][ypos].getImage() == 2
-						|| map[xpos + i][ypos].getImage() == 0
-						|| map[xpos + i][ypos].getImage() == 3) {
-					ckr = false;
-				}
-				if (JMenue.bm1.getxPosition() == xpos + i
-						&& JMenue.bm1.getyPosition() == ypos) {
-					JMenue.frame.dispose();
-					Start.M.setVisible(true);
-					JFeld.exit = false;
-				}
+					}
+					if (i <= l) {
+						if (JMenue.bm2.getxPosition() == xpos[1] - i
+								&& JMenue.bm2.getyPosition() == ypos[1]) {
+							JMenue.frame.dispose();
+							Start.M.setVisible(true);
+							JFeld.exit = false;
+							System.out.println("Suicide Noob 2P");
+						}
 
+					}
+					if (i <= u) {
+						if (JMenue.bm2.getxPosition() == xpos[1]
+								&& JMenue.bm2.getyPosition() == ypos[1] + i) {
+							JMenue.frame.dispose();
+							Start.M.setVisible(true);
+							JFeld.exit = false;
+							System.out.println("Suicide Noob 2P");
+						}
+
+					}
+					if (i <= o) {
+						if (JMenue.bm2.getxPosition() == xpos[1]
+								&& JMenue.bm2.getyPosition() == ypos[1] - i) {
+							JMenue.frame.dispose();
+							Start.M.setVisible(true);
+							JFeld.exit = false;
+							System.out.println("Suicide Noob 2P");
+						}
+
+					}
+				}
 			}
-			if (ckl == true) {
-				if (map[xpos - i][ypos].getImage() == 2
-						|| map[xpos - i][ypos].getImage() == 0
-						|| map[xpos - i][ypos].getImage() == 3) {
-					ckl = false;
-				}
-				if (JMenue.bm1.getxPosition() == xpos - i
-						&& JMenue.bm1.getyPosition() == ypos) {
-					JMenue.frame.dispose();
-					Start.M.setVisible(true);
-					JFeld.exit = false;
-				}
-
-			}
-			if (cku == true) {
-				if (map[xpos][ypos + i].getImage() == 2
-						|| map[xpos][ypos + i].getImage() == 0
-						|| map[xpos][ypos + i].getImage() == 3) {
-					cku = false;
-				}
-				if (JMenue.bm1.getxPosition() == xpos
-						&& JMenue.bm1.getyPosition() == ypos + i) {
-					JMenue.frame.dispose();
-					Start.M.setVisible(true);
-					JFeld.exit = false;
-				}
-
-			}
-			if (cko == true) {
-				if (map[xpos][ypos - i].getImage() == 2
-						|| map[xpos][ypos - i].getImage() == 0
-						|| map[xpos][ypos - i].getImage() == 3) {
-					cko = false;
-				}
-				if (JMenue.bm1.getxPosition() == xpos
-						&& JMenue.bm1.getyPosition() == ypos - i) {
-					JMenue.frame.dispose();
-					Start.M.setVisible(true);
-					JFeld.exit = false;
-				}
-
-			}
-
 		}
 	}
 
+	public void kill() {
+
+	}
+
 	public void run() {
-		map[xpos][ypos] = JFeld.entry[4];
+		map[xpos[b]][ypos[b]] = JFeld.entry[4];
 		try {
 			Thread.sleep(1500);
 		} catch (InterruptedException e) {
@@ -98,11 +140,11 @@ public class TBomb extends Thread {
 			// Explosion nach rechts
 			if (checkr == true) {
 				// Zertörbarer Block
-				if (map[xpos + i][ypos].getImage() == 2) {
+				if (map[xpos[b] + i][ypos[b]].getImage() == 2) {
 					// Item speichern
-					itemrr = map[xpos + i][ypos].getItem();
+					itemrr = map[xpos[b] + i][ypos[b]].getItem();
 					// Flamme
-					map[xpos + i][ypos] = JFeld.entry[5];
+					map[xpos[b] + i][ypos[b]] = JFeld.entry[5];
 					// Explosion stoppen
 					checkr = false;
 					// Itemcounter true
@@ -111,66 +153,66 @@ public class TBomb extends Thread {
 					r++;
 				}
 				// Unzerstörbarer Block / Exit
-				else if (map[xpos + i][ypos].getImage() == 0
-						|| map[xpos + i][ypos].getImage() == 3) {
+				else if (map[xpos[b] + i][ypos[b]].getImage() == 0
+						|| map[xpos[b] + i][ypos[b]].getImage() == 3) {
 					// Explosion stoppen
 					checkr = false;
 
 				}
 				// Explosion in alles Andere
 				else {
-					map[xpos + i][ypos] = JFeld.entry[5];
+					map[xpos[b] + i][ypos[b]] = JFeld.entry[5];
 					r++;
 				}
 			}
 			// Explosion nach links
 			if (checkl == true) {
-				if (map[xpos - i][ypos].getImage() == 2) {
-					itemll = map[xpos - i][ypos].getItem();
-					map[xpos - i][ypos] = JFeld.entry[5];
+				if (map[xpos[b] - i][ypos[b]].getImage() == 2) {
+					itemll = map[xpos[b] - i][ypos[b]].getItem();
+					map[xpos[b] - i][ypos[b]] = JFeld.entry[5];
 					checkl = false;
 					iteml = true;
 					l++;
-				} else if (map[xpos - i][ypos].getImage() == 0
-						|| map[xpos - i][ypos].getImage() == 3) {
+				} else if (map[xpos[b] - i][ypos[b]].getImage() == 0
+						|| map[xpos[b] - i][ypos[b]].getImage() == 3) {
 					checkl = false;
 				} else {
-					map[xpos - i][ypos] = JFeld.entry[5];
+					map[xpos[b] - i][ypos[b]] = JFeld.entry[5];
 					l++;
 				}
 			}
 			// Explosion nach unten
 			if (checku == true) {
-				if (map[xpos][ypos + i].getImage() == 2) {
-					itemuu = map[xpos][ypos + i].getItem();
-					map[xpos][ypos + i] = JFeld.entry[5];
+				if (map[xpos[b]][ypos[b] + i].getImage() == 2) {
+					itemuu = map[xpos[b]][ypos[b] + i].getItem();
+					map[xpos[b]][ypos[b] + i] = JFeld.entry[5];
 					checku = false;
 					itemu = true;
 					u++;
-				} else if (map[xpos][ypos + i].getImage() == 0
-						|| map[xpos][ypos + i].getImage() == 3) {
+				} else if (map[xpos[b]][ypos[b] + i].getImage() == 0
+						|| map[xpos[b]][ypos[b] + i].getImage() == 3) {
 					checku = false;
 				}
 				// Explosion in alles Andere
 				else {
-					map[xpos][ypos + i] = JFeld.entry[5];
+					map[xpos[b]][ypos[b] + i] = JFeld.entry[5];
 					u++;
 				}
 			}
 			// Explosion nach oben
 			if (checko == true) {
-				if (map[xpos][ypos - i].getImage() == 2) {
-					itemoo = map[xpos][ypos - i].getItem();
-					map[xpos][ypos - i] = JFeld.entry[5];
+				if (map[xpos[b]][ypos[b] - i].getImage() == 2) {
+					itemoo = map[xpos[b]][ypos[b] - i].getItem();
+					map[xpos[b]][ypos[b] - i] = JFeld.entry[5];
 					checko = false;
 					itemo = true;
 					o++;
-				} else if (map[xpos][ypos - i].getImage() == 0
-						|| map[xpos][ypos - i].getImage() == 3) {
+				} else if (map[xpos[b]][ypos[b] - i].getImage() == 0
+						|| map[xpos[b]][ypos[b] - i].getImage() == 3) {
 					checko = false;
 
 				} else {
-					map[xpos][ypos - i] = JFeld.entry[5];
+					map[xpos[b]][ypos[b] - i] = JFeld.entry[5];
 					o++;
 				}
 			}
@@ -193,31 +235,31 @@ public class TBomb extends Thread {
 		for (int i = 0; i <= radius; i++) {
 			if (i <= r) {
 				if (i == r && itemr == true) {
-					map[xpos + i][ypos] = JFeld.entry[itemrr];
+					map[xpos[b] + i][ypos[b]] = JFeld.entry[itemrr];
 				} else {
-					map[xpos + i][ypos] = JFeld.entry[1];
+					map[xpos[b] + i][ypos[b]] = JFeld.entry[1];
 				}
 			}
 			if (i <= l) {
 				if (i == l && iteml == true) {
-					map[xpos - i][ypos] = JFeld.entry[itemll];
+					map[xpos[b] - i][ypos[b]] = JFeld.entry[itemll];
 				} else {
-					map[xpos - i][ypos] = JFeld.entry[1];
+					map[xpos[b] - i][ypos[b]] = JFeld.entry[1];
 				}
 			}
 			if (i <= o) {
 				if (i == o && itemo == true) {
-					map[xpos][ypos - i] = JFeld.entry[itemoo];
+					map[xpos[b]][ypos[b] - i] = JFeld.entry[itemoo];
 				} else {
-					map[xpos][ypos - i] = JFeld.entry[1];
+					map[xpos[b]][ypos[b] - i] = JFeld.entry[1];
 				}
 
 			}
 			if (i <= u) {
 				if (i == u && itemu == true) {
-					map[xpos][ypos + i] = JFeld.entry[itemuu];
+					map[xpos[b]][ypos[b] + i] = JFeld.entry[itemuu];
 				} else {
-					map[xpos][ypos + i] = JFeld.entry[1];
+					map[xpos[b]][ypos[b] + i] = JFeld.entry[1];
 				}
 			}
 
