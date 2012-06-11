@@ -11,59 +11,44 @@ public class TBomb extends Thread {
 	private int r = -1, l = -1, u = -1, o = -1, itemrr, itemll, itemuu, itemoo,
 			b;
 
-	public TBomb(int xpos, int ypos, FieldEntry[][] map, int k) {
-		this.xpos[k] = xpos;
-		this.ypos[k] = ypos;
+	public TBomb(int xpos, int ypos, FieldEntry[][] map, int b) {
+		this.xpos[b] = xpos;
+		this.ypos[b] = ypos;
 		this.map = map;
-		this.b = k;
+		this.b = b;
 	}
 
-	public void suicide() {
+	public void kill() {
 		if (JMenue.bm1.getxPosition() == xpos[0]
 				&& JMenue.bm1.getyPosition() == ypos[0]) {
-			JMenue.frame.dispose();
-			Start.M.setVisible(true);
-			JFeld.exit = false;
-			System.out.println("Suicide Noob 1P");
+			end("Suicide Noob 1P");
 		} else {
 			for (int i = 0; i <= radius; i++) {
 				if (i <= r) {
 					if (JMenue.bm1.getxPosition() == xpos[0] + i
 							&& JMenue.bm1.getyPosition() == ypos[0]) {
-						JMenue.frame.dispose();
-						Start.M.setVisible(true);
-						JFeld.exit = false;
-						System.out.println("Suicide Noob 1P");
+						end("Suicide Noob 1P");
 					}
 
 				}
 				if (i <= l) {
 					if (JMenue.bm1.getxPosition() == xpos[0] - i
 							&& JMenue.bm1.getyPosition() == ypos[0]) {
-						JMenue.frame.dispose();
-						Start.M.setVisible(true);
-						JFeld.exit = false;
-						System.out.println("Suicide Noob 1P");
+						end("Suicide Noob 1P");
 					}
 
 				}
 				if (i <= u) {
 					if (JMenue.bm1.getxPosition() == xpos[0]
 							&& JMenue.bm1.getyPosition() == ypos[0] + i) {
-						JMenue.frame.dispose();
-						Start.M.setVisible(true);
-						JFeld.exit = false;
-						System.out.println("Suicide Noob 1P");
+						end("Suicide Noob 1P");
 					}
 
 				}
 				if (i <= o) {
 					if (JMenue.bm1.getxPosition() == xpos[0]
 							&& JMenue.bm1.getyPosition() == ypos[0] - i) {
-						JMenue.frame.dispose();
-						Start.M.setVisible(true);
-						JFeld.exit = false;
-						System.out.println("Suicide Noob 1P");
+						end("Suicide Noob 1P");
 					}
 
 				}
@@ -72,49 +57,66 @@ public class TBomb extends Thread {
 		if (JFeld.multi == true) {
 			if (JMenue.bm2.getxPosition() == xpos[1]
 					&& JMenue.bm2.getyPosition() == ypos[1]) {
-				JMenue.frame.dispose();
-				Start.M.setVisible(true);
-				JFeld.exit = false;
-				System.out.println("Suicide Noob 2P");
+				end("Suicide Noob 2P");
 			} else {
 				for (int i = 0; i <= radius; i++) {
 					if (i <= r) {
 						if (JMenue.bm2.getxPosition() == xpos[1] + i
 								&& JMenue.bm2.getyPosition() == ypos[1]) {
-							JMenue.frame.dispose();
-							Start.M.setVisible(true);
-							JFeld.exit = false;
-							System.out.println("Suicide Noob 2P");
+							end("Suicide Noob 2P");
+						}
+						if (JMenue.bm1.getxPosition() == xpos[1] + i
+								&& JMenue.bm1.getyPosition() == ypos[1]) {
+							end("2P Pwnd 1P");
+						}
+						if (JMenue.bm2.getxPosition() == xpos[0] + i
+								&& JMenue.bm2.getyPosition() == ypos[0]) {
+							end("1P Pwnd 2P");
 						}
 
 					}
 					if (i <= l) {
 						if (JMenue.bm2.getxPosition() == xpos[1] - i
 								&& JMenue.bm2.getyPosition() == ypos[1]) {
-							JMenue.frame.dispose();
-							Start.M.setVisible(true);
-							JFeld.exit = false;
-							System.out.println("Suicide Noob 2P");
+							end("Suicide Noob 2P");
+						}
+						if (JMenue.bm1.getxPosition() == xpos[1] - i
+								&& JMenue.bm1.getyPosition() == ypos[1]) {
+							end("2P Pwnd 1P");
+						}
+						if (JMenue.bm2.getxPosition() == xpos[0] - i
+								&& JMenue.bm2.getyPosition() == ypos[0]) {
+							end("1P Pwnd 2P");
 						}
 
 					}
 					if (i <= u) {
 						if (JMenue.bm2.getxPosition() == xpos[1]
 								&& JMenue.bm2.getyPosition() == ypos[1] + i) {
-							JMenue.frame.dispose();
-							Start.M.setVisible(true);
-							JFeld.exit = false;
-							System.out.println("Suicide Noob 2P");
+							end("Suicide Noob 2P");
+						}
+						if (JMenue.bm1.getxPosition() == xpos[1]
+								&& JMenue.bm1.getyPosition() == ypos[1] + i) {
+							end("2P Pwnd 1P");
+						}
+						if (JMenue.bm2.getxPosition() == xpos[0]
+								&& JMenue.bm2.getyPosition() == ypos[0] + i) {
+							end("1P Pwnd 2P");
 						}
 
 					}
 					if (i <= o) {
 						if (JMenue.bm2.getxPosition() == xpos[1]
 								&& JMenue.bm2.getyPosition() == ypos[1] - i) {
-							JMenue.frame.dispose();
-							Start.M.setVisible(true);
-							JFeld.exit = false;
-							System.out.println("Suicide Noob 2P");
+							end("Suicide Noob 2P");
+						}
+						if (JMenue.bm1.getxPosition() == xpos[1]
+								&& JMenue.bm1.getyPosition() == ypos[1] - i) {
+							end("2P Pwnd 1P");
+						}
+						if (JMenue.bm2.getxPosition() == xpos[0]
+								&& JMenue.bm2.getyPosition() == ypos[0] - i) {
+							end("1P Pwnd 2P");
 						}
 
 					}
@@ -123,17 +125,26 @@ public class TBomb extends Thread {
 		}
 	}
 
-	public void kill() {
-
+	public void end(String s) {
+		JMenue.frame.dispose();
+		Start.M.setVisible(true);
+		JFeld.exit = false;
+		System.out.println(s);
 	}
 
 	public void run() {
 		map[xpos[b]][ypos[b]] = JFeld.entry[4];
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (int i = 0; i < 1500; i++) {
+			if (map[xpos[b]][ypos[b]] == JFeld.entry[5]) {
+				i = 1500;
+			}
+
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		for (int i = 0; i <= radius; i++) {
@@ -224,7 +235,7 @@ public class TBomb extends Thread {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.suicide();
+		this.kill();
 		try {
 			Thread.sleep(300);
 		} catch (InterruptedException e) {
@@ -264,5 +275,7 @@ public class TBomb extends Thread {
 			}
 
 		}
+		Control.counter[b]--;
+
 	}
 }

@@ -6,11 +6,18 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 public class Control {
+	public static int maxbomb1 = 2;
+	public static int maxbomb2 = 2;
+	public static int[] counter = new int[2];
 
 	public Control(final JFrame f, final Figur bm, final JFeld feld, int nr) {
+		counter[0] = 0;
+		if (JFeld.multi == true) {
+			counter[1] = 0;
+		}
 
 		switch (nr) {
-		// Steuerung 0=pfeiltasten 1=w a s d
+		// Steuerung: 0=pfeiltasten ; 1=w a s d
 		case 0:
 			f.addKeyListener(new KeyListener() {
 
@@ -41,8 +48,11 @@ public class Control {
 						break;
 					case 32:
 						// spacebar
-						new TBomb(bm.getxPosition(), bm.getyPosition(), feld
-								.getmap(), 0).start();
+						if (counter[0] < maxbomb1) {
+							new TBomb(bm.getxPosition(), bm.getyPosition(),
+									feld.getmap(), 0).start();
+							counter[0]++;
+						}
 						break;
 					default:
 						break;
@@ -90,8 +100,11 @@ public class Control {
 						break;
 					case 8:
 						// enter
-						new TBomb(bm.getxPosition(), bm.getyPosition(), feld
-								.getmap(), 1).start();
+						if (counter[1] < maxbomb2) {
+							new TBomb(bm.getxPosition(), bm.getyPosition(),
+									feld.getmap(), 1).start();
+							counter[1]++;
+						}
 						break;
 					default:
 						break;
