@@ -10,14 +10,16 @@ import javax.swing.JScrollPane;
 
 public class JLevelauswahl extends JFrame {
 	/**
-	 * 
+	 * Levelauswahl
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public static JComboBox levellist;
 
 	public JLevelauswahl() {
-		// Verfuegbare Level
+		/**
+		 * Verfuegbare Level
+		 */
 		String[] data = { "test1", "test2" };
 		levellist = new JComboBox(data);
 		levellist.setSelectedIndex(-1);

@@ -4,7 +4,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-
+/**
+ * Die Steuerung 
+ */
 public class Control {
 	public static int maxbomb1 = 2;
 	public static int maxbomb2 = 2;
@@ -17,7 +19,9 @@ public class Control {
 		}
 
 		switch (nr) {
-		// Steuerung: 0=pfeiltasten ; 1=w a s d
+		/**
+		 * Steuerung: 0=Pfeiltasten ; 1=w a s d
+		 */
 		case 0:
 			f.addKeyListener(new KeyListener() {
 
@@ -27,8 +31,10 @@ public class Control {
 
 				@Override
 				public void keyReleased(KeyEvent e) {
-					// Auslesen der gedrückten Tasten
-					// entsprechende Reaktion
+					/**
+					 * Auslesen der gedrückten Tasten
+					 * entsprechende Reaktion
+					 */
 					switch (e.getKeyCode()) {
 					case 65:
 						// a
@@ -75,8 +81,10 @@ public class Control {
 
 				@Override
 				public void keyReleased(KeyEvent e) {
-					// Auslesen der gedrückten Tasten
-					// entsprechende Reaktion
+					/**
+					 * Auslesen der gedrückten Tasen, hier 2P noch
+					 * entsprechende Reaktion
+					 */
 					switch (e.getKeyCode()) {
 					case 37:
 						// links

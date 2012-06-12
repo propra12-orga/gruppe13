@@ -4,8 +4,9 @@ public class FieldEntry {
 
 	private int item, image;
 	private boolean walkable;
-
-	// GET/SET Item (erstmal un insteressant)
+	/**
+	 * Get/Set Item (erstmal uninterresant)
+	 */
 	public void setItem() {
 		this.item = this.Random(1, 1);
 		if (JFeld.exit == false) {
@@ -28,8 +29,9 @@ public class FieldEntry {
 		}
 
 	}
-
-	// GET/SET Nummer des Bildes
+	/**
+	 * Get/Set Nummer des Bildes
+	 */
 	public void setImage(int image) {
 		this.image = image;
 	}
@@ -37,8 +39,9 @@ public class FieldEntry {
 	public int getImage() {
 		return image;
 	}
-
-	// ganzzahliger Zufallsgenerator
+	/**
+	 * Ganzzahliger Zufallsgenerator
+	 */
 	public int Random(int l, int h) {
 		h++;
 		return (int) (Math.random() * (h - l) + l);

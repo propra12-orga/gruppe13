@@ -23,12 +23,15 @@ public class JJFrame extends JFrame {
 				JFeld.exit = false;
 			}
 		});
-		// Framesize
+		/**
+		 * Framesize
+		 */
 		int frameWidth = mapWidth * tileWidth + 6;
 		int frameHeight = mapHeight * tileHeight + 28;
 		setSize(frameWidth, frameHeight);
-
-		// Fenstergroesse fest
+		/**
+		 * Fenstergroesse fest
+		 */
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);

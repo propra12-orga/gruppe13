@@ -5,16 +5,23 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Mapreader {
-
-	// Kartenverzeichnis
+	/**
+	 * Kartenverzeichnus
+	 */
 	private static String mapdir = "src/maps/";
-	// Kartenname
+	/**
+	 * Kartenname
+	 */
 	private static String map;
 	private String name;
-	// Groesse der Karte
+	/**
+	 * Groesse der Karte
+	 */
 	private int width;
 	private int height;
-	// Feldeintraege
+	/**
+	 * Feldeintraege
+	 */
 	private int[][] entry;
 
 	public Mapreader(String level) {

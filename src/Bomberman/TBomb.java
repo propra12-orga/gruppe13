@@ -1,6 +1,9 @@
 package Bomberman;
 
 public class TBomb extends Thread {
+	/**
+	 * Braucht mehr Kommentare?
+	 */
 
 	public static int radius = 2;
 	private int[] xpos = new int[2];
@@ -148,9 +151,13 @@ public class TBomb extends Thread {
 		}
 
 		for (int i = 0; i <= radius; i++) {
-			// Explosion nach rechts
+			/**
+			 * Explosion nach Rechts
+			 */
 			if (checkr == true) {
-				// Zertörbarer Block
+				/**
+				 * Zertoerbarer Block
+				 */
 				if (map[xpos[b] + i][ypos[b]].getImage() == 2) {
 					// Item speichern
 					itemrr = map[xpos[b] + i][ypos[b]].getItem();
@@ -160,23 +167,33 @@ public class TBomb extends Thread {
 					checkr = false;
 					// Itemcounter true
 					itemr = true;
-					// Länge der Explosion
+					/**
+					 * Laenge der Explosion
+					 */
 					r++;
 				}
-				// Unzerstörbarer Block / Exit
+				/**
+				 * Unzerstoerbarer Block bzw. Exit
+				 */
 				else if (map[xpos[b] + i][ypos[b]].getImage() == 0
 						|| map[xpos[b] + i][ypos[b]].getImage() == 3) {
-					// Explosion stoppen
-					checkr = false;
+					/**
+					 * Explosion stoppen
+					 */
+										checkr = false;
 
 				}
-				// Explosion in alles Andere
+				/**
+				 * Explosion in alles Andere
+				 */
 				else {
 					map[xpos[b] + i][ypos[b]] = JFeld.entry[5];
 					r++;
 				}
 			}
-			// Explosion nach links
+			/**
+			 * Explosion nach Links
+			 */
 			if (checkl == true) {
 				if (map[xpos[b] - i][ypos[b]].getImage() == 2) {
 					itemll = map[xpos[b] - i][ypos[b]].getItem();
@@ -192,7 +209,9 @@ public class TBomb extends Thread {
 					l++;
 				}
 			}
-			// Explosion nach unten
+			/**
+			 * Explosion nach Unten
+			 */
 			if (checku == true) {
 				if (map[xpos[b]][ypos[b] + i].getImage() == 2) {
 					itemuu = map[xpos[b]][ypos[b] + i].getItem();
@@ -204,13 +223,17 @@ public class TBomb extends Thread {
 						|| map[xpos[b]][ypos[b] + i].getImage() == 3) {
 					checku = false;
 				}
-				// Explosion in alles Andere
+				/**
+				 * Explosion in alles Andere
+				 */
 				else {
 					map[xpos[b]][ypos[b] + i] = JFeld.entry[5];
 					u++;
 				}
 			}
-			// Explosion nach oben
+			/**
+			 * Explosion nach Oben
+			 */
 			if (checko == true) {
 				if (map[xpos[b]][ypos[b] - i].getImage() == 2) {
 					itemoo = map[xpos[b]][ypos[b] - i].getItem();
@@ -242,7 +265,9 @@ public class TBomb extends Thread {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// Nach der Explosion
+		/**
+		 * Nach der Explosion
+		 */
 		for (int i = 0; i <= radius; i++) {
 			if (i <= r) {
 				if (i == r && itemr == true) {

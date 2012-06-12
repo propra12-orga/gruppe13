@@ -1,3 +1,7 @@
+/**Bomberman, Bomberman, wer ist Bomberman!?
+ * @author Gruppe13
+ * @version 0.6
+*/
 package Bomberman;
 
 public class Start {
