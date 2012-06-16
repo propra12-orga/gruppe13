@@ -1,7 +1,7 @@
 /**Bomberman, Bomberman, wer ist Bomberman!?
  * @author Gruppe13
  * @version 0.6
-*/
+ */
 package Bomberman;
 
 public class Start {
@@ -10,5 +10,6 @@ public class Start {
 
 	public static void main(String[] args) {
 		M = new JMenue("Bomberman-Menue");
+		Meldung test = new Meldung(0);
 	}
 }

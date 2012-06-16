@@ -28,8 +28,10 @@ public class Meldung {
 
 		ImageIcon[] bild = new ImageIcon[2];
 
-		bild[0] = new ImageIcon("/images/Niederlage1P.jpg");
-		bild[1] = new ImageIcon("/images/Sieg1P.jpg");
+		bild[0] = new ImageIcon(this.getClass().getResource(
+				"/images/Niederlage1P.jpg"));
+		bild[1] = new ImageIcon(this.getClass().getResource(
+				"/images/Sieg1P.jpg"));
 
 		show(bild[n]);
 
@@ -41,17 +43,17 @@ public class Meldung {
 		JLabel l1 = new JLabel(img);
 		JPanel pan = new JPanel();
 		pan.add(l1);
-		// pan.setBounds(30, 30, 110, 110);
-		JPanel jContentPane = new JPanel();
-		jContentPane.add(pan);
-		anzeige.add(l1);
 
-		anzeige.setSize(800, 600);
+		anzeige.add(pan);
+		anzeige.pack();
+		anzeige.setResizable(false);
+		anzeige.setLocationRelativeTo(null);
+		anzeige.pack();
 		anzeige.setVisible(true);
 
 		try {
 			Thread.currentThread();
-			Thread.sleep(1500);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
