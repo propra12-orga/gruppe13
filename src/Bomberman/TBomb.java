@@ -22,36 +22,42 @@ public class TBomb extends Thread {
 	}
 
 	public void kill() {
+		Meldung see1 = new Meldung(0);
 		if (JMenue.bm1.getxPosition() == xpos[0]
 				&& JMenue.bm1.getyPosition() == ypos[0]) {
-			end("Suicide Noob 1P");
+			see1.start();
+			end("Suicide Noob1");
 		} else {
 			for (int i = 0; i <= radius; i++) {
 				if (i <= r) {
 					if (JMenue.bm1.getxPosition() == xpos[0] + i
 							&& JMenue.bm1.getyPosition() == ypos[0]) {
-						end("Suicide Noob 1P");
+						see1.start();
+						end("Suicide Noob1");
 					}
-
 				}
+
 				if (i <= l) {
 					if (JMenue.bm1.getxPosition() == xpos[0] - i
 							&& JMenue.bm1.getyPosition() == ypos[0]) {
-						end("Suicide Noob 1P");
+						see1.start();
+						end("Suicide Noob1");
 					}
 
 				}
 				if (i <= u) {
 					if (JMenue.bm1.getxPosition() == xpos[0]
 							&& JMenue.bm1.getyPosition() == ypos[0] + i) {
-						end("Suicide Noob 1P");
+						see1.start();
+						end("Suicide Noob1");
 					}
 
 				}
 				if (i <= o) {
 					if (JMenue.bm1.getxPosition() == xpos[0]
 							&& JMenue.bm1.getyPosition() == ypos[0] - i) {
-						end("Suicide Noob 1P");
+						see1.start();
+						end("Suicide Noob1");
 					}
 
 				}
@@ -180,7 +186,7 @@ public class TBomb extends Thread {
 					/**
 					 * Explosion stoppen
 					 */
-										checkr = false;
+					checkr = false;
 
 				}
 				/**
