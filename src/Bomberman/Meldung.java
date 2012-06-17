@@ -5,7 +5,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//Zeigt das richtige Bild bei Sieg oder Niederlage an.
+/**
+ * Zeigt das richtige Bild bei Sieg oder Niederlage an.
+ * @author Janka
+ *
+ */
 public class Meldung {
 
 	private int n;
@@ -33,8 +37,12 @@ public class Meldung {
 	}
 
 	private static void show(ImageIcon img) {
-		// zeichnet das Bild, zeigt es für ein paar Sekunden und macht es dann
-		// unsichtbar.
+		
+		/**
+		 *  Zeichnet das Bild, zeigt es fuer ein paar Sekunden und macht es dann
+		 *  unsichtbar.
+		 */
+		// 
 		JFrame anzeige = new JFrame();
 
 		JLabel l1 = new JLabel(img);
