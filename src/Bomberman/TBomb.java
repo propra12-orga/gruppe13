@@ -22,42 +22,36 @@ public class TBomb extends Thread {
 	}
 
 	public void kill() {
-		Meldung see1 = new Meldung(0);
 		if (JMenue.bm1.getxPosition() == xpos[0]
 				&& JMenue.bm1.getyPosition() == ypos[0]) {
-			see1.start();
-			end("Suicide Noob1");
+			end(0);
 		} else {
 			for (int i = 0; i <= radius; i++) {
 				if (i <= r) {
 					if (JMenue.bm1.getxPosition() == xpos[0] + i
 							&& JMenue.bm1.getyPosition() == ypos[0]) {
-						see1.start();
-						end("Suicide Noob1");
+						end(0);
 					}
 				}
 
 				if (i <= l) {
 					if (JMenue.bm1.getxPosition() == xpos[0] - i
 							&& JMenue.bm1.getyPosition() == ypos[0]) {
-						see1.start();
-						end("Suicide Noob1");
+						end(0);
 					}
 
 				}
 				if (i <= u) {
 					if (JMenue.bm1.getxPosition() == xpos[0]
 							&& JMenue.bm1.getyPosition() == ypos[0] + i) {
-						see1.start();
-						end("Suicide Noob1");
+						end(0);
 					}
 
 				}
 				if (i <= o) {
 					if (JMenue.bm1.getxPosition() == xpos[0]
 							&& JMenue.bm1.getyPosition() == ypos[0] - i) {
-						see1.start();
-						end("Suicide Noob1");
+						end(0);
 					}
 
 				}
@@ -66,66 +60,67 @@ public class TBomb extends Thread {
 		if (JFeld.multi == true) {
 			if (JMenue.bm2.getxPosition() == xpos[1]
 					&& JMenue.bm2.getyPosition() == ypos[1]) {
-				end("Suicide Noob 2P");
+				end(0);// "Suicide Noob 2P"
 			} else {
 				for (int i = 0; i <= radius; i++) {
 					if (i <= r) {
 						if (JMenue.bm2.getxPosition() == xpos[1] + i
 								&& JMenue.bm2.getyPosition() == ypos[1]) {
-							end("Suicide Noob 2P");
+							end(0);// "Suicide Noob 2P"
 						}
 						if (JMenue.bm1.getxPosition() == xpos[1] + i
 								&& JMenue.bm1.getyPosition() == ypos[1]) {
-							end("2P Pwnd 1P");
+							end(2);
 						}
 						if (JMenue.bm2.getxPosition() == xpos[0] + i
 								&& JMenue.bm2.getyPosition() == ypos[0]) {
-							end("1P Pwnd 2P");
+							end(2);// PLAYER 1 GEWINNT! PLATZhalter
 						}
 
 					}
 					if (i <= l) {
 						if (JMenue.bm2.getxPosition() == xpos[1] - i
 								&& JMenue.bm2.getyPosition() == ypos[1]) {
-							end("Suicide Noob 2P");
+							end(0);// "Suicide Noob 2P"
 						}
 						if (JMenue.bm1.getxPosition() == xpos[1] - i
 								&& JMenue.bm1.getyPosition() == ypos[1]) {
-							end("2P Pwnd 1P");
+							end(2);
 						}
 						if (JMenue.bm2.getxPosition() == xpos[0] - i
 								&& JMenue.bm2.getyPosition() == ypos[0]) {
-							end("1P Pwnd 2P");
+							end(0);// PLAYER 1 GEWINNT! PLATZhalter
 						}
 
 					}
 					if (i <= u) {
 						if (JMenue.bm2.getxPosition() == xpos[1]
 								&& JMenue.bm2.getyPosition() == ypos[1] + i) {
-							end("Suicide Noob 2P");
+							end(0);// "Suicide Noob 2P"
 						}
 						if (JMenue.bm1.getxPosition() == xpos[1]
 								&& JMenue.bm1.getyPosition() == ypos[1] + i) {
-							end("2P Pwnd 1P");
+							end(2);
 						}
 						if (JMenue.bm2.getxPosition() == xpos[0]
 								&& JMenue.bm2.getyPosition() == ypos[0] + i) {
-							end("1P Pwnd 2P");
+							end(0);// PLAYER 1 GEWINNT! PLATZhalter
 						}
 
 					}
 					if (i <= o) {
 						if (JMenue.bm2.getxPosition() == xpos[1]
 								&& JMenue.bm2.getyPosition() == ypos[1] - i) {
-							end("Suicide Noob 2P");
+							// end("Suicide Noob 2P");
+							end(0);
 						}
 						if (JMenue.bm1.getxPosition() == xpos[1]
 								&& JMenue.bm1.getyPosition() == ypos[1] - i) {
-							end("2P Pwnd 1P");
+							end(2);
 						}
 						if (JMenue.bm2.getxPosition() == xpos[0]
 								&& JMenue.bm2.getyPosition() == ypos[0] - i) {
-							end("1P Pwnd 2P");
+							end(0);// PLAYER 1 GEWINNT! PLATZhalter
 						}
 
 					}
@@ -134,11 +129,12 @@ public class TBomb extends Thread {
 		}
 	}
 
-	public void end(String s) {
+	public void end(int s) {
 		JMenue.frame.dispose();
 		Start.M.setVisible(true);
 		JFeld.exit = false;
-		System.out.println(s);
+		Meldung meld = new Meldung(s);
+		meld.start();
 	}
 
 	public void run() {

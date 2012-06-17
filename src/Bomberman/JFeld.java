@@ -16,8 +16,10 @@ public class JFeld extends JPanel {
 	private int mapHeight;
 	private int tileWidth;
 	private int tileHeight;
-	private String level; /** String fuer Levelauswahl */
-	public static boolean multi;/** true = multiplayer (2 Player) , false = Singleplayer */
+	private String level;
+	/** String fuer Levelauswahl */
+	public static boolean multi;
+	/** true = multiplayer (2 Player) , false = Singleplayer */
 	private Image[] tileImage;
 	private FieldEntry[][] map;
 	/**
@@ -80,6 +82,7 @@ public class JFeld extends JPanel {
 		}
 
 	}
+
 	/**
 	 * Kartenerstellung (Random und Multiplayer)
 	 */
@@ -161,6 +164,7 @@ public class JFeld extends JPanel {
 		}
 
 	}
+
 	/**
 	 * Ganzzahliger Zufallsgenerator
 	 */
