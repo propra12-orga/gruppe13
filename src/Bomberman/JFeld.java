@@ -135,9 +135,6 @@ public class JFeld extends JPanel {
 
 				}
 			}
-			if (this.level == "test1") {
-				exit = true;
-			}
 		}
 	}
 

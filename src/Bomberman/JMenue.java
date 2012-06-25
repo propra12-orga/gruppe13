@@ -116,14 +116,19 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			String nr = null;
 			int zahl = 0;
-			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > 35) {
+			boolean check = true;
+			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > 35
+					|| !check) {
+				check = true;
 				nr = JOptionPane
-						.showInputDialog("Wählen Sie ein Level XX aus. (01-35)\nTipp: Wähle -XX für eine zufällige Verteilung der zerstörbaren Blöcke.");
+						.showInputDialog("Wählen Sie ein Level X aus. (1-35)\nTipp: Wähle -X für eine zufällige Verteilung der zerstörbaren Blöcke.");
 				try {
 					zahl = Integer.parseInt(nr);
-					if (Math.abs(zahl) < 1 || Math.abs(zahl) > 35) {
+
+					if (nr.substring(0, 1).equals("0")) {
 						JOptionPane.showMessageDialog(null,
 								"Kein gültiges Level.");
+						check = false;
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Kein gültiges Level.");
