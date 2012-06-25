@@ -4,24 +4,22 @@ import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class JMenue extends JFrame implements ActionListener {
 
-	/**Spielfeldgroesse
+	/**
+	 * Spielfeldgroesse
 	 * 
 	 */
 
 	public static int mapWidth = 19;
 	public static int mapHeight = 19;
-	/**Kachelgroesse
+	/**
+	 * Kachelgroesse
 	 * 
 	 */
 	public static final int tileWidth = 32;
@@ -31,7 +29,6 @@ public class JMenue extends JFrame implements ActionListener {
 	public static JJFrame frame;
 	static Figur bm1, bm2;
 
-	public static JFrame choice = new JLevelauswahl();
 	/**
 	 * Zeichnet das Feld immer wieder neu
 	 */
@@ -109,7 +106,7 @@ public class JMenue extends JFrame implements ActionListener {
 
 		}
 		/**
-		 * 2 Player Spiel starten 
+		 * 2 Player Spiel starten
 		 */
 		if (arg0.getActionCommand().equals("go2")) {
 
@@ -131,38 +128,31 @@ public class JMenue extends JFrame implements ActionListener {
 			 * Spielfeld auslesen
 			 */
 			setVisible(false);
-			/**
-			 * Zeigt die Levelauswahl an
-			 */
-			choice.setVisible(true);
-			/** Listener der auf Auswahl reagiert
-			 * Bug: Fehler beim Beenden, da durch setSelectedIndex(-1)
-			 * das Item "null" ausgewählt wird. Kann von Mapreader natuerlich
-			 * nicht erkannt werden. -> Muss beim Beenden ins Menue und
-			 * den Listener entfernen! */
-			JLevelauswahl.levellist.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent e) {
-					JComboBox selectedChoice = (JComboBox) e.getSource();
-					String level = (String) selectedChoice.getSelectedItem();
-					Mapreader create = new Mapreader(level);
-					feld = new JFeld(create.getWidth(), create.getHeight(),
-							tileWidth, tileHeight, level, false);
-					frame = new JJFrame(mapWidth, mapHeight, tileWidth,
-							tileHeight, feld);
-					t.start();
-					frame.setTitle("Bomberman - " + level);
-					choice.dispose();
-					frame.addWindowListener(new WindowAdapter() {
-						public void windowClosing(WindowEvent e) {
-							JLevelauswahl.levellist.setSelectedIndex(-1);
-						}
-					});
-					bm1 = new Figur(1, 1);
-					new Control(frame, bm1, feld, 0);
+			String nr = null;
+			int zahl = 0;
+			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > 35) {
+				nr = JOptionPane
+						.showInputDialog("Wählen Sie ein Level XX aus. (01-35)\nTipp: Wähle -XX für eine zufällige Verteilung der zerstörbaren Blöcke.");
+				try {
+					zahl = Integer.parseInt(nr);
+					if (Math.abs(zahl) < 1 || Math.abs(zahl) > 35) {
+						JOptionPane.showMessageDialog(null,
+								"Kein gültiges Level.");
+					}
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Kein gültiges Level.");
 				}
-			});
 
-			setVisible(false);
+			}
+			Mapreader create = new Mapreader("level" + nr);
+			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
+					tileHeight, "level" + nr, false);
+			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+					feld);
+			t.start();
+			frame.setTitle("Bomberman - " + "Level " + nr);
+			bm1 = new Figur(1, 1);
+			new Control(frame, bm1, feld, 0);
 
 		}
 

@@ -16,8 +16,10 @@ public class JFeld extends JPanel {
 	private int mapHeight;
 	private int tileWidth;
 	private int tileHeight;
-	private String level; /** String fuer Levelauswahl */
-	public static boolean multi;/** true = multiplayer (2 Player) , false = Singleplayer */
+	private String level;
+	/** String fuer Levelauswahl */
+	public static boolean multi;
+	/** true = multiplayer (2 Player) , false = Singleplayer */
 	private Image[] tileImage;
 	private FieldEntry[][] map;
 	/**
@@ -75,11 +77,12 @@ public class JFeld extends JPanel {
 		/**
 		 * Kartenerstellung
 		 */
-		while (exit == false) {
-			this.generateMap();
-		}
-
+		/*
+		 * while (exit == false) { this.generateMap(); }
+		 */
+		this.generateMap();
 	}
+
 	/**
 	 * Kartenerstellung (Random und Multiplayer)
 	 */
@@ -134,7 +137,6 @@ public class JFeld extends JPanel {
 			 * Wenn nicht Zufall, dann Karte lesen:
 			 */
 		} else {
-
 			Mapreader create = new Mapreader(this.level);
 			for (int i = 0; i < create.getWidth(); i++) {
 				for (int j = 0; j < create.getHeight(); j++) {
@@ -161,6 +163,7 @@ public class JFeld extends JPanel {
 		}
 
 	}
+
 	/**
 	 * Ganzzahliger Zufallsgenerator
 	 */

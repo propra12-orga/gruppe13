@@ -10,6 +10,5 @@ public class Start {
 
 	public static void main(String[] args) {
 		M = new JMenue("Bomberman-Menue");
-		Meldung test = new Meldung(0);
 	}
 }
