@@ -116,12 +116,16 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			String nr = null;
 			int zahl = 0;
+			// Zahl der Level
+			int max = 3;
 			boolean check = true;
-			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > 35
+			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > max
 					|| !check) {
 				check = true;
 				nr = JOptionPane
-						.showInputDialog("Waehlen Sie ein Level X aus. (1-35)\nTipp: Waehle -X fuer eine zufaellige Verteilung der zerstoerbaren Bloecke.");
+						.showInputDialog("Waehlen Sie ein Level X aus. (1-"
+								+ max
+								+ ")\nTipp: Waehle -X fuer eine zufaellige Verteilung der zerstoerbaren Bloecke.");
 				try {
 					zahl = Integer.parseInt(nr);
 
@@ -134,35 +138,19 @@ public class JMenue extends JFrame implements ActionListener {
 					JOptionPane
 							.showMessageDialog(null, "Kein gueltiges Level.");
 				}
-
-			}
-			if (zahl == 4) {
-				// Spielfeld erstellen
-				feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
-						"random", false);
-				// Frame definieren
-				frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-						feld, "Bomberman - Random (1P)");
-				bm1 = new Figur(1, 1);
-				// Steuerung hinzuf�gen
-				new Control(frame, bm1, feld, 0);
-				// Menue ausblenden beim Spielstart
-				setVisible(false);
-				// Timer Start Neuzeichnen
-				t.start();
-			} else {
-				Mapreader create = new Mapreader("level" + nr);
-				feld = new JFeld(create.getWidth(), create.getHeight(),
-						tileWidth, tileHeight, "level" + nr, false);
-				frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-						feld, nr);
-				t.start();
-				frame.setTitle("Bomberman - " + "Level " + nr);
-				bm1 = new Figur(1, 1);
-				new Control(frame, bm1, feld, 0);
 			}
 
+			Mapreader create = new Mapreader("level" + nr);
+			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
+					tileHeight, "level" + nr, false);
+			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+					feld, nr);
+			t.start();
+			frame.setTitle("Bomberman - " + "Level " + nr);
+			bm1 = new Figur(1, 1);
+			new Control(frame, bm1, feld, 0);
 		}
 
 	}
+
 }
