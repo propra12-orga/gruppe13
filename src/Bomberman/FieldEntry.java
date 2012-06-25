@@ -4,6 +4,7 @@ public class FieldEntry {
 
 	private int item, image;
 	private boolean walkable;
+
 	/**
 	 * Get/Set Item (erstmal uninterresant)
 	 */
@@ -29,6 +30,7 @@ public class FieldEntry {
 		}
 
 	}
+
 	/**
 	 * Get/Set Nummer des Bildes
 	 */
@@ -39,6 +41,7 @@ public class FieldEntry {
 	public int getImage() {
 		return image;
 	}
+
 	/**
 	 * Ganzzahliger Zufallsgenerator
 	 */

@@ -121,29 +121,46 @@ public class JMenue extends JFrame implements ActionListener {
 					|| !check) {
 				check = true;
 				nr = JOptionPane
-						.showInputDialog("Wählen Sie ein Level X aus. (1-35)\nTipp: Wähle -X für eine zufällige Verteilung der zerstörbaren Blöcke.");
+						.showInputDialog("Waehlen Sie ein Level X aus. (1-35)\nTipp: Waehle -X fuer eine zufaellige Verteilung der zerstoerbaren Bloecke.");
 				try {
 					zahl = Integer.parseInt(nr);
 
 					if (nr.substring(0, 1).equals("0")) {
 						JOptionPane.showMessageDialog(null,
-								"Kein gültiges Level.");
+								"Kein gueltiges Level.");
 						check = false;
 					}
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "Kein gültiges Level.");
+					JOptionPane
+							.showMessageDialog(null, "Kein gueltiges Level.");
 				}
 
 			}
-			Mapreader create = new Mapreader("level" + nr);
-			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
-					tileHeight, "level" + nr, false);
-			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld, nr);
-			t.start();
-			frame.setTitle("Bomberman - " + "Level " + nr);
-			bm1 = new Figur(1, 1);
-			new Control(frame, bm1, feld, 0);
+			if (zahl == 4) {
+				// Spielfeld erstellen
+				feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
+						"random", false);
+				// Frame definieren
+				frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+						feld, "Bomberman - Random (1P)");
+				bm1 = new Figur(1, 1);
+				// Steuerung hinzuf�gen
+				new Control(frame, bm1, feld, 0);
+				// Menue ausblenden beim Spielstart
+				setVisible(false);
+				// Timer Start Neuzeichnen
+				t.start();
+			} else {
+				Mapreader create = new Mapreader("level" + nr);
+				feld = new JFeld(create.getWidth(), create.getHeight(),
+						tileWidth, tileHeight, "level" + nr, false);
+				frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+						feld, nr);
+				t.start();
+				frame.setTitle("Bomberman - " + "Level " + nr);
+				bm1 = new Figur(1, 1);
+				new Control(frame, bm1, feld, 0);
+			}
 
 		}
 

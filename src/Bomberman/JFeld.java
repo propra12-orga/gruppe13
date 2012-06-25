@@ -123,8 +123,8 @@ public class JFeld extends JPanel {
 					map[mapHeight - 2][mapWidth - 2] = entry[1];
 					map[mapHeight - 3][mapWidth - 2] = entry[1];
 					map[mapHeight - 2][mapWidth - 3] = entry[1];
-					map[mapHeight - 4][mapWidth - 2] = entry[2];
-					map[mapHeight - 2][mapWidth - 4] = entry[2];
+					map[mapHeight - 4][mapWidth - 2] = new FieldEntry(2, false);
+					map[mapHeight - 2][mapWidth - 4] = new FieldEntry(2, false);
 				}
 			}
 			// Wenn nicht Zufall, dann Karte lesen:
