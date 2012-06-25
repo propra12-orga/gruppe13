@@ -1,8 +1,8 @@
 package Bomberman;
 
 public class Figur {
-	/**
-	 * Neues Object. Grundlage fuer Figuren. Mutterklasse von Bomberman und
+	/*
+	 * neues Object. Grundlage fuer Figuren Mutterklasse von Bomberman und
 	 * Monstern.
 	 */
 
@@ -35,22 +35,16 @@ public class Figur {
 	}
 
 	public void rechts(FieldEntry[][] map) {
-		/**
-		 * Ueberprueft ob Feld frei ist
-		 */
+		// Ueberprueft ob Feld frei ist
 		if (map[getxPosition() + 1][getyPosition()].getWalk() == true) {
 			this.setxPosition(getxPosition() + 1);
-			/**
-			 * Check Exit
-			 */
+			// Check Exit
 			if (map[getxPosition()][getyPosition()].getImage() == 3) {
 				JMenue.frame.dispose();
 				Start.M.setVisible(true);
 				JFeld.exit = false;
 			}
-			/**
-			 * Check Flamme
-			 */
+			// Check Flamme
 			if (map[getxPosition()][getyPosition()].getImage() == 5) {
 				JMenue.frame.dispose();
 				Start.M.setVisible(true);

@@ -15,15 +15,13 @@ import javax.swing.JFrame;
 
 public class JMenue extends JFrame implements ActionListener {
 
-	/**Spielfeldgroesse
+	/**
 	 * 
 	 */
-
+	// Spielfeldgroesse:
 	public static int mapWidth = 19;
 	public static int mapHeight = 19;
-	/**Kachelgroesse
-	 * 
-	 */
+	// Kachelgroesse (Standard: 32x32 Pixel):
 	public static final int tileWidth = 32;
 	public static final int tileHeight = 32;
 
@@ -31,10 +29,7 @@ public class JMenue extends JFrame implements ActionListener {
 	public static JJFrame frame;
 	static Figur bm1, bm2;
 
-	public static JFrame choice = new JLevelauswahl();
-	/**
-	 * Zeichnet das Feld immer wieder neu
-	 */
+	// Zeichnet das Feld immer wieder neu
 	static javax.swing.Timer t = new javax.swing.Timer(1, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			frame.repaint();
@@ -72,52 +67,36 @@ public class JMenue extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		/**
-		 * Spiel beenden
-		 */
+
+		// Spiel beenden
 		if (arg0.getActionCommand().equals("exit")) {
 			System.exit(0);
 		}
-		/**
-		 * Spiel starten 1P
-		 */
+		// Spiel starten 1P
 		if (arg0.getActionCommand().equals("go1")) {
-			/**
-			 * Spielfeld erstellen
-			 */
+
+			// Spielfeld erstellen
 			feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
 					"random", false);
-			/**
-			 * Frame definieren
-			 */
+			// Frame definieren
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld);
-			frame.setTitle("Bomberman - Random (1P)");
+					feld, "Bomberman - Random (1P)");
 			bm1 = new Figur(1, 1);
-			/**
-			 * Steuerung hinzufuegen
-			 */
+			// Steuerung hinzuf�gen
 			new Control(frame, bm1, feld, 0);
-			/**
-			 * Menue ausblenden beim Spielstart
-			 */
+			// Menue ausblenden beim Spielstart
 			setVisible(false);
-			/**
-			 * Timer Start Neuzeichnen
-			 */
+			// Timer Start Neuzeichnen
 			t.start();
 
 		}
-		/**
-		 * 2 Player Spiel starten 
-		 */
+		// Spiel starten 2P
 		if (arg0.getActionCommand().equals("go2")) {
 
 			feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
 					"random", true);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld);
-			frame.setTitle("Bomberman - Random (2P)");
+					feld, "Bomberman - Random (2P)");
 			bm1 = new Figur(1, 1);
 			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
 			new Control(frame, bm1, feld, 0);
@@ -127,19 +106,17 @@ public class JMenue extends JFrame implements ActionListener {
 
 		}
 		if (arg0.getActionCommand().equals("go3")) {
-			/**
-			 * Spielfeld auslesen
-			 */
+
+			final JFrame choice = new JLevelauswahl();
+			// Spielfeld auslesen
 			setVisible(false);
-			/**
-			 * Zeigt die Levelauswahl an
-			 */
+			// Zeigt Auswahl an
 			choice.setVisible(true);
-			/** Listener der auf Auswahl reagiert
-			 * Bug: Fehler beim Beenden, da durch setSelectedIndex(-1)
-			 * das Item "null" ausgewählt wird. Kann von Mapreader natuerlich
-			 * nicht erkannt werden. -> Muss beim Beenden ins Menue und
-			 * den Listener entfernen! */
+			// Listener der auf Auswahl reagiert
+			// Bug: Fehler beim Beenden, da durch setSelectedIndex(-1)
+			// das Item "null" ausgewählt wird. Kann von Mapreader natuerlich
+			// nicht erkannt werden. -> Muss beim Beenden ins Menue und
+			// den Listener entfernen!
 			JLevelauswahl.levellist.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					JComboBox selectedChoice = (JComboBox) e.getSource();
@@ -148,9 +125,8 @@ public class JMenue extends JFrame implements ActionListener {
 					feld = new JFeld(create.getWidth(), create.getHeight(),
 							tileWidth, tileHeight, level, false);
 					frame = new JJFrame(mapWidth, mapHeight, tileWidth,
-							tileHeight, feld);
+							tileHeight, feld, "Bomberman - " + level);
 					t.start();
-					frame.setTitle("Bomberman - " + level);
 					choice.dispose();
 					frame.addWindowListener(new WindowAdapter() {
 						public void windowClosing(WindowEvent e) {
