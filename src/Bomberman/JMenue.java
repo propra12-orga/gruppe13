@@ -15,13 +15,14 @@ public class JMenue extends JFrame implements ActionListener {
 	 * Spielfeldgroesse
 	 * 
 	 */
-
+	// Spielfeldgroesse:
 	public static int mapWidth = 19;
 	public static int mapHeight = 19;
 	/**
 	 * Kachelgroesse
 	 * 
 	 */
+
 	public static final int tileWidth = 32;
 	public static final int tileHeight = 32;
 
@@ -69,39 +70,26 @@ public class JMenue extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		/**
-		 * Spiel beenden
-		 */
+
+		// Spiel beenden
 		if (arg0.getActionCommand().equals("exit")) {
 			System.exit(0);
 		}
-		/**
-		 * Spiel starten 1P
-		 */
+		// Spiel starten 1P
 		if (arg0.getActionCommand().equals("go1")) {
-			/**
-			 * Spielfeld erstellen
-			 */
+
+			// Spielfeld erstellen
 			feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
 					"random", false);
-			/**
-			 * Frame definieren
-			 */
+			// Frame definieren
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld);
-			frame.setTitle("Bomberman - Random (1P)");
+					feld, "Bomberman - Random (1P)");
 			bm1 = new Figur(1, 1);
-			/**
-			 * Steuerung hinzufuegen
-			 */
+			// Steuerung hinzuf�gen
 			new Control(frame, bm1, feld, 0);
-			/**
-			 * Menue ausblenden beim Spielstart
-			 */
+			// Menue ausblenden beim Spielstart
 			setVisible(false);
-			/**
-			 * Timer Start Neuzeichnen
-			 */
+			// Timer Start Neuzeichnen
 			t.start();
 
 		}
@@ -113,8 +101,7 @@ public class JMenue extends JFrame implements ActionListener {
 			feld = new JFeld(mapWidth, mapHeight, tileWidth, tileHeight,
 					"random", true);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld);
-			frame.setTitle("Bomberman - Random (2P)");
+					feld, "Bomberman - Random (2P)");
 			bm1 = new Figur(1, 1);
 			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
 			new Control(frame, bm1, feld, 0);
@@ -124,9 +111,8 @@ public class JMenue extends JFrame implements ActionListener {
 
 		}
 		if (arg0.getActionCommand().equals("go3")) {
-			/**
-			 * Spielfeld auslesen
-			 */
+
+			// Spielfeld auslesen
 			setVisible(false);
 			String nr = null;
 			int zahl = 0;
@@ -148,7 +134,7 @@ public class JMenue extends JFrame implements ActionListener {
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, "level" + nr, false);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld);
+					feld, nr);
 			t.start();
 			frame.setTitle("Bomberman - " + "Level " + nr);
 			bm1 = new Figur(1, 1);

@@ -20,11 +20,10 @@ public class JFeld extends JPanel {
 	/** String fuer Levelauswahl */
 	public static boolean multi;
 	/** true = multiplayer (2 Player) , false = Singleplayer */
+
 	private Image[] tileImage;
 	private FieldEntry[][] map;
-	/**
-	 * Felder initialisieren
-	 */
+	// Felder initialisieren
 	static FieldEntry[] entry = { new FieldEntry(0, false), // hard
 			new FieldEntry(1, true), // tafel
 			new FieldEntry(2, false), // x
@@ -37,25 +36,17 @@ public class JFeld extends JPanel {
 
 	public JFeld(int mapWidth, int mapHeight, int tileWidth, int tileHeight,
 			String level, boolean multi) {
-		/**
-		 * Erstellung ObjectArray
-		 */
+		// Erstellung ObjectArray
 		this.map = new FieldEntry[mapWidth][mapHeight];
 		JFeld.multi = multi;
 		this.level = level;
-		/**
-		 * Spielfeldgroesse
-		 */
+		// Spielfeldgroesse:
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
-		/**
-		 * Kachelgroesse(Standard: 32x32 Pixel)
-		 */
+		// Kachelgroesse(Standard: 32x32 Pixel):
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;
-		/**
-		 * Die verschiedenen Kachelarten
-		 */
+		// Die verschiedenen Kachelarten:
 		this.tileImage = new Image[6];
 
 		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
@@ -123,9 +114,7 @@ public class JFeld extends JPanel {
 					}
 				}
 				if (multi == true) {
-					/**
-					 * Startposition 2P
-					 */
+					// Startgebiet 2P
 					map[mapHeight - 2][mapWidth - 2] = entry[1];
 					map[mapHeight - 3][mapWidth - 2] = entry[1];
 					map[mapHeight - 2][mapWidth - 3] = entry[1];
@@ -133,15 +122,21 @@ public class JFeld extends JPanel {
 					map[mapHeight - 2][mapWidth - 4] = entry[2];
 				}
 			}
-			/**
-			 * Wenn nicht Zufall, dann Karte lesen:
-			 */
+			// Wenn nicht Zufall, dann Karte lesen:
 		} else {
 			Mapreader create = new Mapreader(this.level);
 			for (int i = 0; i < create.getWidth(); i++) {
 				for (int j = 0; j < create.getHeight(); j++) {
-					map[i][j] = entry[create.getEntry(i, j)];
+					if (create.getEntry(i, j) == 2) {
+						map[i][j] = new FieldEntry(2, false);
+					} else {
+						map[i][j] = entry[create.getEntry(i, j)];
+					}
+
 				}
+			}
+			if (this.level == "test1") {
+				exit = true;
 			}
 		}
 	}
@@ -167,6 +162,7 @@ public class JFeld extends JPanel {
 	/**
 	 * Ganzzahliger Zufallsgenerator
 	 */
+
 	public int Random(int l, int h) {
 		h++;
 		return (int) (Math.random() * (h - l) + l);

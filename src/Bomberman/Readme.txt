@@ -1,8 +1,7 @@
 TODO:
-Ändere noch mehr Kommentare ins Javadoc Format (Jarno)
-Readme benutzen
-Bin jetzt essen :D
-Ah ich hab die alten (SF) Dateien gepusht, weiß jemand wie man die wieder löscht?
+++Ändere noch mehr Kommentare ins Javadoc Format (Jarno)
+  => Gemacht, auf Knopfdruck bekommt man ganz viele Dateien.
 
+--Readme benutzen
 
-hab sf wieder gel�scht , und werde mich iwann an die items setzen wenn ich zeit hab 
+--hab sf wieder geloescht, und werde mich iwann an die items setzen wenn ich zeit hab 
