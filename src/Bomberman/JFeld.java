@@ -33,6 +33,7 @@ public class JFeld extends JPanel {
 	};
 	public static Image P1, P2;
 	public static boolean exit = false;
+	public static boolean exit_reader = false;
 
 	public JFeld(int mapWidth, int mapHeight, int tileWidth, int tileHeight,
 			String level, boolean multi) {
@@ -68,10 +69,14 @@ public class JFeld extends JPanel {
 		/**
 		 * Kartenerstellung
 		 */
-		/*
-		 * while (exit == false) { this.generateMap(); }
-		 */
-		this.generateMap();
+
+		while (exit == false) {
+			this.generateMap();
+			if (exit_reader == true) {
+				exit = true;
+			}
+		}
+
 	}
 
 	/**
@@ -134,9 +139,6 @@ public class JFeld extends JPanel {
 					}
 
 				}
-			}
-			if (this.level == "test1") {
-				exit = true;
 			}
 		}
 	}

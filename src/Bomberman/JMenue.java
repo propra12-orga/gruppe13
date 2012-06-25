@@ -118,7 +118,7 @@ public class JMenue extends JFrame implements ActionListener {
 			int zahl = 0;
 			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > 35) {
 				nr = JOptionPane
-						.showInputDialog("Wählen Sie ein Level XX aus. (01-35)\nTipp: Wähle -XX für eine zufällige Verteilung der zerstörbaren Blöcke.");
+						.showInputDialog("Waehlen Sie ein Level XX aus. (01-35)\nTipp: Waehle -XX fuer eine zufaellige Verteilung der zerstoerbaren Bloecke.");
 				try {
 					zahl = Integer.parseInt(nr);
 					if (Math.abs(zahl) < 1 || Math.abs(zahl) > 35) {

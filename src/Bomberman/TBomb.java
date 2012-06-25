@@ -133,7 +133,7 @@ public class TBomb extends Thread {
 		JMenue.frame.dispose();
 		Start.M.setVisible(true);
 		JFeld.exit = false;
-		Meldung meld = new Meldung(s);
+		TMeldung meld = new TMeldung(s);
 		meld.start();
 	}
 
