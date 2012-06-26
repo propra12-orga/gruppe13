@@ -81,25 +81,21 @@ public class Control {
 					case 37:
 						// links
 						bm.links(feld.getmap());
-						f.repaint();
 						break;
 					case 38:
 						// oben
 						bm.oben(feld.getmap());
-						f.repaint();
 						break;
 					case 39:
 						// rechts
 						bm.rechts(feld.getmap());
-						f.repaint();
 						break;
 					case 40:
 						// unten
 						bm.unten(feld.getmap());
-						f.repaint();
 						break;
 					case 8:
-						// enter
+						// Backspace
 						if (counter[1] < maxbomb2) {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 1).start();
