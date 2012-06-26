@@ -84,8 +84,8 @@ public class JFeld extends JPanel {
 	public void generateMap() {
 		Mapreader create = new Mapreader(this.level);
 		if (!create.random()) {
-			for (int i = 0; i < mapHeight; i++) {
-				for (int j = 0; j < mapWidth; j++) {
+			for (int i = 0; i < mapWidth; i++) {
+				for (int j = 0; j < mapHeight; j++) {
 					if (create.getEntry(i, j) == 2) {
 						map[i][j] = new FieldEntry(2, false);
 					} else {
@@ -95,8 +95,8 @@ public class JFeld extends JPanel {
 				}
 			}
 		} else {
-			for (int i = 0; i < mapHeight; i++) {
-				for (int j = 0; j < mapWidth; j++) {
+			for (int i = 0; i < mapWidth; i++) {
+				for (int j = 0; j < mapHeight; j++) {
 					if (create.getEntry(i, j) == 0) {
 						map[i][j] = entry[0];
 					} else {

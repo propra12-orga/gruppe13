@@ -47,7 +47,7 @@ public class Mapreader {
 			int i = 0;
 			while ((zeile = file.readLine()) != null && k == 2) {
 				for (int j = 0; j < height; j++) {
-					this.entry[i][j] = Integer.parseInt(zeile.split(" ")[j]);
+					this.entry[j][i] = Integer.parseInt(zeile.split(" ")[j]);
 					if (Integer.parseInt(zeile.split(" ")[j]) == 3) {
 						JFeld.exit_reader = true;
 					}

@@ -24,7 +24,7 @@ public class JMenue extends JFrame implements ActionListener {
 	/**
 	 * Zahl der Level
 	 */
-	public static int max = 3;
+	public static int max = 6;
 
 	public static JFeld feld;
 	public static JJFrame frame;
