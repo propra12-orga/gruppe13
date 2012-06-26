@@ -66,49 +66,47 @@ public class JFeld extends JPanel {
 				.getImage();
 		JFeld.P2 = new ImageIcon(this.getClass().getResource("/images/pi.gif"))
 				.getImage();
+
 		/**
 		 * Kartenerstellung
 		 */
-
 		while (exit == false) {
 			this.generateMap();
 			if (exit_reader == true) {
 				exit = true;
 			}
 		}
-
 	}
 
 	/**
 	 * Kartenerstellung (Random und Multiplayer)
 	 */
 	public void generateMap() {
-		if (this.level.equals("random")) {
-
-			for (int i = 0; i < mapWidth; i++) {
-				map[0][i] = entry[0];
-				map[mapHeight - 1][i] = entry[0];
-			}
+		Mapreader create = new Mapreader(this.level);
+		if (!create.random()) {
 			for (int i = 0; i < mapHeight; i++) {
-				map[i][0] = entry[0];
-				map[i][mapWidth - 1] = entry[0];
-			}
+				for (int j = 0; j < mapWidth; j++) {
+					if (create.getEntry(i, j) == 2) {
+						map[i][j] = new FieldEntry(2, false);
+					} else {
+						map[i][j] = entry[create.getEntry(i, j)];
+					}
 
-			for (int i = 1; i < mapHeight - 1; i++) {
-				for (int j = 1; j < mapWidth - 1; j++) {
-					if ((i % 2 == 0) && (j % 2 == 0)) {
+				}
+			}
+		} else {
+			for (int i = 0; i < mapHeight; i++) {
+				for (int j = 0; j < mapWidth; j++) {
+					if (create.getEntry(i, j) == 0) {
 						map[i][j] = entry[0];
 					} else {
 						if (((i == 1) && (j == 1)) || ((i == 1) && (j == 2))
 								|| ((i == 2) && (j == 1))) {
 							map[i][j] = entry[1];
-
 						} else if (((i == 1) && (j == 3))
 								|| ((i == 3) && (j == 1))) {
 							map[i][j] = new FieldEntry(2, false);
-						}
-
-						else {
+						} else {
 							int r = this.Random(1, 2);
 							if (r == 1) {
 								map[i][j] = entry[1];
@@ -118,28 +116,21 @@ public class JFeld extends JPanel {
 						}
 					}
 				}
-				if (multi == true) {
-					// Startgebiet 2P
-					map[mapHeight - 2][mapWidth - 2] = entry[1];
-					map[mapHeight - 3][mapWidth - 2] = entry[1];
-					map[mapHeight - 2][mapWidth - 3] = entry[1];
-					map[mapHeight - 4][mapWidth - 2] = new FieldEntry(2, false);
-					map[mapHeight - 2][mapWidth - 4] = new FieldEntry(2, false);
-				}
 			}
-			// Wenn nicht Zufall, dann Karte lesen:
-		} else {
-			Mapreader create = new Mapreader(this.level);
-			for (int i = 0; i < create.getWidth(); i++) {
-				for (int j = 0; j < create.getHeight(); j++) {
-					if (create.getEntry(i, j) == 2) {
-						map[i][j] = new FieldEntry(2, false);
-					} else {
-						map[i][j] = entry[create.getEntry(i, j)];
-					}
-
-				}
-			}
+		}
+		if (multi == true) {
+			// Startegebiet 1P
+			map[1][1] = entry[1];
+			map[1][2] = entry[1];
+			map[2][1] = entry[1];
+			map[1][3] = new FieldEntry(2, false);
+			map[3][1] = new FieldEntry(2, false);
+			// Startgebiet 2P
+			map[mapHeight - 2][mapWidth - 2] = entry[1];
+			map[mapHeight - 3][mapWidth - 2] = entry[1];
+			map[mapHeight - 2][mapWidth - 3] = entry[1];
+			map[mapHeight - 4][mapWidth - 2] = new FieldEntry(2, false);
+			map[mapHeight - 2][mapWidth - 4] = new FieldEntry(2, false);
 		}
 	}
 

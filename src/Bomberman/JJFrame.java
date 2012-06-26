@@ -32,7 +32,11 @@ public class JJFrame extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		setTitle(title);
+		if (Integer.parseInt(title) < 0) {
+			setTitle("Level " + title.substring(1, title.length()) + " Random");
+		} else {
+			setTitle("Level " + title);
+		}
 
 	}
 

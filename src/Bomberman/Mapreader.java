@@ -23,9 +23,14 @@ public class Mapreader {
 	 * Feldeintraege
 	 */
 	private int[][] entry;
+	boolean random = false;
 
 	public Mapreader(String level) {
-		map = level;
+		if (Integer.parseInt(level) < 0) {
+			random = true;
+			level = level.substring(1, level.length());
+		}
+		map = "level" + level;
 		try {
 			BufferedReader file = new BufferedReader(new FileReader(mapdir
 					+ map + ".txt"));
@@ -52,6 +57,10 @@ public class Mapreader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public boolean random() {
+		return random;
 	}
 
 	public int getEntry(int i, int j) {
