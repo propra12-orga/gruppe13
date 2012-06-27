@@ -21,6 +21,10 @@ public class JJFrame extends JFrame {
 				Start.M.setVisible(true);
 				JMenue.t.stop();
 				JFeld.exit = false;
+				TBomb.radius[0] = 2;
+				TBomb.radius[1] = 2;
+				Control.maxbomb[0] = 1;
+				Control.maxbomb[1] = 1;
 			}
 		});
 		// Framesize

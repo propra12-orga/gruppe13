@@ -107,7 +107,7 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, false);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-			bm1 = new Figur(1, 1);
+			bm1 = new Figur(1, 1, 1);
 			new Control(frame, bm1, feld, 0);
 			t.start();
 		}
@@ -147,8 +147,8 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, true);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-			bm1 = new Figur(1, 1);
-			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
+			bm1 = new Figur(1, 1, 1);
+			bm2 = new Figur(mapHeight - 2, mapWidth - 2, 2);
 			new Control(frame, bm1, feld, 0);
 			new Control(frame, bm2, feld, 1);
 			t.start();

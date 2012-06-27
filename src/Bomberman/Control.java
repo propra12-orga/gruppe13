@@ -6,15 +6,10 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 public class Control {
-	public static int maxbomb1 = 2;
-	public static int maxbomb2 = 2;
-	public static int[] counter = new int[2];
+	public static int[] maxbomb = new int[] { 1, 1 };
+	public static int[] counter = new int[] { 0, 0 };
 
 	public Control(final JFrame f, final Figur bm, final JFeld feld, int nr) {
-		counter[0] = 0;
-		if (JFeld.multi == true) {
-			counter[1] = 0;
-		}
 
 		switch (nr) {
 		// Steuerung: 0=pfeiltasten ; 1=w a s d
@@ -48,7 +43,7 @@ public class Control {
 						break;
 					case 32:
 						// spacebar
-						if (counter[0] < maxbomb1) {
+						if (counter[0] < maxbomb[0]) {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 0).start();
 							counter[0]++;
@@ -98,7 +93,7 @@ public class Control {
 						break;
 					case 8:
 						// Backspace
-						if (counter[1] < maxbomb2) {
+						if (counter[1] < maxbomb[1]) {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 1).start();
 							counter[1]++;
