@@ -19,6 +19,12 @@ class Sounds extends Thread{
 
    		  AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file1);
              AudioFormat af = audioInputStream.getFormat();
+             if ((af.getEncoding() == AudioFormat.Encoding.ULAW)|| (af.getEncoding() == AudioFormat.Encoding.ALAW) )
+             {//encodierung da sonst nicht mehr als 30kb abspielen
+           	 AudioFormat tmp = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, af.getSampleRate(), af.getSampleSizeInBits()*2, af.getChannels(), af.getFrameSize()*2, af.getFrameRate(), true);
+             audioInputStream = AudioSystem.getAudioInputStream(tmp, audioInputStream);
+             af = tmp;	    
+             }
              SourceDataLine line =null;
              DataLine.Info info = new DataLine.Info(SourceDataLine.class, af);
              line = (SourceDataLine) AudioSystem.getLine(info);
