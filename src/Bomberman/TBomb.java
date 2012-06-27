@@ -140,6 +140,9 @@ public class TBomb extends Thread {
 	public void end(boolean d1, boolean d2, boolean s1, boolean s2) {
 		JMenue.frame.dispose();
 		Start.M.setVisible(true);
+		JMenue.stopper=true;//MenueSound wieder abspielen wenn tot/neustart etc
+		Thread lala = new Sounds();
+		lala.start();
 		JFeld.exit = false;
 
 		// Suicide 1P
