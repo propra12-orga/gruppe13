@@ -29,6 +29,9 @@ public class JMenue extends JFrame implements ActionListener {
 	public static JFeld feld;
 	public static JJFrame frame;
 	static Figur bm1, bm2;
+	public static Sounds sound = new Sounds();
+	public static boolean stopper = true;
+
 
 	/**
 	 * Zeichnet das Feld immer wieder neu
@@ -42,7 +45,7 @@ public class JMenue extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	public JMenue(String t) {
-
+		sound.start();
 		setTitle(t);
 		LayoutManager manager = new FlowLayout();
 		setLayout(manager);
@@ -75,6 +78,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go1")) {
 			// Spielfeld auslesen
 			setVisible(false);
+			stopper = false;//fuer Menuesound
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
@@ -92,6 +96,7 @@ public class JMenue extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
+						
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane
@@ -113,6 +118,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go2")) {
 			// Spielfeld auslesen
 			setVisible(false);
+			stopper = false;//fuer Menuesound
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
@@ -130,6 +136,7 @@ public class JMenue extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
+						
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane

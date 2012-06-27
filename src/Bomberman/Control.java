@@ -52,6 +52,8 @@ public class Control {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 0).start();
 							counter[0]++;
+							Thread d = new Sounds2();
+							d.start();
 						}
 						break;
 					default:
@@ -100,6 +102,8 @@ public class Control {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 1).start();
 							counter[1]++;
+							Thread d = new Sounds2();
+							d.start();
 						}
 						break;
 					default:
