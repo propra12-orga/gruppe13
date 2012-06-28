@@ -14,21 +14,21 @@ public class TestFigur {
 
 	@Test
 	public void tgetx1() {
-		Figur a = new Figur(1, 1);
+		Figur a = new Figur(1, 1, 1);
 		int b = a.getxPosition();
 		assertEquals(1, b);
 	}
 
 	@Test
 	public void tgetx2() {
-		Figur a = new Figur(0, 6);
+		Figur a = new Figur(0, 6, 1);
 		int b = a.getxPosition();
 		assertEquals(0, b);
 	}
 
 	@Test
 	public void tsetx1() {
-		Figur a = new Figur(1, 1);
+		Figur a = new Figur(1, 1, 1);
 		a.setxPosition(5);
 		int b = a.getxPosition();
 		assertEquals(5, b);
@@ -36,7 +36,7 @@ public class TestFigur {
 
 	@Test
 	public void tsetx2() {
-		Figur a = new Figur(0, 10);
+		Figur a = new Figur(0, 10, 1);
 		a.setxPosition(0);
 		int b = a.getxPosition();
 		assertEquals(0, b);
@@ -44,21 +44,21 @@ public class TestFigur {
 
 	@Test
 	public void tgety1() {
-		Figur a = new Figur(1, 1);
+		Figur a = new Figur(1, 1, 1);
 		int b = a.getxPosition();
 		assertEquals(1, b);
 	}
 
 	@Test
 	public void tgety2() {
-		Figur a = new Figur(0, 0);
+		Figur a = new Figur(0, 0, 1);
 		int b = a.getxPosition();
 		assertEquals(0, b);
 	}
 
 	@Test
 	public void tsety1() {
-		Figur a = new Figur(1, 1);
+		Figur a = new Figur(1, 1, 1);
 		a.setyPosition(5);
 		int b = a.getyPosition();
 		assertEquals(5, b);
@@ -66,7 +66,7 @@ public class TestFigur {
 
 	@Test
 	public void tsety2() {
-		Figur a = new Figur(0, 10);
+		Figur a = new Figur(0, 10, 1);
 		a.setyPosition(0);
 		int b = a.getyPosition();
 		assertEquals(0, b);

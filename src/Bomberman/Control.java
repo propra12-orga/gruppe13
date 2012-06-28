@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import multiplayer.MySockets;
 
 public class Control {
+<<<<<<< HEAD
 	// Klassenvariablen
 	public static int maxbomb1 = 2;
 	public static int maxbomb2 = 2;
@@ -23,6 +24,12 @@ public class Control {
 		if (JFeld.multi == true) {
 			counter[1] = 0;
 		}
+=======
+	public static int[] maxbomb = new int[] { 1, 1 };
+	public static int[] counter = new int[] { 0, 0 };
+
+	public Control(final JFrame f, final Figur bm, final JFeld feld, int nr) {
+>>>>>>> 48d8a01b3acb1ecbcf9285c76d8771cb15aad7d8
 
 		switch (nr) {
 		// Steuerung: 0=pfeiltasten ; 1=w a s d
@@ -56,10 +63,19 @@ public class Control {
 						break;
 					case 32:
 						// spacebar
+<<<<<<< HEAD
 						// An den anderen Spieler senden, dass die Bombe
 						// gelegt wurde
 						if (Control.this.socket != null) {
 							Control.this.socket.send(new Figur(bm.getxPosition(), bm.getyPosition()), true);
+=======
+						if (counter[0] < maxbomb[0]) {
+							new TBomb(bm.getxPosition(), bm.getyPosition(),
+									feld.getmap(), 0).start();
+							counter[0]++;
+							Thread d = new Sounds2();
+							d.start();
+>>>>>>> 48d8a01b3acb1ecbcf9285c76d8771cb15aad7d8
 						}
 						bombeLegen(bm);
 						break;
@@ -109,7 +125,7 @@ public class Control {
 						break;
 					case 8:
 						// Backspace
-						if (counter[1] < maxbomb2) {
+						if (counter[1] < maxbomb[1]) {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 1).start();
 							counter[1]++;

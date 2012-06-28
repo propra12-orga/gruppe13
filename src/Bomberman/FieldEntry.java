@@ -9,8 +9,11 @@ public class FieldEntry {
 	 * Get/Set Item (erstmal uninterresant)
 	 */
 	public void setItem() {
-		this.item = this.Random(1, 1);
-		if (JFeld.exit == false) {
+		this.item = this.Random(6, 18);
+		if (this.item >= 8) {
+			this.item = 1;
+		}
+		if (!JFeld.exit && !JFeld.multi) {
 			if (this.Random(1, 100) == 100) {
 				this.item = 3;
 				JFeld.exit = true;
