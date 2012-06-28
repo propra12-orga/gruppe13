@@ -27,13 +27,14 @@ public class JMenue extends JFrame implements ActionListener {
 	/**
 	 * Zahl der Level
 	 */
-	public static int max = 15;
+	public static int max = 6;
 
 	public static JFeld feld;
 	public static JJFrame frame;
 	static Figur bm1, bm2;
 	public static Sounds sound = new Sounds();
 	public static boolean stopper = true;
+
 
 	/**
 	 * Zeichnet das Feld immer wieder neu
@@ -88,7 +89,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go1")) {
 			// Spielfeld auslesen
 			setVisible(false);
-			stopper = false;// fuer Menuesound
+			stopper = false;//fuer Menuesound
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
@@ -106,7 +107,7 @@ public class JMenue extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
-
+						
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane
@@ -118,13 +119,8 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, false);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-<<<<<<< HEAD
 			bm1 = new Figur(1, 1);
 			new Control(frame, bm1, feld, 0, null);
-=======
-			bm1 = new Figur(1, 1, 1);
-			new Control(frame, bm1, feld, 0);
->>>>>>> 48d8a01b3acb1ecbcf9285c76d8771cb15aad7d8
 			t.start();
 		}
 		/**
@@ -133,7 +129,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go2")) {
 			// Spielfeld auslesen
 			setVisible(false);
-			stopper = false;// fuer Menuesound
+			stopper = false;//fuer Menuesound
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
@@ -151,7 +147,7 @@ public class JMenue extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
-
+						
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane
@@ -163,7 +159,6 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, true);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-<<<<<<< HEAD
 			bm1 = new Figur(1, 1);
 			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
 			new Control(frame, bm1, feld, 0, null);
@@ -197,12 +192,6 @@ public class JMenue extends JFrame implements ActionListener {
 			// übergabe der Control-Instanz an das Server-Socket
 			sSocket.setControl(control);
 			
-=======
-			bm1 = new Figur(1, 1, 1);
-			bm2 = new Figur(mapHeight - 2, mapWidth - 2, 2);
-			new Control(frame, bm1, feld, 0);
-			new Control(frame, bm2, feld, 1);
->>>>>>> 48d8a01b3acb1ecbcf9285c76d8771cb15aad7d8
 			t.start();
 
 			

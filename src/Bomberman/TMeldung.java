@@ -8,24 +8,22 @@ import javax.swing.JPanel;
 /**
  * Zeigt das richtige Bild bei Sieg oder Niederlage an.
  * 
- * 
+ * @author Janka
  * 
  */
 public class TMeldung extends Thread {
 
 	private int n;
-	private static ImageIcon[] bild = new ImageIcon[4];
+	private static ImageIcon[] bild = new ImageIcon[3];
 
 	public TMeldung(int zahl) {
 		this.n = zahl;
 		bild[0] = new ImageIcon(this.getClass().getResource(
 				"/images/Niederlage1P.jpg"));
 		bild[1] = new ImageIcon(this.getClass().getResource(
-				"/images/SiegeE.jpg"));
+				"/images/Sieg1P.jpg"));
 		bild[2] = new ImageIcon(this.getClass().getResource(
 				"/images/SiegPi.jpg"));
-		bild[3] = new ImageIcon(this.getClass().getResource(
-				"/images/Sieg1P.jpg"));
 	}
 
 	public void run() {
