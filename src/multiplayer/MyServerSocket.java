@@ -3,16 +3,11 @@ package multiplayer;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-
 import Bomberman.Control;
 import Bomberman.Figur;
-import Bomberman.JJFrame;
 
 public class MyServerSocket implements MySockets {
 	private ServerSocket server;
@@ -28,7 +23,7 @@ public class MyServerSocket implements MySockets {
 	// zugreifen zu können
 	private Control control;
 	private Figur bm2;
-	
+
 	// Konstruktor für den Server
 	public MyServerSocket(Figur bm2) {
 		this.bm2 = bm2;
@@ -38,8 +33,7 @@ public class MyServerSocket implements MySockets {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		this.handleConnection();
 	}
 
@@ -54,7 +48,7 @@ public class MyServerSocket implements MySockets {
 			// oos/ois setzen
 			oosstream = new ObjectOutputStream(socket.getOutputStream());
 			oistream = new ObjectInputStream(socket.getInputStream());
-			
+
 			// Thread in anonymer Klasse
 			new Thread(new Runnable() {
 
@@ -74,20 +68,23 @@ public class MyServerSocket implements MySockets {
 									Figur bmC = (Figur) message;
 									// die Figur des Clients beim Server
 									// auf die übergebene Position setzen
-									MyServerSocket.this.bm2.setxPosition(bmC.getxPosition());
-									MyServerSocket.this.bm2.setyPosition(bmC.getyPosition());
-								// und wenn ein String übergeben wurde
+									MyServerSocket.this.bm2.setxPosition(bmC
+											.getxPosition());
+									MyServerSocket.this.bm2.setyPosition(bmC
+											.getyPosition());
+									// und wenn ein String übergeben wurde
 								} else if (message instanceof String) {
 									String msg = (String) message;
 									// prüfen, ob die Bombe gelegt werden soll
 									if (msg.equals("Bombe")) {
-										// im Control-Objekt die Bombe an der Stelle
+										// im Control-Objekt die Bombe an der
+										// Stelle
 										// des BM des Clients legen
 										control.bombeLegen(MyServerSocket.this.bm2);
 									}
 								}
 							}
-							
+
 						} catch (IOException e) {
 							// wenn z.B. der Client die Verbindung
 							// abbricht / das Spiel beendet.
@@ -98,7 +95,7 @@ public class MyServerSocket implements MySockets {
 					}
 				}
 			}).start();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -113,8 +110,8 @@ public class MyServerSocket implements MySockets {
 			if (bomb) {
 				// entsprechendes Objekt abschicken
 				oosstream.writeObject("Bombe");
-			// ansonsten die Position des eigenen
-			// bm an den Client übermitteln
+				// ansonsten die Position des eigenen
+				// bm an den Client übermitteln
 			} else {
 				oosstream.writeObject(object);
 			}
@@ -128,5 +125,5 @@ public class MyServerSocket implements MySockets {
 	public void setControl(Control control) {
 		this.control = control;
 	}
-	
+
 }

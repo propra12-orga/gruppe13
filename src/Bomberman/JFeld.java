@@ -29,7 +29,9 @@ public class JFeld extends JPanel {
 			new FieldEntry(2, false), // x
 			new FieldEntry(3, true), // exit
 			new FieldEntry(4, false), // bombe
-			new FieldEntry(5, true) // feuer
+			new FieldEntry(5, true), // feuer
+			new FieldEntry(6, true), // Feuerkraft +
+			new FieldEntry(7, true) // Bombe+
 	};
 	public static Image P1, P2;
 	public static boolean exit = false;
@@ -48,7 +50,7 @@ public class JFeld extends JPanel {
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;
 		// Die verschiedenen Kachelarten:
-		this.tileImage = new Image[6];
+		this.tileImage = new Image[8];
 
 		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
 				"/images/cossinx32.gif")).getImage();
@@ -62,6 +64,10 @@ public class JFeld extends JPanel {
 				"/images/AblBombe32.gif")).getImage();
 		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
 				"/images/Explosion32.gif")).getImage();
+		this.tileImage[6] = new ImageIcon(this.getClass().getResource(
+				"/images/exp.gif")).getImage();
+		this.tileImage[7] = new ImageIcon(this.getClass().getResource(
+				"/images/pi.gif")).getImage();
 		JFeld.P1 = new ImageIcon(this.getClass().getResource("/images/exp.gif"))
 				.getImage();
 		JFeld.P2 = new ImageIcon(this.getClass().getResource("/images/pi.gif"))
@@ -70,9 +76,9 @@ public class JFeld extends JPanel {
 		/**
 		 * Kartenerstellung
 		 */
-		while (exit == false) {
+		while (!exit) {
 			this.generateMap();
-			if (exit_reader == true) {
+			if (exit_reader) {
 				exit = true;
 			}
 		}
@@ -118,7 +124,7 @@ public class JFeld extends JPanel {
 				}
 			}
 		}
-		if (multi == true) {
+		if (multi) {
 			// Startegebiet 1P
 			map[1][1] = entry[1];
 			map[1][2] = entry[1];

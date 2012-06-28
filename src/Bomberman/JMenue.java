@@ -35,7 +35,6 @@ public class JMenue extends JFrame implements ActionListener {
 	public static Sounds sound = new Sounds();
 	public static boolean stopper = true;
 
-
 	/**
 	 * Zeichnet das Feld immer wieder neu
 	 */
@@ -89,7 +88,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go1")) {
 			// Spielfeld auslesen
 			setVisible(false);
-			stopper = false;//fuer Menuesound
+			stopper = false;// fuer Menuesound
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
@@ -107,7 +106,7 @@ public class JMenue extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
-						
+
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane
@@ -119,7 +118,7 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, false);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-			bm1 = new Figur(1, 1);
+			bm1 = new Figur(1, 1, 1);
 			new Control(frame, bm1, feld, 0, null);
 			t.start();
 		}
@@ -129,7 +128,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go2")) {
 			// Spielfeld auslesen
 			setVisible(false);
-			stopper = false;//fuer Menuesound
+			stopper = false;// fuer Menuesound
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
@@ -147,7 +146,7 @@ public class JMenue extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
-						
+
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane
@@ -159,8 +158,8 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, true);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-			bm1 = new Figur(1, 1);
-			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
+			bm1 = new Figur(1, 1, 1);
+			bm2 = new Figur(mapHeight - 2, mapWidth - 2, 2);
 			new Control(frame, bm1, feld, 0, null);
 			new Control(frame, bm2, feld, 1, null);
 			t.start();
@@ -173,7 +172,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go3")) {
 			// Spielfeld auslesen
 			setVisible(false);
-			stopper = false;//fuer Menuesound
+			stopper = false;// fuer Menuesound
 			String nr = "1";
 
 			// statisches Level: 1
@@ -182,19 +181,18 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, true);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-			bm1 = new Figur(1, 1);
-			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
-			
+			bm1 = new Figur(1, 1, 1);
+			bm2 = new Figur(mapHeight - 2, mapWidth - 2, 2);
+
 			// Instanz des Server-Sockets erstellen
 			MyServerSocket sSocket = new MyServerSocket(bm2);
-			
+
 			Control control = new Control(frame, bm1, feld, 0, sSocket);
 			// übergabe der Control-Instanz an das Server-Socket
 			sSocket.setControl(control);
-			
+
 			t.start();
 
-			
 		}
 
 		/**
@@ -203,7 +201,7 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go4")) {
 			// Spielfeld auslesen
 			setVisible(false);
-			stopper = false;//fuer Menuesound
+			stopper = false;// fuer Menuesound
 			String nr = "1";
 
 			// statisches Level: 1
@@ -212,15 +210,16 @@ public class JMenue extends JFrame implements ActionListener {
 					tileHeight, nr, true);
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
-			bm1 = new Figur(1, 1);
-			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
-			
+			bm1 = new Figur(1, 1, 1);
+			bm2 = new Figur(mapHeight - 2, mapWidth - 2, 2);
+
 			// Abfrage für die IP-Adresse der Servers
-			String ip = JOptionPane.showInputDialog(frame, "IP des Hosts:", "IP", JOptionPane.QUESTION_MESSAGE);
-			
+			String ip = JOptionPane.showInputDialog(frame, "IP des Hosts:",
+					"IP", JOptionPane.QUESTION_MESSAGE);
+
 			// Instanz des Client-Sockets erstellen
 			MyClientSocket cSocket = new MyClientSocket(ip, bm1);
-			
+
 			Control control = new Control(frame, bm2, feld, 0, cSocket);
 			// Control-Instanz an den Client-Socket übergeben
 			cSocket.setControl(control);

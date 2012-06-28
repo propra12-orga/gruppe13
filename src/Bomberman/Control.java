@@ -9,20 +9,16 @@ import multiplayer.MySockets;
 
 public class Control {
 	// Klassenvariablen
-	public static int maxbomb1 = 2;
-	public static int maxbomb2 = 2;
-	public static int[] counter = new int[2];
-	
+	public static int[] maxbomb = new int[] { 1, 1 };
+	public static int[] counter = new int[] { 0, 0 };
+
 	private JFeld feld = null;
 	private MySockets socket = null;
-	
-	public Control(final JFrame f, final Figur bm, final JFeld feld, int nr, MySockets socket) {
+
+	public Control(final JFrame f, final Figur bm, final JFeld feld, int nr,
+			MySockets socket) {
 		this.feld = feld;
 		this.socket = socket;
-		counter[0] = 0;
-		if (JFeld.multi == true) {
-			counter[1] = 0;
-		}
 
 		switch (nr) {
 		// Steuerung: 0=pfeiltasten ; 1=w a s d
@@ -59,17 +55,19 @@ public class Control {
 						// An den anderen Spieler senden, dass die Bombe
 						// gelegt wurde
 						if (Control.this.socket != null) {
-							Control.this.socket.send(new Figur(bm.getxPosition(), bm.getyPosition()), true);
+							Control.this.socket.send(
+									new Figur(bm.getxPosition(), bm
+											.getyPosition(), 1), true);
 						}
 						bombeLegen(bm);
 						break;
 					default:
 						break;
 					}
-					
 
 					if (Control.this.socket != null) {
-						Control.this.socket.send(new Figur(bm.getxPosition(), bm.getyPosition()), false);
+						Control.this.socket.send(new Figur(bm.getxPosition(),
+								bm.getyPosition(), 1), false);
 					}
 				}
 
@@ -109,7 +107,7 @@ public class Control {
 						break;
 					case 8:
 						// Backspace
-						if (counter[1] < maxbomb2) {
+						if (counter[1] < maxbomb[1]) {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 1).start();
 							counter[1]++;
@@ -120,7 +118,6 @@ public class Control {
 					default:
 						break;
 					}
-					
 
 				}
 
@@ -128,22 +125,20 @@ public class Control {
 				public void keyTyped(KeyEvent e) {
 
 				}
-				
+
 			});
 			break;
 		default:
 			break;
 		}
 
-		
-		
 	}
-	
+
 	// Methode zum Legen einer Bombe für Player 1
 	public void bombeLegen(Figur bm) {
-		if (counter[0] < maxbomb1) {
-			new TBomb(bm.getxPosition(), bm.getyPosition(),
-					feld.getmap(), 0).start();
+		if (counter[0] < maxbomb[0]) {
+			new TBomb(bm.getxPosition(), bm.getyPosition(), feld.getmap(), 0)
+					.start();
 			counter[0]++;
 			Thread d = new Sounds2();
 			d.start();
