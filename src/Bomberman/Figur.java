@@ -1,11 +1,14 @@
 package Bomberman;
 
-public class Figur {
+import java.io.Serializable;
+
+public class Figur implements Serializable {
 	/*
 	 * neues Object. Grundlage fuer Figuren Mutterklasse von Bomberman und
 	 * Monstern.
 	 */
 
+	private static final long serialVersionUID = -690705663199374065L;
 	private int xposition;
 	private int yposition;
 

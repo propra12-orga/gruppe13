@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import multiplayer.MyClientSocket;
+import multiplayer.MyServerSocket;
+
 public class JMenue extends JFrame implements ActionListener {
 
 	/**
@@ -58,6 +61,14 @@ public class JMenue extends JFrame implements ActionListener {
 		spielstarten2P.setActionCommand("go2");
 		spielstarten2P.addActionListener(this);
 		add(spielstarten2P);
+		JButton spielstarten3P = new JButton("Netzwerk (Host)");
+		spielstarten3P.setActionCommand("go3");
+		spielstarten3P.addActionListener(this);
+		add(spielstarten3P);
+		JButton spielstarten4P = new JButton("Netzwerk (Client)");
+		spielstarten4P.setActionCommand("go4");
+		spielstarten4P.addActionListener(this);
+		add(spielstarten4P);
 		JButton spielbeenden = new JButton("Spiel beenden");
 		spielbeenden.setActionCommand("exit");
 		spielbeenden.addActionListener(this);
@@ -109,7 +120,7 @@ public class JMenue extends JFrame implements ActionListener {
 			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
 					feld, nr);
 			bm1 = new Figur(1, 1);
-			new Control(frame, bm1, feld, 0);
+			new Control(frame, bm1, feld, 0, null);
 			t.start();
 		}
 		/**
@@ -150,12 +161,72 @@ public class JMenue extends JFrame implements ActionListener {
 					feld, nr);
 			bm1 = new Figur(1, 1);
 			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
-			new Control(frame, bm1, feld, 0);
-			new Control(frame, bm2, feld, 1);
+			new Control(frame, bm1, feld, 0, null);
+			new Control(frame, bm2, feld, 1, null);
 			t.start();
 
 		}
 
+		/**
+		 * Multiplayer Host
+		 */
+		if (arg0.getActionCommand().equals("go3")) {
+			// Spielfeld auslesen
+			setVisible(false);
+			stopper = false;//fuer Menuesound
+			String nr = "1";
+
+			// statisches Level: 1
+			Mapreader create = new Mapreader(nr);
+			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
+					tileHeight, nr, true);
+			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+					feld, nr);
+			bm1 = new Figur(1, 1);
+			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
+			
+			// Instanz des Server-Sockets erstellen
+			MyServerSocket sSocket = new MyServerSocket(bm2);
+			
+			Control control = new Control(frame, bm1, feld, 0, sSocket);
+			// übergabe der Control-Instanz an das Server-Socket
+			sSocket.setControl(control);
+			
+			t.start();
+
+			
+		}
+
+		/**
+		 * Multiplayer Client
+		 */
+		if (arg0.getActionCommand().equals("go4")) {
+			// Spielfeld auslesen
+			setVisible(false);
+			stopper = false;//fuer Menuesound
+			String nr = "1";
+
+			// statisches Level: 1
+			Mapreader create = new Mapreader(nr);
+			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
+					tileHeight, nr, true);
+			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+					feld, nr);
+			bm1 = new Figur(1, 1);
+			bm2 = new Figur(mapHeight - 2, mapWidth - 2);
+			
+			// Abfrage für die IP-Adresse der Servers
+			String ip = JOptionPane.showInputDialog(frame, "IP des Hosts:", "IP", JOptionPane.QUESTION_MESSAGE);
+			
+			// Instanz des Client-Sockets erstellen
+			MyClientSocket cSocket = new MyClientSocket(ip, bm1);
+			
+			Control control = new Control(frame, bm2, feld, 0, cSocket);
+			// Control-Instanz an den Client-Socket übergeben
+			cSocket.setControl(control);
+			t.start();
+
+		}
 	}
 
 }

@@ -32,6 +32,21 @@ class Sounds extends Thread{
              line.start();
              int BUFFER_SIZE =64* 1024;
              int Byteslesen = 0;
+//             System.out.println(
+//                     "encoding: " + af.getEncoding());
+//                   System.out.println(
+//                     "frame rate: " + af.getFrameRate());
+//                   System.out.println(
+//                     "frame size: " + af.getFrameSize() + "(bytes)");
+//                   System.out.println(
+//                     "sample rate: " + af.getSampleRate());
+//                   System.out.println(
+//                     "sample size: " + af.getSampleSizeInBits() + "(bits)");
+//                   System.out.println(
+//                     "channels: " + af.getChannels());
+//                   System.out.println(
+//                     "big endian: " + af.isBigEndian());
+
              byte[] sampledData = new byte[BUFFER_SIZE];
              do{
              while (Byteslesen != -1) {
