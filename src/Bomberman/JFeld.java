@@ -65,9 +65,9 @@ public class JFeld extends JPanel {
 		this.tileImage[5] = new ImageIcon(this.getClass().getResource(
 				"/images/Explosion32.gif")).getImage();
 		this.tileImage[6] = new ImageIcon(this.getClass().getResource(
-				"/images/exp.gif")).getImage();
+				"/images/ItemFlamme32.gif")).getImage();
 		this.tileImage[7] = new ImageIcon(this.getClass().getResource(
-				"/images/pi.gif")).getImage();
+				"/images/ItemBomb+32.gif")).getImage();
 		JFeld.P1 = new ImageIcon(this.getClass().getResource("/images/exp.gif"))
 				.getImage();
 		JFeld.P2 = new ImageIcon(this.getClass().getResource("/images/pi.gif"))
