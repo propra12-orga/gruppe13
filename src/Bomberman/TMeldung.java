@@ -14,18 +14,20 @@ import javax.swing.JPanel;
 public class TMeldung extends Thread {
 
 	private int n;
-	private static ImageIcon[] bild = new ImageIcon[4];
+	private static ImageIcon[] bild = new ImageIcon[5];
 
 	public TMeldung(int zahl) {
 		this.n = zahl;
 		bild[0] = new ImageIcon(this.getClass().getResource(
-				"/images/Niederlage1P.jpg"));
+				"/images/Niederlage1P.jpg")); // Singleplayer
 		bild[1] = new ImageIcon(this.getClass().getResource(
-				"/images/SiegeE.jpg"));
+				"/images/SiegeE.jpg")); // Multiplayer
 		bild[2] = new ImageIcon(this.getClass().getResource(
-				"/images/SiegPi.jpg"));
+				"/images/SiegPi.jpg")); // Multiplayer
 		bild[3] = new ImageIcon(this.getClass().getResource(
-				"/images/Sieg1P.jpg"));
+				"/images/Sieg1P.jpg")); // Singleplayer
+		bild[4] = new ImageIcon(this.getClass().getResource(
+				"/images/DoppelKO.jpg")); // Multiplayer
 	}
 
 	public void run() {

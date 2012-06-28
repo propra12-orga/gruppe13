@@ -165,6 +165,7 @@ public class TBomb extends Thread {
 
 		// Suicide 1P
 		if (!d1 && !d2 && s1 && !s2) {
+			m = 1;
 
 		}
 		// Suicide 2P
@@ -177,10 +178,10 @@ public class TBomb extends Thread {
 		}
 		// 1P kills 2P
 		if (!d1 && d2 && !s1 && !s2) {
-			m = 1;
+			m = 3;
 		}
 		if ((d1 && !d2 && !s1 && s2) || (!d1 && d2 && s1 && !s2)) {
-			System.out.println("Bild kommt noch: Doppel-KO");
+			m = 4;
 		}
 		TMeldung meld = new TMeldung(m);
 		meld.start();
