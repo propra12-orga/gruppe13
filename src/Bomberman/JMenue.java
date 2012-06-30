@@ -27,7 +27,7 @@ public class JMenue extends JFrame implements ActionListener {
 	/**
 	 * Zahl der Level
 	 */
-	public static int max = 6;
+	public static int max = 16;
 
 	public static JFeld feld;
 	public static JJFrame frame;
@@ -68,6 +68,10 @@ public class JMenue extends JFrame implements ActionListener {
 		spielstarten4P.setActionCommand("go4");
 		spielstarten4P.addActionListener(this);
 		add(spielstarten4P);
+		JButton tut = new JButton("Tutorial");
+		tut.setActionCommand("go5");
+		tut.addActionListener(this);
+		add(tut);
 		JButton spielbeenden = new JButton("Spiel beenden");
 		spielbeenden.setActionCommand("exit");
 		spielbeenden.addActionListener(this);
@@ -92,8 +96,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
-			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > max
-					|| !check) {
+			while (nr == null || Math.abs(zahl) > max || !check) {
 				check = true;
 				nr = JOptionPane
 						.showInputDialog("Waehlen Sie ein Level X aus. (1-"
@@ -101,12 +104,16 @@ public class JMenue extends JFrame implements ActionListener {
 								+ ")\nTipp: Waehle -X fuer eine zufaellige Verteilung der zerstoerbaren Bloecke.");
 				try {
 					zahl = Integer.parseInt(nr);
-
-					if (nr.substring(0, 1).equals("0")) {
+					if (nr.substring(0, 1).equals("0") && !nr.equals("0")) {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
-
+					}
+					if (nr.equals("0")) {
+						nr = "" + (int) (Math.random() * (JMenue.max) + 1);
+					}
+					if (nr.equals("-0")) {
+						nr = "-" + (int) (Math.random() * (JMenue.max) + 1);
 					}
 				} catch (NumberFormatException e) {
 					JOptionPane
