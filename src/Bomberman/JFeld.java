@@ -24,14 +24,16 @@ public class JFeld extends JPanel {
 	private Image[] tileImage;
 	private FieldEntry[][] map;
 	// Felder initialisieren
-	static FieldEntry[] entry = { new FieldEntry(0, false), // hard
+	public static FieldEntry[] entry = { new FieldEntry(0, false), // hard
 			new FieldEntry(1, true), // tafel
 			new FieldEntry(2, false), // x
 			new FieldEntry(3, true), // exit
 			new FieldEntry(4, false), // bombe
 			new FieldEntry(5, true), // feuer
 			new FieldEntry(6, true), // Feuerkraft +
-			new FieldEntry(7, true) // Bombe+
+			new FieldEntry(7, true), // Bombe+
+			new FieldEntry(8, false) // x fuer das Tutorial, damit keine Item
+										// generiert werden!
 	};
 	public static Image P1, P2;
 	public static boolean exit = false;
@@ -50,7 +52,7 @@ public class JFeld extends JPanel {
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;
 		// Die verschiedenen Kachelarten:
-		this.tileImage = new Image[8];
+		this.tileImage = new Image[9];
 
 		this.tileImage[0] = new ImageIcon(this.getClass().getResource(
 				"/images/cossinx32.gif")).getImage();
@@ -68,6 +70,8 @@ public class JFeld extends JPanel {
 				"/images/ItemFlamme32.gif")).getImage();
 		this.tileImage[7] = new ImageIcon(this.getClass().getResource(
 				"/images/ItemBomb+32.gif")).getImage();
+		this.tileImage[8] = new ImageIcon(this.getClass().getResource(
+				"/images/X232.gif")).getImage();
 		JFeld.P1 = new ImageIcon(this.getClass().getResource("/images/exp.gif"))
 				.getImage();
 		JFeld.P2 = new ImageIcon(this.getClass().getResource("/images/pi.gif"))
@@ -88,6 +92,9 @@ public class JFeld extends JPanel {
 	 * Kartenerstellung (Random und Multiplayer)
 	 */
 	public void generateMap() {
+		if (this.level.equals("tut")) {
+			exit = true;
+		}
 		Mapreader create = new Mapreader(this.level);
 		if (!create.random()) {
 			for (int i = 0; i < mapWidth; i++) {

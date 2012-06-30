@@ -26,11 +26,14 @@ public class Mapreader {
 	boolean random = false;
 
 	public Mapreader(String level) {
-		if (Integer.parseInt(level) < 0) {
+		if (level.equals("tut")) {
+			map = "tut";
+		} else if (Integer.parseInt(level) < 0) {
 			random = true;
 			level = level.substring(1, level.length());
+		} else {
+			map = "level" + level;
 		}
-		map = "level" + level;
 		try {
 			BufferedReader file = new BufferedReader(new FileReader(mapdir
 					+ map + ".txt"));
