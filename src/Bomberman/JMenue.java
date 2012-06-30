@@ -147,8 +147,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
-			while (nr == null || Math.abs(zahl) < 1 || Math.abs(zahl) > max
-					|| !check) {
+			while (nr == null || Math.abs(zahl) > max || !check) {
 				check = true;
 				nr = JOptionPane
 						.showInputDialog("Waehlen Sie ein Level X aus. (1-"
@@ -160,7 +159,7 @@ public class JMenue extends JFrame implements ActionListener {
 				try {
 					zahl = Integer.parseInt(nr);
 
-					if (nr.substring(0, 1).equals("0")) {
+					if (nr.substring(0, 1).equals("0") && !nr.equals("0")) {
 						JOptionPane.showMessageDialog(null,
 								"Kein gueltiges Level.");
 						check = false;
