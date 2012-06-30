@@ -102,6 +102,10 @@ public class JMenue extends JFrame implements ActionListener {
 						.showInputDialog("Waehlen Sie ein Level X aus. (1-"
 								+ max
 								+ ")\nTipp: Waehle -X fuer eine zufaellige Verteilung der zerstoerbaren Bloecke.");
+				// abbrechen
+				if (nr == null) {
+					break;
+				}
 				try {
 					zahl = Integer.parseInt(nr);
 					if (nr.substring(0, 1).equals("0") && !nr.equals("0")) {
@@ -120,14 +124,18 @@ public class JMenue extends JFrame implements ActionListener {
 							.showMessageDialog(null, "Kein gueltiges Level.");
 				}
 			}
-			Mapreader create = new Mapreader(nr);
-			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
-					tileHeight, nr, false);
-			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld, nr);
-			bm1 = new Figur(1, 1, 1);
-			new Control(frame, bm1, feld, 0, null);
-			t.start();
+			if (nr != null) {
+				Mapreader create = new Mapreader(nr);
+				feld = new JFeld(create.getWidth(), create.getHeight(),
+						tileWidth, tileHeight, nr, false);
+				frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+						feld, nr);
+				bm1 = new Figur(1, 1, 1);
+				new Control(frame, bm1, feld, 0, null);
+				t.start();
+			} else {
+				setVisible(true);
+			}
 		}
 		/**
 		 * 2 Player Spiel starten
@@ -146,6 +154,9 @@ public class JMenue extends JFrame implements ActionListener {
 						.showInputDialog("Waehlen Sie ein Level X aus. (1-"
 								+ max
 								+ ")\nTipp: Waehle -X fuer eine zufaellige Verteilung der zerstoerbaren Bloecke.");
+				if (nr == null) {
+					break;
+				}
 				try {
 					zahl = Integer.parseInt(nr);
 
@@ -155,21 +166,31 @@ public class JMenue extends JFrame implements ActionListener {
 						check = false;
 
 					}
+					if (nr.equals("0")) {
+						nr = "" + (int) (Math.random() * (JMenue.max) + 1);
+					}
+					if (nr.equals("-0")) {
+						nr = "-" + (int) (Math.random() * (JMenue.max) + 1);
+					}
 				} catch (NumberFormatException e) {
 					JOptionPane
 							.showMessageDialog(null, "Kein gueltiges Level.");
 				}
 			}
-			Mapreader create = new Mapreader(nr);
-			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
-					tileHeight, nr, true);
-			frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
-					feld, nr);
-			bm1 = new Figur(1, 1, 1);
-			bm2 = new Figur(mapHeight - 2, mapWidth - 2, 2);
-			new Control(frame, bm1, feld, 0, null);
-			new Control(frame, bm2, feld, 1, null);
-			t.start();
+			if (nr != null) {
+				Mapreader create = new Mapreader(nr);
+				feld = new JFeld(create.getWidth(), create.getHeight(),
+						tileWidth, tileHeight, nr, true);
+				frame = new JJFrame(mapWidth, mapHeight, tileWidth, tileHeight,
+						feld, nr);
+				bm1 = new Figur(1, 1, 1);
+				bm2 = new Figur(mapHeight - 2, mapWidth - 2, 2);
+				new Control(frame, bm1, feld, 0, null);
+				new Control(frame, bm2, feld, 1, null);
+				t.start();
+			} else {
+				setVisible(true);
+			}
 
 		}
 
