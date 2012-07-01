@@ -1,5 +1,6 @@
 package Bomberman;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -27,7 +28,7 @@ public class Mapsaver {
 		if (existent(filename)) {
 
 		} else {
-			// File f = new File("/savegames/", filename);
+			File f = new File("src/saves/" + filename + ".txt");
 
 			String s = filename + "\n" + h + " " + w + "\n";
 			for (int j = 0; j < h; j++) {
@@ -40,7 +41,7 @@ public class Mapsaver {
 			Writer fw = null;
 
 			try {
-				fw = new FileWriter(filename + ".txt");
+				fw = new FileWriter(f);
 				fw.write(s);
 				fw.append(System.getProperty("line.separator")); // e.g. "\n"
 			} catch (IOException e) {
