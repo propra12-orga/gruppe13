@@ -169,7 +169,7 @@ public class TBomb extends Thread {
 		}
 		// Suicide 2P
 		if (!d1 && !d2 && !s1 && s2) {
-			System.out.println("Bild kommt noch: Suicide 2P");
+			m = 1;
 		}
 		// 2P kills 1P
 		if (d1 && !d2 && !s1 && !s2) {
@@ -177,7 +177,7 @@ public class TBomb extends Thread {
 		}
 		// 1P kills 2P
 		if (!d1 && d2 && !s1 && !s2) {
-			m = 3;
+			m = 1;
 		}
 		if ((d1 && !d2 && !s1 && s2) || (!d1 && d2 && s1 && !s2)) {
 			m = 4;
