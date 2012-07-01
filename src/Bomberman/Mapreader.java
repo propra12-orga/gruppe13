@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Mapreader {
 	/**
-	 * Kartenverzeichnus
+	 * Kartenverzeichnis
 	 */
 	private static String mapdir = "src/maps/";
 	/**

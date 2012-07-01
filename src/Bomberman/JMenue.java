@@ -178,6 +178,10 @@ public class JMenue extends JFrame implements ActionListener {
 		tut.setActionCommand("go5");
 		tut.addActionListener(this);
 		add(tut);
+		JButton load = new JButton("Spiel Laden");
+		load.setActionCommand("go6");
+		load.addActionListener(this);
+		add(load);
 		JButton spielbeenden = new JButton("Spiel beenden");
 		spielbeenden.setActionCommand("exit");
 		spielbeenden.addActionListener(this);
@@ -391,6 +395,12 @@ public class JMenue extends JFrame implements ActionListener {
 									+ "Mit a laufen Sie nach links und mit d laufen Sie nach Rechts.\n"
 									+ "Probieren Sie es aus und laufen Sie in die untere rechte Ecke.");
 			tut.start();
+		}
+		// Spielstand laden
+		if (arg0.getActionCommand().equals("go6")) {
+			System.out.println("LADEN UND FEUERN!");
+			// Spielfeld auslesen
+
 		}
 	}
 

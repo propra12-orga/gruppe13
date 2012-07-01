@@ -67,6 +67,7 @@ public class Mapsaver {
 					e.printStackTrace();
 				}
 		}
+		f.setWritable(false);
 	}
 
 	private boolean existent(String name) {
