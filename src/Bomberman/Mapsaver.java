@@ -40,7 +40,7 @@ public class Mapsaver {
 			Writer fw = null;
 
 			try {
-				fw = new FileWriter("fileWriter.txt");
+				fw = new FileWriter(filename + ".txt");
 				fw.write(s);
 				fw.append(System.getProperty("line.separator")); // e.g. "\n"
 			} catch (IOException e) {
