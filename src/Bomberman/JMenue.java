@@ -206,6 +206,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
+			FieldEntry.itemm = true;
 			while (nr == null || Math.abs(zahl) > max || !check) {
 				check = true;
 				nr = JOptionPane
@@ -259,6 +260,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
+			FieldEntry.itemm = true;
 			while (nr == null || Math.abs(zahl) > max || !check) {
 				check = true;
 				nr = JOptionPane
@@ -316,6 +318,8 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = "1";
+			JFeld.multi = true;
+			FieldEntry.itemm = false;
 
 			// statisches Level: 1
 			Mapreader create = new Mapreader(nr, false);
@@ -345,6 +349,8 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = "1";
+			JFeld.multi = true;
+			FieldEntry.itemm = false;
 
 			// statisches Level: 1
 			Mapreader create = new Mapreader(nr, false);

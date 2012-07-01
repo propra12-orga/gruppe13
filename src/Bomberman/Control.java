@@ -150,12 +150,22 @@ public class Control {
 
 	// Methode zum Legen einer Bombe für Player 1
 	public void bombeLegen(Figur bm) {
-		if (counter[0] < maxbomb[0]) {
-			new TBomb(bm.getxPosition(), bm.getyPosition(), feld.getmap(), 0)
-					.start();
-			counter[0]++;
-			Thread d = new Sounds2();
-			d.start();
+		if (bm == JMenue.bm1) {
+			if (counter[0] < maxbomb[0]) {
+				new TBomb(bm.getxPosition(), bm.getyPosition(), feld.getmap(),
+						0).start();
+				counter[0]++;
+				Thread d = new Sounds2();
+				d.start();
+			}
+		} else {
+			if (counter[1] < maxbomb[1]) {
+				new TBomb(bm.getxPosition(), bm.getyPosition(), feld.getmap(),
+						1).start();
+				counter[1]++;
+				Thread d = new Sounds2();
+				d.start();
+			}
 		}
 	}
 

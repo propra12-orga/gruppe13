@@ -81,10 +81,13 @@ public class JFeld extends JPanel {
 		 * Kartenerstellung
 		 */
 		while (!exit) {
-			this.generateMap();
 			if (exit_reader) {
 				exit = true;
 			}
+			if (JFeld.multi) {
+				exit = true;
+			}
+			this.generateMap();
 		}
 	}
 
