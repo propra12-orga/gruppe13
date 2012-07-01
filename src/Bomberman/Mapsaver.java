@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
+import javax.swing.JOptionPane;
+
 public class Mapsaver {
 	String filename;
 	FieldEntry[][] map;
@@ -29,7 +31,6 @@ public class Mapsaver {
 
 		} else {
 			File f = new File("src/saves/" + filename + ".txt");
-
 			String s = filename + "\n" + h + " " + w + "\n";
 			for (int j = 0; j < h; j++) {
 				for (int i = 0; i < w; i++) {
@@ -38,14 +39,16 @@ public class Mapsaver {
 				}
 				s = s + "\n";
 			}
+			// da ein Umbruch und ein Leerzeichen am Ende zu viel sind
+			s = s.substring(0, s.length() - 2);
 			Writer fw = null;
 
 			try {
 				fw = new FileWriter(f);
 				fw.write(s);
-				fw.append(System.getProperty("line.separator")); // e.g. "\n"
 			} catch (IOException e) {
-				System.err.println("Konnte Datei nicht erstellen");
+				JOptionPane.showMessageDialog(null,
+						"Die Datei konnte nicht erstellt werden.");
 			} finally {
 				if (fw != null)
 					try {

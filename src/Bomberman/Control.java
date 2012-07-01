@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import multiplayer.MySockets;
 
@@ -67,7 +68,9 @@ public class Control {
 								feld.height(), feld.width(), bm.getxPosition(),
 								bm.getyPosition());
 						save.start();
-						System.out.println("Ich bin F10!");
+						JOptionPane
+								.showMessageDialog(null,
+										"Das Spiel wurde im Ordner /src/saves/ gespeichert.");
 						break;
 					default:
 						break;
