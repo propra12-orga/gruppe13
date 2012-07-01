@@ -30,7 +30,7 @@ public class Mapsaver {
 		if (existent(filename)) {
 
 		} else {
-			File f = new File("src/saves/" + filename + ".txt");
+
 			String s = filename + "\n" + h + " " + w + "\n";
 			for (int j = 0; j < h; j++) {
 				for (int i = 0; i < w; i++) {
@@ -41,25 +41,32 @@ public class Mapsaver {
 			}
 			// da ein Umbruch und ein Leerzeichen am Ende zu viel sind
 			s = s.substring(0, s.length() - 2);
-			Writer fw = null;
-
-			try {
-				fw = new FileWriter(f);
-				fw.write(s);
-			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null,
-						"Die Datei konnte nicht erstellt werden.");
-			} finally {
-				if (fw != null)
-					try {
-						fw.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-			}
+			this.createTXT(filename, s, "src/saves/");
+			this.createTXT(filename, this.x + " " + this.y,
+					"src/saves/position/");
 
 		}
 
+	}
+
+	private void createTXT(String filename, String s, String ort) {
+		File f = new File(ort + filename + ".txt");
+		Writer fw = null;
+
+		try {
+			fw = new FileWriter(f);
+			fw.write(s);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null,
+					"Die Datei konnte nicht erstellt werden.");
+		} finally {
+			if (fw != null)
+				try {
+					fw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
 	}
 
 	private boolean existent(String name) {
