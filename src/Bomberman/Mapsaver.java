@@ -34,7 +34,7 @@ public class Mapsaver {
 			String s = filename + "\n" + h + " " + w + "\n";
 			for (int j = 0; j < h; j++) {
 				for (int i = 0; i < w; i++) {
-					int hilf = map[j][i].getImage();
+					int hilf = map[i][j].getImage();
 					s = s + hilf + " ";
 				}
 				s = s + "\n";
