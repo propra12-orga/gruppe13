@@ -381,7 +381,7 @@ public class JMenue extends JFrame implements ActionListener {
 			JOptionPane
 					.showMessageDialog(
 							null,
-							"Willkommen bei Bomberman.\nIn diesem Level werden kurz die Steuerung, "
+							"Willkommen bei Final Derivation.\nIn diesem Level werden kurz die Steuerung, "
 									+ "sowie die wichtigsten Elemente des Spiels erlaeutert.");
 			JOptionPane
 					.showMessageDialog(
