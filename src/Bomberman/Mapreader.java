@@ -29,17 +29,16 @@ public class Mapreader {
 
 	public Mapreader(String level, boolean load) {
 		String vz = mapdir;
-
-		if (level.equals("tut") && load == false) {
+		if (load) {
+			vz = savevz;
+			map = level;
+		} else if (level.equals("tut")) {
 			map = "tut";
-		} else if (Integer.parseInt(level) < 0 && load == false) {
+		} else if (Integer.parseInt(level) < 0) {
 			random = true;
 			level = level.substring(1, level.length());
-		} else if (load == false) {
-			map = "level" + level;
 		} else {
-			map = level;
-			vz = savevz;
+			map = "level" + level;
 		}
 		try {
 			BufferedReader file = new BufferedReader(new FileReader(vz + map
@@ -88,22 +87,16 @@ public class Mapreader {
 	public int getHeight() {
 		return this.height;
 	}
-	
-	public int[] pos(){
+
+	public int[] pos() {
 		int[] xy = new int[2];
 		BufferedReader file;
 		try {
-			file = new BufferedReader(new FileReader(savevz+"position/" + map + ".txt"));
-			
-			String zeile = null;
-			int k = 1;
-
-			while ((zeile = file.readLine()) != null && k == 1) {
-				name = zeile;
-				k++;
+			file = new BufferedReader(new FileReader(savevz + "position/" + map
+					+ ".txt"));
+			String zeile = file.readLine();
 			xy[0] = Integer.parseInt(zeile.split(" ")[0]);
 			xy[1] = Integer.parseInt(zeile.split(" ")[1]);
-			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

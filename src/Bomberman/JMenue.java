@@ -34,6 +34,7 @@ public class JMenue extends JFrame implements ActionListener {
 	static Figur bm1, bm2;
 	public static Sounds sound = new Sounds();
 	public static boolean stopper = true;
+	public static boolean load = false;
 
 	/**
 	 * Zeichnet das Feld immer wieder neu
@@ -238,7 +239,7 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			}
 			if (nr != null) {
-				Mapreader create = new Mapreader(nr, false);
+				Mapreader create = new Mapreader(nr, load);
 				feld = new JFeld(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, nr, false);
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -293,7 +294,7 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			}
 			if (nr != null) {
-				Mapreader create = new Mapreader(nr, false);
+				Mapreader create = new Mapreader(nr, load);
 				feld = new JFeld(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, nr, true);
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -322,7 +323,7 @@ public class JMenue extends JFrame implements ActionListener {
 			FieldEntry.itemm = false;
 
 			// statisches Level: 1
-			Mapreader create = new Mapreader(nr, false);
+			Mapreader create = new Mapreader(nr, load);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, true);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -353,7 +354,7 @@ public class JMenue extends JFrame implements ActionListener {
 			FieldEntry.itemm = false;
 
 			// statisches Level: 1
-			Mapreader create = new Mapreader(nr, false);
+			Mapreader create = new Mapreader(nr, load);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, true);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -380,7 +381,7 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = "tut";
-			Mapreader create = new Mapreader(nr, false);
+			Mapreader create = new Mapreader(nr, load);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, false);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -410,13 +411,15 @@ public class JMenue extends JFrame implements ActionListener {
 			stopper = false;// fuer Menuesound
 
 			String lname = "Test1";
-			Mapreader create = new Mapreader(lname, true);
+			load = true;
+			Mapreader create = new Mapreader(lname, load);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, lname, false);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
 					tileWidth, tileHeight, feld, lname);
 			int[] kor = create.pos();
-			bm1 = new Figur(1, kor[0], kor[1]);
+			System.out.println(kor[1]);
+			bm1 = new Figur(kor[0], kor[1], 1);
 			new Control(frame, bm1, feld, 0, null);
 			t.start();
 
