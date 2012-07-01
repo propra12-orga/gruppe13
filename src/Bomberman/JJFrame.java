@@ -19,6 +19,11 @@ public class JJFrame extends JFrame {
 			public void windowClosing(WindowEvent e) {
 				JMenue.frame.dispose();
 				Start.M.setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
 				JMenue.t.stop();
 				JFeld.exit = false;
 				TBomb.radius[0] = 1;

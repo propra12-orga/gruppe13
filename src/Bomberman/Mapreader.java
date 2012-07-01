@@ -36,7 +36,7 @@ public class Mapreader {
 			map = "tut";
 		} else if (Integer.parseInt(level) < 0) {
 			random = true;
-			level = level.substring(1, level.length());
+			map = "level" + level.substring(1, level.length());
 		} else {
 			map = "level" + level;
 		}
