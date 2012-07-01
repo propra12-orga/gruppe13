@@ -70,7 +70,7 @@ public class JMenue extends JFrame implements ActionListener {
 										"Schritt 2:\n"
 												+ "Sie sehen, dass sich das Spielfeld geaendert hat.\n"
 												+ "Sie sind jetzt von zwei zerstoerbaren X-Feldern und einem festen sincos-Feld umgeben.\n"
-												+ "Zerstoeren Sie die beiden X-Felder nacheinander, indem Sie vor das Feld mit der"
+												+ "Zerstoeren Sie die beiden X-Felder nacheinander, indem Sie vor das Feld mit der "
 												+ "Leertaste eine Bombe legen.\n"
 												+ "Passen Sie auf, dass Sie nicht im Bereich des Explosionsradius sind.\n"
 												+ "Die Explosion verbreitet sich jeweils ein Feld nach oben, unten\n"
@@ -128,7 +128,8 @@ public class JMenue extends JFrame implements ActionListener {
 												+ "Dies stellt den Ausgang dar.\n"
 												+ "Ihre letzte Aufgabe besteht nun darin, den Ausgang zu erreichen.\n"
 												+ "Um Ihnen den Weg nicht zu leicht zu machen, haben wir noch ein\n"
-												+ "paar Steine in den Weg gelegt.");
+												+ "paar Steine in den Weg gelegt.\n"
+												+ "Wichtig: Im Spiel kann sich der Ausgang hinter einem X verbergen.");
 						check3 = true;
 					}
 					// Abfrage, ob der Spieler den Ausgang erreicht hat
@@ -143,7 +144,7 @@ public class JMenue extends JFrame implements ActionListener {
 												+ "Noch ein Tipp: Sie werden im Spiel auf verschiedene Gegenstaende treffen.\n"
 												+ "Diese koennen den Explosionsradius Ihrer Bomben erhoehen oder erlauben etwa\n"
 												+ "das Legen von mehreren Bombem gleichzeitig.\n"
-												+ "Viel Spaß beim Spielen.");
+												+ "Viel Spass beim Spielen.");
 						tut.stop();
 					}
 				}
@@ -381,7 +382,7 @@ public class JMenue extends JFrame implements ActionListener {
 					.showMessageDialog(
 							null,
 							"Willkommen bei Bomberman.\nIn diesem Level werden kurz die Steuerung, "
-									+ "sowie die wichtigsten Elemente des Spiels erläutert.");
+									+ "sowie die wichtigsten Elemente des Spiels erlaeutert.");
 			JOptionPane
 					.showMessageDialog(
 							null,
