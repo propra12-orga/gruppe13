@@ -64,9 +64,12 @@ public class Control {
 						break;
 					case 121:
 						// speichert den Spielstand
-						Mapsaver save = new Mapsaver("test", feld.getmap(),
-								feld.height(), feld.width(), bm.getxPosition(),
-								bm.getyPosition());
+
+						String fname = JOptionPane
+								.showInputDialog("Bitte benennen Sie ihren Spielstand.");
+						Mapsaver save = new Mapsaver(fname, feld.getmap(), feld
+								.height(), feld.width(), bm.getxPosition(), bm
+								.getyPosition());
 						save.start();
 						JOptionPane
 								.showMessageDialog(null,
