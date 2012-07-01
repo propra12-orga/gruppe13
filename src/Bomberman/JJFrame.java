@@ -36,12 +36,15 @@ public class JJFrame extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		if (title.equals("tut")) {
-			setTitle("Tutorial");
-		} else if (Integer.parseInt(title) < 0) {
-			setTitle("Level " + title.substring(1, title.length()) + " Random");
-		} else {
-			setTitle("Level " + title);
+		if (!JMenue.load) {
+			if (title.equals("tut")) {
+				setTitle("Tutorial");
+			} else if (Integer.parseInt(title) < 0) {
+				setTitle("Level " + title.substring(1, title.length())
+						+ " Random");
+			} else {
+				setTitle("Level " + title);
+			}
 		}
 
 	}
