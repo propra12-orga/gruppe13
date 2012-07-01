@@ -51,6 +51,7 @@ public class Mapsaver {
 
 	private void createTXT(String filename, String s, String ort) {
 		File f = new File(ort + filename + ".txt");
+		f.setWritable(true);
 		Writer fw = null;
 
 		try {
