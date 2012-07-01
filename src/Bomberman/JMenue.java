@@ -237,7 +237,7 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			}
 			if (nr != null) {
-				Mapreader create = new Mapreader(nr);
+				Mapreader create = new Mapreader(nr, false);
 				feld = new JFeld(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, nr, false);
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -291,7 +291,7 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			}
 			if (nr != null) {
-				Mapreader create = new Mapreader(nr);
+				Mapreader create = new Mapreader(nr, false);
 				feld = new JFeld(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, nr, true);
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -318,7 +318,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = "1";
 
 			// statisches Level: 1
-			Mapreader create = new Mapreader(nr);
+			Mapreader create = new Mapreader(nr, false);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, true);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -347,7 +347,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = "1";
 
 			// statisches Level: 1
-			Mapreader create = new Mapreader(nr);
+			Mapreader create = new Mapreader(nr, false);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, true);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -374,7 +374,7 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = "tut";
-			Mapreader create = new Mapreader(nr);
+			Mapreader create = new Mapreader(nr, false);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, false);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -400,6 +400,19 @@ public class JMenue extends JFrame implements ActionListener {
 		if (arg0.getActionCommand().equals("go6")) {
 			System.out.println("LADEN UND FEUERN!");
 			// Spielfeld auslesen
+			setVisible(false);
+			stopper = false;// fuer Menuesound
+
+			String lname = "Test1";
+			Mapreader create = new Mapreader(lname, true);
+			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
+					tileHeight, lname, false);
+			frame = new JJFrame(create.getWidth(), create.getHeight(),
+					tileWidth, tileHeight, feld, lname);
+			int[] kor = create.pos();
+			bm1 = new Figur(1, kor[0], kor[1]);
+			new Control(frame, bm1, feld, 0, null);
+			t.start();
 
 		}
 	}
