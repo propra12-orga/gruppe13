@@ -178,4 +178,12 @@ public class JFeld extends JPanel {
 		return map;
 	}
 
+	public int height() {
+		return mapHeight;
+	}
+
+	public int width() {
+		return mapWidth;
+	}
+
 }

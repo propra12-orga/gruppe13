@@ -61,6 +61,14 @@ public class Control {
 						}
 						bombeLegen(bm);
 						break;
+					case 121:
+						// speichert den Spielstand
+						Mapsaver save = new Mapsaver("test", feld.getmap(),
+								feld.height(), feld.width(), bm.getxPosition(),
+								bm.getyPosition());
+						save.start();
+						System.out.println("Ich bin F10!");
+						break;
 					default:
 						break;
 					}
