@@ -169,7 +169,7 @@ public class TBomb extends Thread {
 		}
 		// Suicide 2P
 		if (!d1 && !d2 && !s1 && s2) {
-			System.out.println("Bild kommt noch: Suicide 2P");
+			m = 1;
 		}
 		// 2P kills 1P
 		if (d1 && !d2 && !s1 && !s2) {
