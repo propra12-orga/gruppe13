@@ -252,6 +252,11 @@ public class JMenue extends JFrame implements ActionListener {
 				t.start();
 			} else {
 				setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
 			}
 		}
 		/**
@@ -310,6 +315,11 @@ public class JMenue extends JFrame implements ActionListener {
 				t.start();
 			} else {
 				setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
 			}
 
 		}
@@ -446,6 +456,11 @@ public class JMenue extends JFrame implements ActionListener {
 				t.start();
 			} else {
 				setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
 			}
 		}
 	}
