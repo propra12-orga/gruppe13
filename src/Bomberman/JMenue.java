@@ -4,10 +4,13 @@ import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 
 import multiplayer.MyClientSocket;
 import multiplayer.MyServerSocket;
@@ -179,7 +182,7 @@ public class JMenue extends JFrame implements ActionListener {
 		tut.setActionCommand("go5");
 		tut.addActionListener(this);
 		add(tut);
-		JButton load = new JButton("Spiel Laden");
+		JButton load = new JButton("Spielstand laden");
 		load.setActionCommand("go6");
 		load.addActionListener(this);
 		add(load);
@@ -403,20 +406,41 @@ public class JMenue extends JFrame implements ActionListener {
 			// Spielfeld auslesen
 			setVisible(false);
 			stopper = false;// fuer Menuesound
+			String lname = "";
+			JFileChooser fc = new JFileChooser("src/saves/");
+			fc.setDialogTitle("Spielstand laden");
+			fc.setFileFilter(new FileFilter() {
+				@Override
+				public boolean accept(File f) {
+					return f.isDirectory()
+							|| f.getName().toLowerCase().endsWith(".txt");
+				}
 
-			String lname = "Test1";
-			load = true;
-			Mapreader create = new Mapreader(lname, load);
-			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
-					tileHeight, lname, false);
-			frame = new JJFrame(create.getWidth(), create.getHeight(),
-					tileWidth, tileHeight, feld, lname);
-			int[] kor = create.pos();
-			System.out.println(kor[1]);
-			bm1 = new Figur(kor[0], kor[1], 1);
-			new Control(frame, bm1, feld, 0, null);
-			t.start();
+				@Override
+				public String getDescription() {
+					return "Spielstand";
+				}
 
+			});
+			int state = fc.showOpenDialog(null);
+			if (state == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				lname = file.getName()
+						.substring(0, file.getName().length() - 4);
+				load = true;
+				Mapreader create = new Mapreader(lname, load);
+				feld = new JFeld(create.getWidth(), create.getHeight(),
+						tileWidth, tileHeight, lname, false);
+				frame = new JJFrame(create.getWidth(), create.getHeight(),
+						tileWidth, tileHeight, feld, lname);
+				int[] kor = create.pos();
+				System.out.println(kor[1]);
+				bm1 = new Figur(kor[0], kor[1], 1);
+				new Control(frame, bm1, feld, 0, null);
+				t.start();
+			} else {
+				setVisible(true);
+			}
 		}
 	}
 
