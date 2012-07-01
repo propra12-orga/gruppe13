@@ -1,7 +1,7 @@
 package Bomberman;
 
 /**
- * Menue Sound
+ * Todessound
  */
 import java.io.File;
 import java.net.URL;
@@ -12,10 +12,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
-class Sounds extends Thread {
+class Sounds3 extends Thread {
 	public void run() {
 		try {
-			URL defaultSound = getClass().getResource("/sounds/lauf3.wav");
+			URL defaultSound = getClass().getResource("/sounds/pers7.wav");
 			File file1 = new File(defaultSound.toURI());
 
 			AudioInputStream audioInputStream = AudioSystem
@@ -50,20 +50,16 @@ class Sounds extends Thread {
 			int BUFFER_SIZE = 64 * 1024;
 			int Byteslesen = 0;
 			byte[] sampledData = new byte[BUFFER_SIZE];
-			do {
-				while (Byteslesen != -1) {
-					if (JMenue.stopper == true) {// beenden falls Menue zu
-						Byteslesen = audioInputStream.read(sampledData, 0,
-								sampledData.length);
-						if (Byteslesen >= 0) {
-							line.write(sampledData, 0, Byteslesen);
-						}
-					} else if (JMenue.stopper == false) {
-						line.close();
-					}
-				}
+			while (Byteslesen != -1) {
 
-			} while (line.isActive());
+				Byteslesen = audioInputStream.read(sampledData, 0,
+						sampledData.length);
+				if (Byteslesen >= 0) {
+					line.write(sampledData, 0, Byteslesen);
+				}
+				line.close();
+			}
+
 		}
 
 		catch (Exception e) {

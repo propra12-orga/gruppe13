@@ -18,6 +18,7 @@ public class TBomb extends Thread {
 	public static boolean death2P = false;
 	public static boolean suicide1P = false;
 	public static boolean suicide2P = false;
+	public static Sounds3 sound3 = new Sounds3();
 
 	public TBomb(int xpos, int ypos, FieldEntry[][] map, int b) {
 		this.xpos[b] = xpos;
@@ -31,12 +32,16 @@ public class TBomb extends Thread {
 		if (JMenue.bm1.getxPosition() == xpos[0]
 				&& JMenue.bm1.getyPosition() == ypos[0]) {
 			suicide1P = true;
+			// Thread tod = new Sounds3();
+			// tod.start();
 		}
 		for (int i = 0; i <= radius[b]; i++) {
 			if (i <= r) {
 				if (JMenue.bm1.getxPosition() == xpos[0] + i
 						&& JMenue.bm1.getyPosition() == ypos[0]) {
 					suicide1P = true;
+					// Thread tod = new Sounds3();
+					// tod.start();
 				}
 				if (JFeld.multi) {
 					if (JMenue.bm2.getxPosition() == xpos[0] + i
@@ -50,6 +55,8 @@ public class TBomb extends Thread {
 				if (JMenue.bm1.getxPosition() == xpos[0] - i
 						&& JMenue.bm1.getyPosition() == ypos[0]) {
 					suicide1P = true;
+					// Thread tod = new Sounds3();
+					// tod.start();
 				}
 				if (JFeld.multi) {
 					if (JMenue.bm2.getxPosition() == xpos[0] - i
@@ -63,6 +70,8 @@ public class TBomb extends Thread {
 				if (JMenue.bm1.getxPosition() == xpos[0]
 						&& JMenue.bm1.getyPosition() == ypos[0] + i) {
 					suicide1P = true;
+					// Thread tod = new Sounds3();
+					// tod.start();
 				}
 				if (JFeld.multi) {
 					if (JMenue.bm2.getxPosition() == xpos[0]
@@ -76,6 +85,8 @@ public class TBomb extends Thread {
 				if (JMenue.bm1.getxPosition() == xpos[0]
 						&& JMenue.bm1.getyPosition() == ypos[0] - i) {
 					suicide1P = true;
+					// Thread tod = new Sounds3();
+					// tod.start();
 				}
 				if (JFeld.multi) {
 					if (JMenue.bm2.getxPosition() == xpos[0]
@@ -91,6 +102,8 @@ public class TBomb extends Thread {
 			if (JMenue.bm2.getxPosition() == xpos[1]
 					&& JMenue.bm2.getyPosition() == ypos[1]) {
 				suicide2P = true;// "Suicide 2P"
+				// Thread tod = new Sounds3();
+				// tod.start();
 			}
 
 			for (int i = 0; i <= radius[b]; i++) {
@@ -98,6 +111,8 @@ public class TBomb extends Thread {
 					if (JMenue.bm2.getxPosition() == xpos[1] + i
 							&& JMenue.bm2.getyPosition() == ypos[1]) {
 						suicide2P = true;// "Suicide 2P"
+						// Thread tod = new Sounds3();
+						// tod.start();
 					}
 					if (JMenue.bm1.getxPosition() == xpos[1] + i
 							&& JMenue.bm1.getyPosition() == ypos[1]) {
@@ -109,6 +124,8 @@ public class TBomb extends Thread {
 					if (JMenue.bm2.getxPosition() == xpos[1] - i
 							&& JMenue.bm2.getyPosition() == ypos[1]) {
 						suicide2P = true;
+						// Thread tod = new Sounds3();
+						// tod.start();
 					}
 					if (JMenue.bm1.getxPosition() == xpos[1] - i
 							&& JMenue.bm1.getyPosition() == ypos[1]) {
@@ -120,6 +137,8 @@ public class TBomb extends Thread {
 					if (JMenue.bm2.getxPosition() == xpos[1]
 							&& JMenue.bm2.getyPosition() == ypos[1] + i) {
 						suicide2P = true;
+						// Thread tod = new Sounds3();
+						// tod.start();
 					}
 					if (JMenue.bm1.getxPosition() == xpos[1]
 							&& JMenue.bm1.getyPosition() == ypos[1] + i) {
@@ -131,6 +150,8 @@ public class TBomb extends Thread {
 					if (JMenue.bm2.getxPosition() == xpos[1]
 							&& JMenue.bm2.getyPosition() == ypos[1] - i) {
 						suicide2P = true;
+						// Thread tod = new Sounds3();
+						// tod.start();
 					}
 					if (JMenue.bm1.getxPosition() == xpos[1]
 							&& JMenue.bm1.getyPosition() == ypos[1] - i) {
@@ -149,10 +170,19 @@ public class TBomb extends Thread {
 	public void end(boolean d1, boolean d2, boolean s1, boolean s2) {
 		JMenue.frame.dispose();
 		Start.M.setVisible(true);
+		if (death1P = true) {
+			Thread dodod = new Sounds3();
+			dodod.start();
+		}
+		if (death2P = true) {
+			Thread dodod = new Sounds3();
+			dodod.start();
+		}
 		JMenue.stopper = true;// MenueSound wieder abspielen wenn tot/neustart
-								// etc
+		// etc
 		Thread lala = new Sounds();
 		lala.start();
+
 		JFeld.exit = false;
 		TBomb.radius[0] = 1;
 		TBomb.radius[1] = 1;
