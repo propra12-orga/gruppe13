@@ -165,7 +165,9 @@ public class TBomb extends Thread {
 
 		// Suicide 1P
 		if (!d1 && !d2 && s1 && !s2) {
-
+			if (JFeld.multi) {
+				m = 2;
+			}
 		}
 		// Suicide 2P
 		if (!d1 && !d2 && !s1 && s2) {
