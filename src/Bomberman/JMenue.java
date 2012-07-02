@@ -256,6 +256,7 @@ public class JMenue extends JFrame implements ActionListener {
 				} catch (NumberFormatException e) {
 					JOptionPane
 							.showMessageDialog(null, "Kein gueltiges Level.");
+					System.exit(0);
 				}
 			}
 			if (nr != null) {
@@ -316,6 +317,7 @@ public class JMenue extends JFrame implements ActionListener {
 				} catch (NumberFormatException e) {
 					JOptionPane
 							.showMessageDialog(null, "Kein gueltiges Level.");
+					System.exit(0);
 				}
 			}
 			if (nr != null) {

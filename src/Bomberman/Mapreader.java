@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 /**
  * Spieleinlesen/laden
  */
@@ -66,6 +68,11 @@ public class Mapreader {
 				}
 				i++;
 			}
+		} catch (FileNotFoundException e) {
+			JOptionPane
+					.showMessageDialog(null,
+							"Kein gueltiger Spielstand. Die Datei konnte nicht geladen werden.");
+			System.exit(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -101,8 +108,10 @@ public class Mapreader {
 			xy[0] = Integer.parseInt(zeile.split(" ")[0]);
 			xy[1] = Integer.parseInt(zeile.split(" ")[1]);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane
+					.showMessageDialog(null,
+							"Kein gueltiger Spielstand. Die Datei konnte nicht geladen werden.");
+			System.exit(0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
