@@ -470,7 +470,6 @@ public class JMenue extends JFrame implements ActionListener {
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, feld, lname);
 				int[] kor = create.pos();
-				System.out.println(kor[1]);
 				bm1 = new Figur(kor[0], kor[1], 1);
 				new Control(frame, bm1, feld, 0, null, true);
 				t.start();
