@@ -147,8 +147,9 @@ public class JMenue extends JFrame implements ActionListener {
 												+ "Probieren Sie doch gleich mal die verschiedenen Level aus.\n"
 												+ "Noch ein Tipp: Sie werden im Spiel auf verschiedene Gegenstaende treffen.\n"
 												+ "Diese koennen den Explosionsradius Ihrer Bomben erhoehen oder erlauben etwa\n"
-												+ "das Legen von mehreren Bombem gleichzeitig.\n"
+												+ "das Legen von mehreren Bomben gleichzeitig.\n"
 												+ "Viel Spass beim Spielen.");
+						check3 = false;
 						tut.stop();
 					}
 				}
