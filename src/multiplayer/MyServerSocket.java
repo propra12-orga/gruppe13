@@ -9,6 +9,9 @@ import java.net.Socket;
 import Bomberman.Control;
 import Bomberman.Figur;
 
+/**
+ * Der Server fuer Netzwerk, zuerst starten dann Client
+ */
 public class MyServerSocket implements MySockets {
 	private ServerSocket server;
 	// festgelegter Port
@@ -19,12 +22,16 @@ public class MyServerSocket implements MySockets {
 	private ObjectInputStream oistream = null;
 	private ObjectOutputStream oosstream = null;
 
-	// Klassenvariablen, um auf Control und bm2
-	// zugreifen zu können
+	/**
+	 * Control instanz und Klassenvariablen um auf Control und BM2 zugreifen zu
+	 * koennen
+	 */
 	private Control control;
 	private Figur bm2;
 
-	// Konstruktor für den Server
+	/**
+	 * Konstruktor fuer den Server
+	 */
 	public MyServerSocket(Figur bm2) {
 		this.bm2 = bm2;
 		try {
@@ -37,8 +44,10 @@ public class MyServerSocket implements MySockets {
 		this.handleConnection();
 	}
 
-	// Methode ruft neue Objekte ab, die
-	// an den Server gesendet wurden
+	/**
+	 * HandleConnection-Methode ruft neue Objekte ab, die an den Server gesendet
+	 * wurden
+	 */
 	public void handleConnection() {
 		try {
 			// einmalig auf den Client warten
@@ -80,7 +89,8 @@ public class MyServerSocket implements MySockets {
 										// im Control-Objekt die Bombe an der
 										// Stelle
 										// des BM des Clients legen
-										control.bombeLegen(MyServerSocket.this.bm2);
+										control
+												.bombeLegen(MyServerSocket.this.bm2);
 									}
 								}
 							}
@@ -102,7 +112,9 @@ public class MyServerSocket implements MySockets {
 	}
 
 	@Override
-	// Methode zum Senden von Objekten an den Client
+	/**
+	 * Methode zum Senden von Ojekten an den Client
+	 */
 	public void send(Object object, boolean bomb) {
 		try {
 			// falls bomb=true, soll eine Bombe
@@ -121,7 +133,9 @@ public class MyServerSocket implements MySockets {
 
 	}
 
-	// Setter für die Control-Instanz
+	/**
+	 * Nur Setter fuer die Control Instanz
+	 */
 	public void setControl(Control control) {
 		this.control = control;
 	}
