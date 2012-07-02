@@ -19,6 +19,11 @@ public class JJFrame extends JFrame {
 			public void windowClosing(WindowEvent e) {
 				JMenue.frame.dispose();
 				Start.M.setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
 				JMenue.t.stop();
 				JFeld.exit = false;
 				TBomb.radius[0] = 1;
@@ -36,12 +41,15 @@ public class JJFrame extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		if (title.equals("tut")) {
-			setTitle("Tutorial");
-		} else if (Integer.parseInt(title) < 0) {
-			setTitle("Level " + title.substring(1, title.length()) + " Random");
-		} else {
-			setTitle("Level " + title);
+		if (!JMenue.load) {
+			if (title.equals("tut")) {
+				setTitle("Tutorial");
+			} else if (Integer.parseInt(title) < 0) {
+				setTitle("Level " + title.substring(1, title.length())
+						+ " Random");
+			} else {
+				setTitle("Level " + title);
+			}
 		}
 
 	}

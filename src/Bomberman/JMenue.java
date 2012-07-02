@@ -4,10 +4,13 @@ import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 
 import multiplayer.MyClientSocket;
 import multiplayer.MyServerSocket;
@@ -34,6 +37,7 @@ public class JMenue extends JFrame implements ActionListener {
 	static Figur bm1, bm2;
 	public static Sounds sound = new Sounds();
 	public static boolean stopper = true;
+	public static boolean load = false;
 
 	/**
 	 * Zeichnet das Feld immer wieder neu
@@ -143,8 +147,9 @@ public class JMenue extends JFrame implements ActionListener {
 												+ "Probieren Sie doch gleich mal die verschiedenen Level aus.\n"
 												+ "Noch ein Tipp: Sie werden im Spiel auf verschiedene Gegenstaende treffen.\n"
 												+ "Diese koennen den Explosionsradius Ihrer Bomben erhoehen oder erlauben etwa\n"
-												+ "das Legen von mehreren Bombem gleichzeitig.\n"
+												+ "das Legen von mehreren Bomben gleichzeitig.\n"
 												+ "Viel Spass beim Spielen.");
+						check3 = false;
 						tut.stop();
 					}
 				}
@@ -178,6 +183,10 @@ public class JMenue extends JFrame implements ActionListener {
 		tut.setActionCommand("go5");
 		tut.addActionListener(this);
 		add(tut);
+		JButton load = new JButton("Spielstand laden");
+		load.setActionCommand("go6");
+		load.addActionListener(this);
+		add(load);
 		JButton spielbeenden = new JButton("Spiel beenden");
 		spielbeenden.setActionCommand("exit");
 		spielbeenden.addActionListener(this);
@@ -202,6 +211,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
+			FieldEntry.itemm = true;
 			while (nr == null || Math.abs(zahl) > max || !check) {
 				check = true;
 				nr = JOptionPane
@@ -233,7 +243,7 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			}
 			if (nr != null) {
-				Mapreader create = new Mapreader(nr);
+				Mapreader create = new Mapreader(nr, load);
 				feld = new JFeld(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, nr, false);
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -243,6 +253,11 @@ public class JMenue extends JFrame implements ActionListener {
 				t.start();
 			} else {
 				setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
 			}
 		}
 		/**
@@ -255,6 +270,7 @@ public class JMenue extends JFrame implements ActionListener {
 			String nr = null;
 			int zahl = 0;
 			boolean check = true;
+			FieldEntry.itemm = true;
 			while (nr == null || Math.abs(zahl) > max || !check) {
 				check = true;
 				nr = JOptionPane
@@ -287,7 +303,7 @@ public class JMenue extends JFrame implements ActionListener {
 				}
 			}
 			if (nr != null) {
-				Mapreader create = new Mapreader(nr);
+				Mapreader create = new Mapreader(nr, load);
 				feld = new JFeld(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, nr, true);
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -300,6 +316,11 @@ public class JMenue extends JFrame implements ActionListener {
 				t.start();
 			} else {
 				setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
 			}
 
 		}
@@ -312,9 +333,11 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = "1";
+			JFeld.multi = true;
+			FieldEntry.itemm = false;
 
 			// statisches Level: 1
-			Mapreader create = new Mapreader(nr);
+			Mapreader create = new Mapreader(nr, load);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, true);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -341,9 +364,11 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = "1";
+			JFeld.multi = true;
+			FieldEntry.itemm = false;
 
 			// statisches Level: 1
-			Mapreader create = new Mapreader(nr);
+			Mapreader create = new Mapreader(nr, load);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, true);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -370,7 +395,7 @@ public class JMenue extends JFrame implements ActionListener {
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = "tut";
-			Mapreader create = new Mapreader(nr);
+			Mapreader create = new Mapreader(nr, load);
 			feld = new JFeld(create.getWidth(), create.getHeight(), tileWidth,
 					tileHeight, nr, false);
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
@@ -381,7 +406,7 @@ public class JMenue extends JFrame implements ActionListener {
 			JOptionPane
 					.showMessageDialog(
 							null,
-							"Willkommen bei Bomberman.\nIn diesem Level werden kurz die Steuerung, "
+							"Willkommen bei Final Derivation.\nIn diesem Level werden kurz die Steuerung, "
 									+ "sowie die wichtigsten Elemente des Spiels erlaeutert.");
 			JOptionPane
 					.showMessageDialog(
@@ -391,6 +416,53 @@ public class JMenue extends JFrame implements ActionListener {
 									+ "Mit a laufen Sie nach links und mit d laufen Sie nach Rechts.\n"
 									+ "Probieren Sie es aus und laufen Sie in die untere rechte Ecke.");
 			tut.start();
+		}
+		// Spielstand laden
+		if (arg0.getActionCommand().equals("go6")) {
+			System.out.println("LADEN UND FEUERN!");
+			// Spielfeld auslesen
+			setVisible(false);
+			stopper = false;// fuer Menuesound
+			String lname = "";
+			JFileChooser fc = new JFileChooser("src/saves/");
+			fc.setDialogTitle("Spielstand laden");
+			fc.setFileFilter(new FileFilter() {
+				@Override
+				public boolean accept(File f) {
+					return f.isDirectory()
+							|| f.getName().toLowerCase().endsWith(".txt");
+				}
+
+				@Override
+				public String getDescription() {
+					return "Spielstand";
+				}
+
+			});
+			int state = fc.showOpenDialog(null);
+			if (state == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				lname = file.getName()
+						.substring(0, file.getName().length() - 4);
+				load = true;
+				Mapreader create = new Mapreader(lname, load);
+				feld = new JFeld(create.getWidth(), create.getHeight(),
+						tileWidth, tileHeight, lname, false);
+				frame = new JJFrame(create.getWidth(), create.getHeight(),
+						tileWidth, tileHeight, feld, lname);
+				int[] kor = create.pos();
+				System.out.println(kor[1]);
+				bm1 = new Figur(kor[0], kor[1], 1);
+				new Control(frame, bm1, feld, 0, null);
+				t.start();
+			} else {
+				setVisible(true);
+				JMenue.stopper = true;// MenueSound wieder abspielen wenn
+										// tot/neustart
+				// etc
+				Thread lala = new Sounds();
+				lala.start();
+			}
 		}
 	}
 

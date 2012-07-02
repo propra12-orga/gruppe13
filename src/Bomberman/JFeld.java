@@ -81,10 +81,13 @@ public class JFeld extends JPanel {
 		 * Kartenerstellung
 		 */
 		while (!exit) {
-			this.generateMap();
 			if (exit_reader) {
 				exit = true;
 			}
+			if (JFeld.multi) {
+				exit = true;
+			}
+			this.generateMap();
 		}
 	}
 
@@ -95,7 +98,7 @@ public class JFeld extends JPanel {
 		if (this.level.equals("tut")) {
 			exit = true;
 		}
-		Mapreader create = new Mapreader(this.level);
+		Mapreader create = new Mapreader(this.level, JMenue.load);
 		if (!create.random()) {
 			for (int i = 0; i < mapWidth; i++) {
 				for (int j = 0; j < mapHeight; j++) {

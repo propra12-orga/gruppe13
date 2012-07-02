@@ -64,9 +64,12 @@ public class Control {
 						break;
 					case 121:
 						// speichert den Spielstand
-						Mapsaver save = new Mapsaver("test", feld.getmap(),
-								feld.height(), feld.width(), bm.getxPosition(),
-								bm.getyPosition());
+
+						String fname = JOptionPane
+								.showInputDialog("Bitte benennen Sie ihren Spielstand.");
+						Mapsaver save = new Mapsaver(fname, feld.getmap(), feld
+								.height(), feld.width(), bm.getxPosition(), bm
+								.getyPosition());
 						save.start();
 						JOptionPane
 								.showMessageDialog(null,
@@ -116,8 +119,8 @@ public class Control {
 						// unten
 						bm.unten(feld.getmap());
 						break;
-					case 8:
-						// Backspace
+					case 10:
+						// Enter
 						if (counter[1] < maxbomb[1]) {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 1).start();
@@ -147,12 +150,22 @@ public class Control {
 
 	// Methode zum Legen einer Bombe für Player 1
 	public void bombeLegen(Figur bm) {
-		if (counter[0] < maxbomb[0]) {
-			new TBomb(bm.getxPosition(), bm.getyPosition(), feld.getmap(), 0)
-					.start();
-			counter[0]++;
-			Thread d = new Sounds2();
-			d.start();
+		if (bm == JMenue.bm1) {
+			if (counter[0] < maxbomb[0]) {
+				new TBomb(bm.getxPosition(), bm.getyPosition(), feld.getmap(),
+						0).start();
+				counter[0]++;
+				Thread d = new Sounds2();
+				d.start();
+			}
+		} else {
+			if (counter[1] < maxbomb[1]) {
+				new TBomb(bm.getxPosition(), bm.getyPosition(), feld.getmap(),
+						1).start();
+				counter[1]++;
+				Thread d = new Sounds2();
+				d.start();
+			}
 		}
 	}
 

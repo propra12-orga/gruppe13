@@ -2,7 +2,9 @@ package Bomberman;
 
 public class FieldEntry {
 
-	private int item, image;
+	public static boolean itemm;
+	private int item = 1;
+	private int image;
 	private boolean walkable;
 
 	/**
@@ -28,7 +30,7 @@ public class FieldEntry {
 	public FieldEntry(int image, boolean walkable) {
 		this.image = image;
 		this.walkable = walkable;
-		if (image == 2) {
+		if (image == 2 && itemm) {
 			this.setItem();
 		}
 
