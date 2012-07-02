@@ -29,7 +29,7 @@ public class Mapsaver {
 	}
 
 	public void start() {
-		boolean machs = false;
+		boolean machs = true;
 
 		if (new File("src/saves/" + filename + ".txt").exists()) {
 			machs = abfrage();

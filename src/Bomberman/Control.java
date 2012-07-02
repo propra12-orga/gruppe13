@@ -17,11 +17,13 @@ public class Control {
 
 	private JFeld feld = null;
 	private MySockets socket = null;
+	private boolean savable;
 
 	public Control(final JFrame f, final Figur bm, final JFeld feld, int nr,
-			MySockets socket) {
+			MySockets socket, final boolean save) {
 		this.feld = feld;
 		this.socket = socket;
+		this.savable = save;
 
 		switch (nr) {
 		// Steuerung: 0=pfeiltasten ; 1=w a s d
@@ -66,13 +68,19 @@ public class Control {
 						break;
 					case 121:
 						// speichert den Spielstand
+						if (savable == true) {
 
-						String fname = JOptionPane
-								.showInputDialog("Bitte benennen Sie ihren Spielstand.");
-						Mapsaver save = new Mapsaver(fname, feld.getmap(), feld
-								.height(), feld.width(), bm.getxPosition(), bm
-								.getyPosition());
-						save.start();
+							String fname = JOptionPane
+									.showInputDialog("Bitte benennen Sie ihren Spielstand.");
+							Mapsaver save = new Mapsaver(fname, feld.getmap(),
+									feld.height(), feld.width(), bm
+											.getxPosition(), bm.getyPosition());
+							save.start();
+						} else {
+							JOptionPane
+									.showMessageDialog(null,
+											"Das Spiel kann leider nur im Einzelspielermodus gespeichert werden.");
+						}
 						break;
 					default:
 						break;

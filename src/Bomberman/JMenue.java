@@ -265,7 +265,7 @@ public class JMenue extends JFrame implements ActionListener {
 				frame = new JJFrame(create.getWidth(), create.getHeight(),
 						tileWidth, tileHeight, feld, nr);
 				bm1 = new Figur(1, 1, 1);
-				new Control(frame, bm1, feld, 0, null);
+				new Control(frame, bm1, feld, 0, null, true);
 				t.start();
 			} else {
 				setVisible(true);
@@ -327,8 +327,8 @@ public class JMenue extends JFrame implements ActionListener {
 				bm1 = new Figur(1, 1, 1);
 				bm2 = new Figur(create.getWidth() - 2, create.getHeight() - 2,
 						2);
-				new Control(frame, bm1, feld, 0, null);
-				new Control(frame, bm2, feld, 1, null);
+				new Control(frame, bm1, feld, 0, null, false);
+				new Control(frame, bm2, feld, 1, null, false);
 				t.start();
 			} else {
 				setVisible(true);
@@ -364,7 +364,7 @@ public class JMenue extends JFrame implements ActionListener {
 			// Instanz des Server-Sockets erstellen
 			MyServerSocket sSocket = new MyServerSocket(bm2);
 
-			Control control = new Control(frame, bm1, feld, 0, sSocket);
+			Control control = new Control(frame, bm1, feld, 0, sSocket, false);
 			// übergabe der Control-Instanz an das Server-Socket
 			sSocket.setControl(control);
 
@@ -399,7 +399,7 @@ public class JMenue extends JFrame implements ActionListener {
 			// Instanz des Client-Sockets erstellen
 			MyClientSocket cSocket = new MyClientSocket(ip, bm1);
 
-			Control control = new Control(frame, bm2, feld, 0, cSocket);
+			Control control = new Control(frame, bm2, feld, 0, cSocket, false);
 			// Control-Instanz an den Client-Socket übergeben
 			cSocket.setControl(control);
 			t.start();
@@ -419,7 +419,7 @@ public class JMenue extends JFrame implements ActionListener {
 			frame = new JJFrame(create.getWidth(), create.getHeight(),
 					tileWidth, tileHeight, feld, nr);
 			bm1 = new Figur(1, 1, 1);
-			new Control(frame, bm1, feld, 0, null);
+			new Control(frame, bm1, feld, 0, null, false);
 			// Einfuehrungstext
 			JOptionPane
 					.showMessageDialog(
@@ -439,7 +439,6 @@ public class JMenue extends JFrame implements ActionListener {
 		 * Spielstand laden
 		 */
 		if (arg0.getActionCommand().equals("go6")) {
-			System.out.println("LADEN UND FEUERN!");
 			// Spielfeld auslesen
 			setVisible(false);
 			stopper = false;// fuer Menuesound
@@ -473,7 +472,7 @@ public class JMenue extends JFrame implements ActionListener {
 				int[] kor = create.pos();
 				System.out.println(kor[1]);
 				bm1 = new Figur(kor[0], kor[1], 1);
-				new Control(frame, bm1, feld, 0, null);
+				new Control(frame, bm1, feld, 0, null, true);
 				t.start();
 			} else {
 				setVisible(true);
