@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Spieleinlesen/laden
+ */
 public class Mapreader {
 	/**
 	 * Kartenverzeichnis

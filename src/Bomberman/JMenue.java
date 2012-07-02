@@ -18,14 +18,21 @@ import multiplayer.MyServerSocket;
 public class JMenue extends JFrame implements ActionListener {
 
 	/**
-	 * Spielfeldgroesse
+	 * Spielfeldbreite
 	 */
 	public static int mapWidth = 19;
-	public static int mapHeight = 19;
 	/**
-	 * Kachelgroesse
+	 * Spielfeldhöhe
+	 */
+	public static int mapHeight = 19;
+
+	/**
+	 * Kachelbreite in Pixel
 	 */
 	public static final int tileWidth = 32;
+	/**
+	 * Kachelhöhe in Pixel
+	 */
 	public static final int tileHeight = 32;
 	/**
 	 * Zahl der Level
@@ -36,6 +43,9 @@ public class JMenue extends JFrame implements ActionListener {
 	public static JJFrame frame;
 	static Figur bm1, bm2;
 	public static Sounds sound = new Sounds();
+	/**
+	 * boolean stopper fuer Menuesound
+	 */
 	public static boolean stopper = true;
 	public static boolean load = false;
 
@@ -199,13 +209,19 @@ public class JMenue extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 
-		// Spiel beenden
+		/**
+		 * Spiel beenden
+		 */
 		if (arg0.getActionCommand().equals("exit")) {
 			System.exit(0);
 		}
-		// Spiel starten 1P
+		/**
+		 * Spiel starten
+		 */
 		if (arg0.getActionCommand().equals("go1")) {
-			// Spielfeld auslesen
+			/**
+			 * Spielfeld auslesen
+			 */
 			setVisible(false);
 			stopper = false;// fuer Menuesound
 			String nr = null;
@@ -254,7 +270,7 @@ public class JMenue extends JFrame implements ActionListener {
 			} else {
 				setVisible(true);
 				JMenue.stopper = true;// MenueSound wieder abspielen wenn
-										// tot/neustart
+				// tot/neustart
 				// etc
 				Thread lala = new Sounds();
 				lala.start();
@@ -317,7 +333,7 @@ public class JMenue extends JFrame implements ActionListener {
 			} else {
 				setVisible(true);
 				JMenue.stopper = true;// MenueSound wieder abspielen wenn
-										// tot/neustart
+				// tot/neustart
 				// etc
 				Thread lala = new Sounds();
 				lala.start();
@@ -389,7 +405,9 @@ public class JMenue extends JFrame implements ActionListener {
 			t.start();
 
 		}
-		// Tutorial starten
+		/**
+		 * Tutorial starten
+		 */
 		if (arg0.getActionCommand().equals("go5")) {
 			// Spielfeld auslesen
 			setVisible(false);
@@ -417,7 +435,9 @@ public class JMenue extends JFrame implements ActionListener {
 									+ "Probieren Sie es aus und laufen Sie in die untere rechte Ecke.");
 			tut.start();
 		}
-		// Spielstand laden
+		/**
+		 * Spielstand laden
+		 */
 		if (arg0.getActionCommand().equals("go6")) {
 			System.out.println("LADEN UND FEUERN!");
 			// Spielfeld auslesen
@@ -458,7 +478,7 @@ public class JMenue extends JFrame implements ActionListener {
 			} else {
 				setVisible(true);
 				JMenue.stopper = true;// MenueSound wieder abspielen wenn
-										// tot/neustart
+				// tot/neustart
 				// etc
 				Thread lala = new Sounds();
 				lala.start();

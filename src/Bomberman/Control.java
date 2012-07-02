@@ -9,7 +9,9 @@ import javax.swing.JOptionPane;
 import multiplayer.MySockets;
 
 public class Control {
-	// Klassenvariablen
+	/**
+	 * Ein paar Klassenvariablen
+	 */
 	public static int[] maxbomb = new int[] { 1, 1 };
 	public static int[] counter = new int[] { 0, 0 };
 
@@ -56,9 +58,9 @@ public class Control {
 						// An den anderen Spieler senden, dass die Bombe
 						// gelegt wurde
 						if (Control.this.socket != null) {
-							Control.this.socket.send(
-									new Figur(bm.getxPosition(), bm
-											.getyPosition(), 1), true);
+							Control.this.socket.send(new Figur(bm
+									.getxPosition(), bm.getyPosition(), 1),
+									true);
 						}
 						bombeLegen(bm);
 						break;
@@ -148,7 +150,9 @@ public class Control {
 
 	}
 
-	// Methode zum Legen einer Bombe für Player 1
+	/**
+	 * Methode zum Legen einer Bombe fuer Player 1
+	 */
 	public void bombeLegen(Figur bm) {
 		if (bm == JMenue.bm1) {
 			if (counter[0] < maxbomb[0]) {

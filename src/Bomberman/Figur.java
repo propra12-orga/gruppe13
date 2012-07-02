@@ -3,8 +3,8 @@ package Bomberman;
 import java.io.Serializable;
 
 public class Figur implements Serializable {
-	/*
-	 * neues Object. Grundlage fuer Figuren Mutterklasse von Bomberman und
+	/**
+	 * Neues Object. Grundlage fuer Figuren Mutterklasse von Bomberman und
 	 * Monstern.
 	 */
 
@@ -22,6 +22,10 @@ public class Figur implements Serializable {
 		this.P = P;
 
 	}
+
+	/**
+	 * Getter und Setter für Figurposition
+	 */
 
 	public int getxPosition() {
 		return this.xposition;
@@ -43,7 +47,7 @@ public class Figur implements Serializable {
 		JMenue.frame.dispose();
 		Start.M.setVisible(true);
 		JMenue.stopper = true;// MenueSound wieder abspielen wenn tot/neustart
-								// etc
+		// etc
 		Thread lala = new Sounds();
 		lala.start();
 		JFeld.exit = false;
@@ -92,7 +96,9 @@ public class Figur implements Serializable {
 	}
 
 	public void rechts(FieldEntry[][] map) {
-		// Ueberprueft ob Feld frei ist
+		/**
+		 * Ueberprueft ob das Feld frei ist
+		 */
 		if (map[getxPosition() + 1][getyPosition()].getWalk() == true) {
 			this.setxPosition(getxPosition() + 1);
 			this.check(map, getxPosition(), getyPosition());

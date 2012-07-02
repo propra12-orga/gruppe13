@@ -9,7 +9,10 @@ import javax.swing.JPanel;
 public class JFeld extends JPanel {
 
 	/**
-	 * 
+	 * Feld initialisierung
+	 */
+	/**
+	 * Serials, weil ich es Wert bin
 	 */
 	private static final long serialVersionUID = 1L;
 	private int mapWidth;
@@ -33,7 +36,7 @@ public class JFeld extends JPanel {
 			new FieldEntry(6, true), // Feuerkraft +
 			new FieldEntry(7, true), // Bombe+
 			new FieldEntry(8, false) // x fuer das Tutorial, damit keine Item
-										// generiert werden!
+	// generiert werden!
 	};
 	public static Image P1, P2;
 	public static boolean exit = false;
@@ -159,11 +162,13 @@ public class JFeld extends JPanel {
 						* tileHeight, null);
 			}
 		}
-		g.drawImage(P1, JMenue.bm1.getxPosition() * tileWidth,
-				JMenue.bm1.getyPosition() * tileHeight, null);
+		g.drawImage(P1, JMenue.bm1.getxPosition() * tileWidth, JMenue.bm1
+				.getyPosition()
+				* tileHeight, null);
 		if (multi == true) {
-			g.drawImage(P2, JMenue.bm2.getxPosition() * tileWidth,
-					JMenue.bm2.getyPosition() * tileHeight, null);
+			g.drawImage(P2, JMenue.bm2.getxPosition() * tileWidth, JMenue.bm2
+					.getyPosition()
+					* tileHeight, null);
 		}
 
 	}

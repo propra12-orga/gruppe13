@@ -7,12 +7,11 @@ import javax.swing.JPanel;
 
 /**
  * Zeigt das richtige Bild bei Sieg oder Niederlage an.
- * 
- * 
- * 
  */
 public class TMeldung extends Thread {
-
+	/**
+	 * Bild Integerwert
+	 */
 	private int n;
 	private static ImageIcon[] bild = new ImageIcon[5];
 
@@ -34,7 +33,6 @@ public class TMeldung extends Thread {
 		/**
 		 * Zeichnet das Bild, zeigt es fuer ein paar Sekunden an
 		 */
-		//
 		JFrame anzeige = new JFrame();
 
 		JLabel l1 = new JLabel(bild[n]);

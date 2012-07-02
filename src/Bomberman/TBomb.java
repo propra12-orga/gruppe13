@@ -2,9 +2,11 @@ package Bomberman;
 
 public class TBomb extends Thread {
 	/**
-	 * Braucht mehr Kommentare?
+	 * Kill, End und Logik
 	 */
-
+	/**
+	 * Ein paar weitere Klassenvariablen
+	 */
 	public static int[] radius = new int[] { 1, 1 };
 	private int[] xpos = new int[2];
 	private int[] ypos = new int[2];

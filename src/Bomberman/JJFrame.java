@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 public class JJFrame extends JFrame {
 
 	/**
-	 * 
+	 * Fenstermanagement
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +20,7 @@ public class JJFrame extends JFrame {
 				JMenue.frame.dispose();
 				Start.M.setVisible(true);
 				JMenue.stopper = true;// MenueSound wieder abspielen wenn
-										// tot/neustart
+				// tot/neustart
 				// etc
 				Thread lala = new Sounds();
 				lala.start();
@@ -32,7 +32,9 @@ public class JJFrame extends JFrame {
 				Control.maxbomb[1] = 1;
 			}
 		});
-		// Framesize
+		/**
+		 * Framesize
+		 */
 		int frameWidth = mapWidth * tileWidth + 6;
 		int frameHeight = mapHeight * tileHeight + 28;
 		setSize(frameWidth, frameHeight);

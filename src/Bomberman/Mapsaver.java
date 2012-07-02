@@ -7,6 +7,9 @@ import java.io.Writer;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Spielspeichern
+ */
 public class Mapsaver {
 	String filename;
 	FieldEntry[][] map;
@@ -49,6 +52,9 @@ public class Mapsaver {
 
 	}
 
+	/**
+	 * .txt Datei anlegen
+	 */
 	private void createTXT(String filename, String s, String ort) {
 		File f = new File(ort + filename + ".txt");
 		f.setWritable(true);
