@@ -119,8 +119,8 @@ public class Control {
 						// unten
 						bm.unten(feld.getmap());
 						break;
-					case 8:
-						// Backspace
+					case 10:
+						// Enter
 						if (counter[1] < maxbomb[1]) {
 							new TBomb(bm.getxPosition(), bm.getyPosition(),
 									feld.getmap(), 1).start();
