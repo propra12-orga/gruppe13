@@ -1,0 +1,31 @@
+Janka:
+Laden/Speichern
+Bilder
+Anfängliche Struktur
+Tests
+
+Jarno:
+Anfänglich Steuerung
+Sound
+Javadoc
+Netzwerk
+
+Kwoki:
+TBomb-Klasse und das Feld
+also Logik
+Items
+
+Maximilian:
+Das Feld
+Levels
+Levelauswahl
+Allgemein Struktur und Logik
+
+Patrick:
+Bombe ursprünglich
+Handbuch
+
+Gesine:
+Anfänglich Menue
+
+
