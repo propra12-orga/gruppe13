@@ -29,10 +29,12 @@ public class Mapsaver {
 	}
 
 	public void start() {
+		boolean machs = false;
 
-		if (existent(filename)) {
-
-		} else {
+		if (new File("src/saves/" + filename + ".txt").exists()) {
+			machs = abfrage();
+		}
+		if (machs) {
 
 			String s = filename + "\n" + h + " " + w + "\n";
 			for (int j = 0; j < h; j++) {
@@ -47,7 +49,18 @@ public class Mapsaver {
 			this.createTXT(filename, s, "src/saves/");
 			this.createTXT(filename, this.x + " " + this.y,
 					"src/saves/position/");
-
+			JOptionPane.showMessageDialog(null,
+					"Das Spiel wurde im Ordner /src/saves/ gespeichert.");
+		} else {
+			// filename = JOptionPane
+			// .showInputDialog("Bitte benennen Sie ihren Spielstand um.");
+			// start();
+			JOptionPane
+					.showMessageDialog(
+							null,
+							"Ihr Spielstand wurde nicht gespeichert."
+									+ "\n"
+									+ "Bitte speichern Sie erneut unter einem anderem Namen.");
 		}
 
 	}
@@ -77,9 +90,19 @@ public class Mapsaver {
 		f.setWritable(false);
 	}
 
-	private boolean existent(String name) {
-		// ueberprueft, ob gleichnamig schon vorhanden.
+	/**
+	 * Abfrage, ob Spielstand ueberschrieben werden soll
+	 */
+	private boolean abfrage() {
+		System.out.println("Mich gibt es schon!");
+
+		int eingabe = JOptionPane.showConfirmDialog(null,
+				"Wollen Sie den Spielstand ueberschreiben?",
+				"Gleichnamiger Spielstand", JOptionPane.YES_NO_OPTION);
+		if (eingabe == JOptionPane.YES_OPTION) {
+			return true;
+
+		}
 		return false;
 	}
-
 }

@@ -58,9 +58,9 @@ public class Control {
 						// An den anderen Spieler senden, dass die Bombe
 						// gelegt wurde
 						if (Control.this.socket != null) {
-							Control.this.socket.send(new Figur(bm
-									.getxPosition(), bm.getyPosition(), 1),
-									true);
+							Control.this.socket.send(
+									new Figur(bm.getxPosition(), bm
+											.getyPosition(), 1), true);
 						}
 						bombeLegen(bm);
 						break;
@@ -73,9 +73,6 @@ public class Control {
 								.height(), feld.width(), bm.getxPosition(), bm
 								.getyPosition());
 						save.start();
-						JOptionPane
-								.showMessageDialog(null,
-										"Das Spiel wurde im Ordner /src/saves/ gespeichert.");
 						break;
 					default:
 						break;
